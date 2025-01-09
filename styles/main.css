@@ -1,0 +1,152 @@
+:root {
+	--primary-color: #54294d;
+	--secondary-color: #e6dce8;
+	--opposite-color: #fff;
+	--success-color: #90b038;
+	--error-color: #ff6361;
+	--font-regular: 400;
+	--font-bold: 400;
+	--border: 2px solid #e6dce8;
+	--header-height: 40px;
+	--footer-height: 40px;
+}
+
+body {
+	font-family: "Roboto", serif;
+	font-weight: var(--font-regular);
+	font-style: normal;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	text-decoration: none;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	min-height: var(--header-height);
+	background: var(--primary-color);
+	color: var(--opposite-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+main {
+	flex: 1;
+}
+
+menu {
+	padding: 10px;
+	text-align: center;
+}
+
+footer {
+	margin-top: auto;
+	position: sticky;
+	bottom: 0;
+	background: var(--opposite-color);
+	padding: 10px;
+	border-top: var(--border);
+	height: var(--footer-height);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.back-link {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 10px;
+	color: var(--secondary-color);
+	font-size: 0.86rem;
+}
+
+.hidden {
+	opacity: 0;
+}
+
+.block-disabled {
+	pointer-events: none;
+}
+
+.success-color {
+	color: var(--success-color);
+}
+
+.error-color {
+	color: var(--error-color);
+}
+
+button {
+	border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+}
+
+/* box */
+.box {
+	padding: 10px;
+	font-size: 3rem;
+	display: grid;
+	grid-template-rows: repeat(3, 1fr);
+	height: calc(100vh - (var(--header-height) + var(--footer-height)));
+	row-gap: 10px;
+}
+
+.box__task {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.box-input {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+/* correct-variant */
+.correct-variant {
+	font-size: 1rem;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	border: 2px solid var(--success-color);
+	padding-block: 10px;
+}
+
+.correct-variant__text {
+	font-size: 3rem;
+}
+
+.box__variants {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2px;
+	background: var(--secondary-color);
+}
+
+.variant-btn {
+	font-size: 1.5rem;
+	background: var(--opposite-color);
+}
+
+.variant-btn:active {
+	background: var(--secondary-color);
+}
