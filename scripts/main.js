@@ -28,6 +28,7 @@ const progress = document.querySelector('.progress--js');
 const progressValue = document.querySelector('.progress-value--js');
 const progressBar = document.querySelector('.progress-bar--js');
 const progressContent = document.querySelector('.progress-content--js');
+const boxInput = document.querySelector('.box-input--js');
 const variantBtnTemplate = document.querySelector('#variant-btn-template');
 const variantButtonsFragment = document.createDocumentFragment();
 
@@ -59,6 +60,14 @@ function setTaskValue() {
 
 function setCorrectValue() {
     correctVariantText.textContent = current.key;
+}
+
+function setFinishMsg() {
+    taskField.innerHTML = '<div class="final-msg"><div>Ура! 🏆</div><div>Задание пройдено! 👍</div><div/>';
+}
+
+function addRefreshBtn() {
+    boxInput.innerHTML = '<a class="refresh-link" href=".">Пройти ещё раз 🤓</a>';
 }
 
 function clearVariantValue() {
@@ -95,16 +104,16 @@ function checkVariantInput() {
             inputVariant.classList.remove('success-color');
             clearVariantValue();
             updateCurrent();
-            setTaskValue();
-            setCorrectValue();
             modifyCounter('counter-1-vocabulary', 'increment');
             updateProgress(counters['counter-1-vocabulary'], ['counter-1-vocabulary']);
 
-            console.log(progresses['counter-1-vocabulary']);
-
-            if (progresses['counter-1-vocabulary'] === 100) {
+            if (progresses['counter-1-vocabulary'] >= 100) {
                 disableBlock(variants);
+                setFinishMsg();
+                addRefreshBtn();
             } else {
+                setTaskValue();
+                setCorrectValue();
                 enableBlock(variants);
             }
         }, timeout);
@@ -139,12 +148,12 @@ function modifyCounter(counterName, operation) {
 }
 
 function updateProgress(value, progressName) {
-    const fullValue = 10;
+    const fullValue = 1;
     const progress = (value * 100) / fullValue;
 
     progresses[progressName] = progress;
 
-    if (progressName === 100) {
+    if (progresses[progressName] >= 100) {
         progressContent.textContent = 'Завершено';
     } else {
         progressValue.textContent = progress;

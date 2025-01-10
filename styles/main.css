@@ -73,6 +73,7 @@ footer {
 
 .block-disabled {
 	pointer-events: none;
+	opacity: 0.3;
 }
 
 .success-color {
@@ -164,4 +165,15 @@ button {
 
 .progress-content {
 	position: relative;
+}
+
+/* final-msg */
+.final-msg {
+	font-size: 1.6rem;
+	text-align: center;
+	line-height: 2.5rem;
+}
+
+.refresh-link {
+	font-size: 1rem;
 }
