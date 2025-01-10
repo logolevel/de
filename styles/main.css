@@ -104,7 +104,7 @@ button {
 	font-size: 3rem;
 	display: grid;
 	grid-template-rows: repeat(3, 1fr);
-	height: calc(100vh - 120px);
+	height: calc(100dvh - (var(--header-height) + var(--footer-height)));
 	row-gap: 10px;
 }
 
