@@ -1,5 +1,6 @@
 :root {
 	--primary-color: #54294d;
+	--primary-active-color: #8e2b7e;
 	--secondary-color: #e6dce8;
 	--opposite-color: #fff;
 	--success-color: #90b038;
@@ -99,6 +100,18 @@ button {
     -webkit-appearance: none;
 }
 
+.btn {
+	background: var(--primary-color);
+	color: var(--opposite-color);
+	padding: 10px 20px;
+	border-radius: 4px;
+	font-size: 1rem;
+}
+
+.btn:active {
+	background: var(--primary-active-color);
+}
+
 /* box */
 .box {
 	padding: 10px;
@@ -174,6 +187,6 @@ button {
 	line-height: 2.5rem;
 }
 
-.refresh-link {
-	font-size: 1rem;
+.refresh-btn-container {
+	text-align: center;
 }

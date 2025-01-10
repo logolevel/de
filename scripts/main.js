@@ -67,7 +67,7 @@ function setFinishMsg() {
 }
 
 function addRefreshBtn() {
-    boxInput.innerHTML = '<button class="refresh-link" type="button" onClick="window.location.reload()">Пройти ещё раз 🤓</button>';
+    boxInput.innerHTML = '<div class="refresh-btn-container"><button class="btn" type="button" onClick="window.location.reload()">Пройти ещё раз 🤓</button></div>';
 }
 
 function clearVariantValue() {
@@ -149,7 +149,7 @@ function modifyCounter(counterName, operation) {
 
 function updateProgress(value, progressName) {
     const fullValue = 12;
-    const progress = (value * 100) / fullValue;
+    const progress = ((value * 100) / fullValue).toFixed();
 
     progresses[progressName] = progress;
 
