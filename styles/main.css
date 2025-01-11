@@ -45,7 +45,7 @@ a {
 }
 @keyframes pulse {
 	from { transform: scale(1); }
-	to { transform: scale(1.02); }
+	to { transform: scale(1.08); }
 }
 
 header {
@@ -170,6 +170,11 @@ button {
 
 .correct-variant__text {
 	font-size: 3rem;
+}
+
+.correct-variant-msg {
+	line-height: 1.4rem;
+	font-size: 0.8rem;
 }
 
 .box__variants {

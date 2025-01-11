@@ -9,6 +9,10 @@ const correctPronouns = {
     "Sie": "Вы",
 }
 
+const words = {
+    "sagen": "говорить"
+}
+
 let counters = {
     'counter-1-vocabulary': 0
 };
