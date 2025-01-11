@@ -20,7 +20,6 @@ const verbs = {
     "spielen": "играть",
     "machen": "делать",
     "arbeiten": "работать",
-    "arbeiten": "работать",
     "antworten": "отвечать",
     "hören": "слышать",
 }
@@ -71,12 +70,12 @@ function enableBlock(element) {
     element.classList.remove('block-disabled');
 }
 
-function setTaskValue() {
-    taskField.textContent = current.value;
+function setTaskValue(value) {
+    taskField.textContent = value;
 }
 
-function setCorrectValue() {
-    correctVariantText.textContent = current.key;
+function setCorrectValue(key) {
+    correctVariantText.textContent = key;
 }
 
 function setFinishMsg() {
@@ -106,8 +105,8 @@ function hideIntensiveMsg() {
     return;
 }
 
-function generateVariants() {
-    let entries = Object.entries(pronouns);
+function generateVariants(obj) {
+    let entries = Object.entries(obj);
 
     // Shuffle the entries array
     for (let i = entries.length - 1; i > 0; i--) {
@@ -150,15 +149,15 @@ function checkVariantInput() {
             modifyCounter('counter-1-vocabulary', 'increment');
             updateProgress(counters['counter-1-vocabulary'], ['counter-1-vocabulary']);
             variants.innerHTML = '';
-            generateVariants();
+            generateVariants(pronouns);
 
             if (progresses['counter-1-vocabulary'] >= 100) {
                 disableBlock(variants);
                 setFinishMsg();
                 addRefreshBtn();
             } else {
-                setTaskValue();
-                setCorrectValue();
+                setTaskValue(current.value);
+                setCorrectValue(current.key);
                 enableBlock(variants);
             }
         }, timeout);
@@ -208,9 +207,9 @@ function updateProgress(value, progressName) {
 }
 
 /* RUN */
-setTaskValue();
-setCorrectValue();
-generateVariants();
+setTaskValue(current.value);
+setCorrectValue(current.key);
+generateVariants(pronouns);
 
 /* Listeners */
 variants.addEventListener('click', function(e) {
@@ -226,5 +225,5 @@ correctVariant.addEventListener('click', function() {
     clearVariantValue();
     enableBlock(variants);
     variants.innerHTML = '';
-    generateVariants();
+    generateVariants(pronouns);
 });
