@@ -109,7 +109,6 @@ function hideIntensiveMsg() {
 function generateVariants() {
     const entries = Object.entries(pronouns);
 
-    // Shuffle the entries array
     for (let i = entries.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [entries[i], entries[j]] = [entries[j], entries[i]];
@@ -119,10 +118,11 @@ function generateVariants() {
         const item = variantBtnTemplate.content.cloneNode(true);
     
         item.querySelector('button').textContent = `${key}`;
-        variantButtonsFragment.appendChild(item);
+        variantButtonsFragment.append(item);
     }
     
-    variants.appendChild(variantButtonsFragment);
+    variants.innerHTML = '';
+    variants.append(variantButtonsFragment);
 }
 
 function checkVariantInput() {
@@ -138,6 +138,7 @@ function checkVariantInput() {
             updateCurrent();
             modifyCounter('counter-1-vocabulary', 'increment');
             updateProgress(counters['counter-1-vocabulary'], ['counter-1-vocabulary']);
+            generateVariants();
 
             if (progresses['counter-1-vocabulary'] >= 100) {
                 disableBlock(variants);
@@ -212,4 +213,5 @@ correctVariant.addEventListener('click', function() {
     hideCorrectMsg();
     clearVariantValue();
     enableBlock(variants);
+    generateVariants();
 });
