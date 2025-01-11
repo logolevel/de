@@ -180,7 +180,7 @@ function modifyCounter(counterName, operation) {
 }
 
 function updateProgress(value, progressName) {
-    const fullValue = 2;
+    const fullValue = 12;
     const progress = ((value * 100) / fullValue).toFixed();
 
     progresses[progressName] = progress;
