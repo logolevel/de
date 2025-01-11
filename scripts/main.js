@@ -121,7 +121,7 @@ function generateVariants() {
         variantButtonsFragment.append(item);
     }
     
-    variants.innerHTML = '';
+    // variants.innerHTML = ''; back this variant and change HTML correctly
     variants.append(variantButtonsFragment);
 }
 
@@ -138,6 +138,7 @@ function checkVariantInput() {
             updateCurrent();
             modifyCounter('counter-1-vocabulary', 'increment');
             updateProgress(counters['counter-1-vocabulary'], ['counter-1-vocabulary']);
+            variants.innerHTML = '';
             generateVariants();
 
             if (progresses['counter-1-vocabulary'] >= 100) {
@@ -213,5 +214,6 @@ correctVariant.addEventListener('click', function() {
     hideCorrectMsg();
     clearVariantValue();
     enableBlock(variants);
+    variants.innerHTML = '';
     generateVariants();
 });
