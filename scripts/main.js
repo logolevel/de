@@ -1,4 +1,4 @@
-const correctPronouns = {
+const pronouns = {
     "ich": "я",
     "du": "ты",
     "er": "он",
@@ -9,8 +9,20 @@ const correctPronouns = {
     "Sie": "Вы",
 }
 
-const words = {
-    "sagen": "говорить"
+const verbs = {
+    "sagen": "говорить",
+    "fragen": "спрашивать",
+    "lieben": "любить",
+    "lachen": "смеяться",
+    "wohnen": "жить, проживать",
+    "singen": "петь",
+    "tanzen": "танцевать",
+    "spielen": "играть",
+    "machen": "делать",
+    "arbeiten": "работать",
+    "arbeiten": "работать",
+    "antworten": "отвечать",
+    "hören": "слышать",
 }
 
 let counters = {
@@ -37,7 +49,7 @@ const boxInput = document.querySelector('.box-input--js');
 const variantBtnTemplate = document.querySelector('#variant-btn-template');
 const variantButtonsFragment = document.createDocumentFragment();
 
-let current = getRandomEntryFromObject(correctPronouns);
+let current = getRandomEntryFromObject(pronouns);
 
 function getRandomEntryFromObject(obj) {
     const entries = Object.entries(obj);
@@ -48,7 +60,7 @@ function getRandomEntryFromObject(obj) {
 }
 
 function updateCurrent() {
-    current = getRandomEntryFromObject(correctPronouns)
+    current = getRandomEntryFromObject(pronouns)
 }
 
 function disableBlock(element) {
@@ -95,7 +107,15 @@ function hideIntensiveMsg() {
 }
 
 function generateVariants() {
-    for (const [key, value] of Object.entries(correctPronouns)) {
+    const entries = Object.entries(pronouns);
+
+    // Shuffle the entries array
+    for (let i = entries.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [entries[i], entries[j]] = [entries[j], entries[i]];
+    }
+
+    for (const [key, value] of entries) {
         const item = variantBtnTemplate.content.cloneNode(true);
     
         item.querySelector('button').textContent = `${key}`;
@@ -106,7 +126,7 @@ function generateVariants() {
 }
 
 function checkVariantInput() {
-    if (taskField.textContent === correctPronouns[inputVariant.textContent]) {
+    if (taskField.textContent === pronouns[inputVariant.textContent]) {
         inputVariant.classList.remove('error-color');
         inputVariant.classList.add('success-color');
 
@@ -160,7 +180,7 @@ function modifyCounter(counterName, operation) {
 }
 
 function updateProgress(value, progressName) {
-    const fullValue = 12;
+    const fullValue = 2;
     const progress = ((value * 100) / fullValue).toFixed();
 
     progresses[progressName] = progress;
