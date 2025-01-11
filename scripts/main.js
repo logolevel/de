@@ -28,6 +28,7 @@ const progress = document.querySelector('.progress--js');
 const progressValue = document.querySelector('.progress-value--js');
 const progressBar = document.querySelector('.progress-bar--js');
 const progressContent = document.querySelector('.progress-content--js');
+const intensiveMsg = document.querySelector('.incentive-msg--js');
 const boxInput = document.querySelector('.box-input--js');
 const variantBtnTemplate = document.querySelector('#variant-btn-template');
 const variantButtonsFragment = document.createDocumentFragment();
@@ -80,6 +81,13 @@ function showCorrectMsg() {
 
 function hideCorrectMsg() {
     correctVariant.classList.add('hidden');
+}
+
+function hideIntensiveMsg() {
+    if (intensiveMsg) {
+        intensiveMsg.remove();
+    }
+    return;
 }
 
 function generateVariants() {
@@ -172,6 +180,7 @@ variants.addEventListener('click', function(e) {
     if (e.target.classList.contains('variant-btn')) {
         inputVariant.textContent = `${e.target.textContent}`;
         checkVariantInput();
+        hideIntensiveMsg();
     }
 });
 

@@ -25,6 +25,29 @@ a {
 	text-decoration: none;
 }
 
+/* animation */
+.bounce {
+	animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+	70% { transform:translateY(0%); }
+	80% { transform:translateY(-15%); }
+	90% { transform:translateY(0%); }
+	95% { transform:translateY(-7%); }
+	97% { transform:translateY(0%); }
+	99% { transform:translateY(-3%); }
+	100% { transform:translateY(0); }
+}
+
+.pulse {
+	animation: pulse 1s infinite ease-in-out alternate;
+}
+@keyframes pulse {
+	from { transform: scale(1); }
+	to { transform: scale(1.02); }
+}
+
 header {
 	position: sticky;
 	top: 0;
@@ -154,6 +177,7 @@ button {
 	grid-template-columns: repeat(3, 1fr);
 	gap: 2px;
 	background: var(--secondary-color);
+	position: relative;
 }
 
 .variant-btn {
@@ -189,4 +213,14 @@ button {
 
 .refresh-btn-container {
 	text-align: center;
+}
+
+/* incentive-msg */
+.incentive-msg {
+	position: absolute;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+    bottom: 100%;
+    line-height: 1.8rem;
 }
