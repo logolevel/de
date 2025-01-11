@@ -107,14 +107,24 @@ function hideIntensiveMsg() {
 }
 
 function generateVariants() {
-    const entries = Object.entries(pronouns);
+    let entries = Object.entries(pronouns);
 
+    // Shuffle the entries array
     for (let i = entries.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [entries[i], entries[j]] = [entries[j], entries[i]];
     }
 
-    for (const [key, value] of entries) {
+    // If there are fewer than 9 items, repeat the entries to make up the difference
+    while (entries.length < 9) {
+        entries = entries.concat(entries);
+    }
+
+    // Limit to exactly 9 items
+    const limitedEntries = entries.slice(0, 9);
+
+    // append to Fragment
+    for (const [key, value] of limitedEntries) {
         const item = variantBtnTemplate.content.cloneNode(true);
     
         item.querySelector('button').textContent = `${key}`;
@@ -122,6 +132,7 @@ function generateVariants() {
     }
     
     // variants.innerHTML = ''; back this variant and change HTML correctly
+    // append to the HTML
     variants.append(variantButtonsFragment);
 }
 
