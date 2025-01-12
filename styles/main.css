@@ -2,13 +2,14 @@
 	--primary-color: #54294d;
 	--primary-active-color: #8e2b7e;
 	--secondary-color: #e6dce8;
+	--text-color: #242424;
 	--opposite-color: #fff;
 	--success-color: #90b038;
 	--error-color: #ff6361;
 	--font-regular: 400;
 	--font-bold: 400;
 	--border: 2px solid #e6dce8;
-	--header-height: 40px;
+	--header-height: 50px;
 	--footer-height: 40px;
 }
 
@@ -16,6 +17,10 @@ body {
 	font-family: "Roboto", serif;
 	font-weight: var(--font-regular);
 	font-style: normal;
+	color: var(--text-color);
+}
+
+.app {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -68,6 +73,40 @@ menu {
 	text-align: center;
 }
 
+.menu-btn {
+	text-align-last: left;
+	width: 100%;
+	line-height: 1.8rem;
+	padding: 10px 40px 10px 20px;
+	position: relative;
+}
+
+.menu-btn:after {
+	content: '➡️';
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.menu-btn:active {
+	background: var(--secondary-color);
+}
+
+.menu-item {
+	border-bottom: var(--border);
+}
+
+.menu-item-title {
+	font-size: 1.2rem;
+}
+
+.menu-item-description {
+	font-size: 0.75rem;
+	text-align: left;
+	line-height: 1.1rem;
+}
+
 footer {
 	margin-top: auto;
 	position: sticky;
@@ -89,10 +128,6 @@ footer {
 	padding: 10px;
 	color: var(--secondary-color);
 	font-size: 0.86rem;
-}
-
-.hidden {
-	opacity: 0;
 }
 
 .block-disabled {
@@ -123,6 +158,10 @@ button {
     -webkit-appearance: none;
 }
 
+.text-left {
+	text-align: left;
+}
+
 .btn {
 	background: var(--primary-color);
 	color: var(--opposite-color);
@@ -149,6 +188,7 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 }
 
 .box-input {
@@ -233,4 +273,9 @@ button {
 
 .incentive-msg-text {
 	overflow: hidden;
+}
+
+/* utility classes */
+.hidden {
+	display: none !important;
 }
