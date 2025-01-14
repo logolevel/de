@@ -39,7 +39,7 @@
 			{ id: 2, task: 'ты делаешь', answer: 'du machst', variants: machenArray, pronouns: pronounsArray },
 			{ id: 3, task: 'он делает', answer: 'er macht', variants: machenArray, pronouns: pronounsArray },
 			{ id: 4, task: 'она делает', answer: 'sie macht', variants: machenArray, pronouns: pronounsArray },
-			{ id: 5, task: 'оно делает', answer: 'es machen', variants: machenArray, pronouns: pronounsArray },
+			{ id: 5, task: 'оно делает', answer: 'es macht', variants: machenArray, pronouns: pronounsArray },
 			{ id: 6, task: 'мы делаем', answer: 'wir machen', variants: machenArray, pronouns: pronounsArray },
 			{ id: 7, task: 'вы делаете', answer: 'ihr macht', variants: machenArray, pronouns: pronounsArray },
 			{ id: 8, task: 'они делают', answer: 'sie machen', variants: machenArray, pronouns: pronounsArray },
