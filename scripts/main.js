@@ -5,7 +5,7 @@
 	//TODO: Move data to another js file
 	const pronounsArray = ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'Sie'];
 	const verbsArray = ['sagen', 'fragen', 'lieben', 'lachen', 'wohnen', 'singen', 'tanzen', 'spielen', 'machen', 'arbeiten', 'antworten', 'hören'];
-	const machenArray = ['mathe', 'machst', 'macht', 'machen'];
+	const machenArray = ['mache', 'machst', 'macht', 'machen'];
 	const sagenArray = ['sage', 'sagst', 'sagt', 'sagen'];
 
 	//TODO: Add other sentenses to the statement key
