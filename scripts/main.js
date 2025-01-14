@@ -1,47 +1,73 @@
 (function () {
+	// Words
 	const currentWords = document.querySelector('.box').dataset.words;
 
-	const wordsArray = {
-		"pronouns" : {
-			"ich": "я",
-			"du": "ты",
-			"er": "он",
-			"sie": "она / они",
-			"es": "оно",
-			"wir": "мы",
-			"ihr": "вы",
-			"Sie": "Вы",
-		},
-		"verbs" : {
-			"sagen": "говорить",
-			"fragen": "спрашивать",
-			"lieben": "любить",
-			"lachen": "смеяться",
-			"wohnen": "жить, проживать",
-			"singen": "петь",
-			"tanzen": "танцевать",
-			"spielen": "играть",
-			"machen": "делать",
-			"arbeiten": "работать",
-			"antworten": "отвечать",
-			"hören": "слышать",
-		}
+	//TODO: Move data to another js file
+	const pronounsArray = ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'Sie'];
+	const verbsArray = ['sagen', 'fragen', 'lieben', 'lachen', 'wohnen', 'singen', 'tanzen', 'spielen', 'machen', 'arbeiten', 'antworten', 'hören'];
+	const machenArray = ['mathe', 'machst', 'macht', 'machen'];
+	const sagenArray = ['sage', 'sagst', 'sagt', 'sagen'];
+
+	//TODO: Add other sentenses to the statement key
+	const sentenses = {
+		"pronouns": [
+			{ id: 1, task: 'я', answer: 'ich', pronouns: pronounsArray },
+			{ id: 2, task: 'ты', answer: 'du', pronouns: pronounsArray },
+			{ id: 3, task: 'он', answer: 'er', pronouns: pronounsArray },
+			{ id: 4, task: 'она / они', answer: 'sie', pronouns: pronounsArray },
+			{ id: 5, task: 'оно', answer: 'es', pronouns: pronounsArray },
+			{ id: 6, task: 'мы', answer: 'wir', pronouns: pronounsArray },
+			{ id: 7, task: 'вы', answer: 'ihr', pronouns: pronounsArray },
+			{ id: 8, task: 'Вы', answer: 'Sie', pronouns: pronounsArray },
+		],
+		"verbs": [
+			{ id: 1, task: 'говорить', answer: 'sagen', variants: verbsArray },
+			{ id: 2, task: 'спрашивать', answer: 'fragen', variants: verbsArray },
+			{ id: 2, task: 'любить', answer: 'lieben', variants: verbsArray },
+			{ id: 2, task: 'смеяться', answer: 'lachen', variants: verbsArray },
+			{ id: 2, task: 'жить, проживать', answer: 'wohnen', variants: verbsArray },
+			{ id: 2, task: 'петь', answer: 'singen', variants: verbsArray },
+			{ id: 2, task: 'танцевать', answer: 'tanzen', variants: verbsArray },
+			{ id: 2, task: 'играть', answer: 'spielen', variants: verbsArray },
+			{ id: 2, task: 'делать', answer: 'machen', variants: verbsArray },
+			{ id: 2, task: 'работать', answer: 'arbeiten', variants: verbsArray },
+			{ id: 2, task: 'отвечать', answer: 'antworten', variants: verbsArray },
+			{ id: 2, task: 'слышать', answer: 'hören', variants: verbsArray },
+		],
+		"statements": [
+			{ id: 1, task: 'я делаю', answer: 'ich mathe', variants: machenArray, pronouns: pronounsArray },
+			{ id: 2, task: 'ты делаешь', answer: 'du machst', variants: machenArray, pronouns: pronounsArray },
+			{ id: 3, task: 'он делает', answer: 'er macht', variants: machenArray, pronouns: pronounsArray },
+			{ id: 4, task: 'она делает', answer: 'sie macht', variants: machenArray, pronouns: pronounsArray },
+			{ id: 5, task: 'оно делает', answer: 'es machen', variants: machenArray, pronouns: pronounsArray },
+			{ id: 6, task: 'мы делаем', answer: 'wir machen', variants: machenArray, pronouns: pronounsArray },
+			{ id: 7, task: 'вы делаете', answer: 'ihr macht', variants: machenArray, pronouns: pronounsArray },
+			{ id: 8, task: 'они делают', answer: 'sie machen', variants: machenArray, pronouns: pronounsArray },
+			{ id: 9, task: 'Вы делаете', answer: 'Sie machen', variants: machenArray, pronouns: pronounsArray },
+
+			{ id: 10, task: 'я говорю', answer: 'ich sage', variants: sagenArray, pronouns: pronounsArray },
+			{ id: 11, task: 'ты говоришь', answer: 'du sagst', variants: sagenArray, pronouns: pronounsArray },
+			{ id: 12, task: 'он говорит', answer: 'er sagt', variants: sagenArray, pronouns: pronounsArray },
+			{ id: 13, task: 'она говорит', answer: 'sie sagt', variants: sagenArray, pronouns: pronounsArray },
+			{ id: 14, task: 'оно говорит', answer: 'es sagt', variants: sagenArray, pronouns: pronounsArray },
+			{ id: 15, task: 'мы говорим', answer: 'wir sagen', variants: sagenArray, pronouns: pronounsArray },
+			{ id: 16, task: 'вы говорите', answer: 'ihr sagt', variants: sagenArray, pronouns: pronounsArray },
+			{ id: 17, task: 'они говорят', answer: 'sie sagen', variants: sagenArray, pronouns: pronounsArray },
+			{ id: 18, task: 'Вы говорите', answer: 'Sie sagen', variants: sagenArray, pronouns: pronounsArray },
+		]
 	}
 
-	const words = Object.assign({}, wordsArray[currentWords]);
+	const words = sentenses[currentWords];
 
-	let counters = {
-		'counter-1-vocabulary': 0
-	};
-
-	let progresses = {
-		'counter-1-vocabulary': 0
-	};
+	let counter = 0;
+	let progress = 0;
+	let current = getRandomObject(words);
+	let currentInput = '';
 
 	const timeout = 1000;
 
 	const taskField = document.querySelector('.box-task--js');
-	const variants = document.querySelector('.box-variants--js');
+	const variantsBox = document.querySelector('.box-variants--js');
 	const inputVariant = document.querySelector('.box-input-text--js');
 	const correctVariant = document.querySelector('.correct-variant--js');
 	const correctVariantText = document.querySelector('.correct-variant-text--js');
@@ -54,25 +80,24 @@
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
 	const variantButtonsFragment = document.createDocumentFragment();
 
-	let current = getRandomEntryFromObject(words);
-
-	function getRandomEntryFromObject(obj) {
-		const entries = Object.entries(obj);
-		const randomIndex = Math.floor(Math.random() * entries.length);
-		const [key, value] = entries[randomIndex];
-
-		return { key, value };
+	function getRandomObject(array) {
+		if (array.length === 0) return null;
+		const randomIndex = Math.floor(Math.random() * array.length);
+	
+		return array[randomIndex];
 	}
 
 	function updateCurrent() {
-		current = getRandomEntryFromObject(words)
+		current = getRandomObject(words);
 	}
 
 	function disableBlock(element) {
+		//TODO: create universal function to adding class
 		element.classList.add('block-disabled');
 	}
 
 	function enableBlock(element) {
+		//TODO: create universal function to removing class
 		element.classList.remove('block-disabled');
 	}
 
@@ -112,92 +137,118 @@
 		return;
 	}
 
-	function generateVariants(obj) {
-		let entries = Object.entries(obj);
-		const currentArray = Object.values(current);
+	function generateRandomWords(obj) {
+		const { answer, variants, pronouns } = obj;
 
-		// Shuffle the entries array
-		for (let i = entries.length - 1; i > 0; i--) {
+		// Split the answer into words
+		const answerWords = answer.split(" ");
+	
+		// Combine `variants` and `pronouns` if they exist, or use an empty array
+		const combinedWords = [
+			...(variants || []),
+			...(pronouns || [])
+		];
+	
+		// If combinedWords is empty, throw an error
+		if (combinedWords.length === 0) {
+			throw new Error("No valid words in 'variants' or 'pronouns'.");
+		}
+	
+		// Filter out duplicates and ensure the answerWords are included
+		const uniqueWords = Array.from(new Set(combinedWords.concat(answerWords)));
+	
+		// Ensure `answerWords` are included in the final selection
+		const randomSelection = [...answerWords];
+	
+		while (randomSelection.length < 9) {
+			const randomWord = uniqueWords[Math.floor(Math.random() * uniqueWords.length)];
+			randomSelection.push(randomWord); // Add words to fill up
+		}
+	
+		// If still less than 9 (unlikely but handle edge case), repeat variants or pronouns
+		while (randomSelection.length < 9) {
+			const fallbackSource = variants?.length ? variants : pronouns;
+			const fallbackWord = fallbackSource[Math.floor(Math.random() * fallbackSource.length)];
+			randomSelection.push(fallbackWord);
+		}
+	
+		// Shuffle the final array
+		for (let i = randomSelection.length - 1; i > 0; i--) {
 			const j = Math.floor(Math.random() * (i + 1));
-			[entries[i], entries[j]] = [entries[j], entries[i]];
-		}
-
-		// If there are fewer than 9 items, repeat the entries to make up the difference
-		while (entries.length < 9) {
-			entries = entries.concat(entries);
-		}
-
-		// Limit to exactly 9 items
-		const limitedEntries = entries.slice(0, 9);
-
-		// If the current item is missing after slicing, replace a random entry with it
-		if (!limitedEntries.some(([key]) => key === currentArray[0])) {
-			const randomIndex = Math.floor(Math.random() * 9);
-			limitedEntries[randomIndex] = currentArray;
+			[randomSelection[i], randomSelection[j]] = [randomSelection[j], randomSelection[i]];
 		}
 
 		// append to Fragment
-		for (const [key, value] of limitedEntries) {
+		for (const key of randomSelection) {
 			const item = variantBtnTemplate.content.cloneNode(true);
 		
 			item.querySelector('button').textContent = `${key}`;
 			variantButtonsFragment.append(item);
 		}
 		
-		// variants.innerHTML = ''; back this variant and change HTML correctly
+		//TODO: Refactor HTML
+		// variantsBox.innerHTML = ''; back this variant and change HTML correctly
 		// append to the HTML
-		variants.append(variantButtonsFragment);
+		variantsBox.append(variantButtonsFragment);
+	}
+
+	function countWords(inputString) {
+		const words = inputString.trim().split(/\s+/);
+
+		return words.length;
 	}
 
 	function checkVariantInput() {
-		if (taskField.textContent === words[inputVariant.textContent]) {
-			inputVariant.classList.remove('error-color');
-			inputVariant.classList.add('success-color');
+		const isEqualCountOfWords = countWords(inputVariant.textContent) === countWords(current.answer);
 
-			disableBlock(variants);
+		if(isEqualCountOfWords) {
 
-			setTimeout(() => {
-				inputVariant.classList.remove('success-color');
-				clearVariantValue();
-				updateCurrent();
-				modifyCounter('counter-1-vocabulary', 'increment');
-				updateProgress(counters['counter-1-vocabulary'], ['counter-1-vocabulary']);
-				variants.innerHTML = '';
-				generateVariants(words);
+			if (inputVariant.textContent === current.answer) {
+				//TODO: to function
+				inputVariant.classList.remove('error-color');
+				inputVariant.classList.add('success-color');
 
-				if (progresses['counter-1-vocabulary'] >= 100) {
-					disableBlock(variants);
-					setFinishMsg();
-					showRefreshBtn();
-				} else {
-					setTaskValue(current.value);
-					setCorrectValue(current.key);
-					enableBlock(variants);
-				}
-			}, timeout);
-		} else {
-			inputVariant.classList.add('error-color');
-			disableBlock(variants);
+				disableBlock(variantsBox);
 
-			setTimeout(() => {
-				showCorrectMsg();
-				modifyCounter('counter-1-vocabulary', 'decrement');
-				updateProgress(counters['counter-1-vocabulary'], ['counter-1-vocabulary']);
-			}, timeout)
+				setTimeout(() => {
+					inputVariant.classList.remove('success-color');
+					clearVariantValue();
+					updateCurrent();
+					modifyCounter('increment');
+					updateProgress(counter);
+					//TODO: to function
+					variantsBox.innerHTML = '';
+					generateRandomWords(current);
+
+					if (progress >= 100) {
+						disableBlock(variantsBox);
+						setFinishMsg();
+						showRefreshBtn();
+					} else {
+						setTaskValue(current.task);
+						setCorrectValue(current.answer);
+						enableBlock(variantsBox);
+					}
+				}, timeout);
+			} else {
+				inputVariant.classList.add('error-color');
+				disableBlock(variantsBox);
+
+				setTimeout(() => {
+					showCorrectMsg();
+					modifyCounter('decrement');
+					updateProgress(counter);
+				}, timeout);
+			}
 		}
 	}
 
-	function modifyCounter(counterName, operation) {
-		if (!(counterName in counters)) {
-			console.error(`Counter "${counterName}" does not exist.`);
-			return;
-		}
-
+	function modifyCounter(operation) {
 		if (operation === "increment") {
-			counters[counterName]++;
+			counter++;
 		} else if (operation === "decrement") {
-			if (counters[counterName] > 0) {
-				counters[counterName]--;
+			if (counter > 0) {
+				counter--;
 			}
 		} else {
 			console.error(`Invalid operation "${operation}". Use "increment" or "decrement".`);
@@ -205,30 +256,38 @@
 		}
 	}
 
-	function updateProgress(value, progressName) {
+	function updateProgress(value) {
 		const fullValue = 12;
-		const progress = ((value * 100) / fullValue).toFixed();
+		const progressNumber = ((value * 100) / fullValue).toFixed();
 
-		progresses[progressName] = progress;
+		progress = progressNumber;
 
-		if (progresses[progressName] >= 100) {
+		if (progress >= 100) {
 			progressContent.textContent = 'Завершено';
 		} else {
-			progressValue.textContent = progress;
+			progressValue.textContent = progressNumber;
 		}
 
-		progressBar.style.width = `${progress}%`;
+		progressBar.style.width = `${progressNumber}%`;
 	}
 
 	/* RUN */
-	setTaskValue(current.value);
-	setCorrectValue(current.key);
-	generateVariants(words);
+	setTaskValue(current.task);
+	setCorrectValue(current.answer);
+	generateRandomWords(current);
 
 	/* Listeners */
-	variants.addEventListener('click', function(e) {
+	variantsBox.addEventListener('click', function(e) {
 		if (e.target.classList.contains('variant-btn')) {
-			inputVariant.textContent = `${e.target.textContent}`;
+			currentInput = e.target.textContent;
+
+			//TODO: to function ??
+			if (inputVariant.textContent.length === 0) {
+				inputVariant.textContent = `${currentInput}`;
+			} else {
+				inputVariant.textContent = `${inputVariant.textContent} ${currentInput}`;
+			}
+
 			checkVariantInput();
 			hideIntensiveMsg();
 		}
@@ -237,9 +296,12 @@
 	correctVariant.addEventListener('click', function() {
 		hideCorrectMsg();
 		clearVariantValue();
-		enableBlock(variants);
-		variants.innerHTML = '';
-		generateVariants(words);
+		enableBlock(variantsBox);
+		//TODO: to function
+		variantsBox.innerHTML = '';
+		generateRandomWords(current);
+		//TODO: to function
+		inputVariant.classList.remove('error-color');
 	});
 
 })();

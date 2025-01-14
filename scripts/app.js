@@ -17,9 +17,11 @@ const templates = {
 				</li>`).join('')}
 			</ul>
 		</main>
+		<!--
 		<footer>
-			<!-- Футер в меню -->
+			Футер в меню
 		</footer>
+		-->
 	`,
 
 	subMenu: (taskIndex, submenus) => `
@@ -37,9 +39,11 @@ const templates = {
 				</li>`).join('')}
 			</ul>
 		</main>
+		<!--
 		<footer>
-			<!-- Футер в сабменю -->
+			Футер в сабменю
 		</footer>
+		-->
 	`,
 
 	content: (taskIndex, submenuIndex, content) => `
@@ -86,24 +90,23 @@ const templates = {
 // Data
 const data = {
 	tasks: [
-		{ id: 1, name: 'Урок 1', description: 'Утверждения, отрицания, вопросы. Местоимения. Глаголы' },
+		{ id: 1, name: 'Урок 1', description: 'Местоимения и глаголы. Утверждения, отрицания, вопросы.' },
 	],
 	submenus: [
 		[
 			{ id: 1, name: 'Словарь урока', details: 'Местоимения' },
 			{ id: 2, name: 'Словарь урока', details: 'Глоголы' },
+			{ id: 2, name: 'Утверждения', details: 'Настоящее время' },
 		],
 		[
 			{ id: 1, name: 'Submenu 3-1', details: 'Details for Submenu 3-1' },
-			{ id: 2, name: 'Submenu 3-2', details: 'Details for Submenu 3-2' },
-			{ id: 3, name: 'Submenu 3-3', details: 'Details for Submenu 3-3' },
-			{ id: 4, name: 'Submenu 3-4', details: 'Details for Submenu 3-4' },
 		],
 	],
 	content: [
 		[
-			{ id: 1, words: 'pronouns', tenses: 'false' },
-			{ id: 1, words: 'verbs', tenses: 'false' },
+			{ id: 1, words: 'pronouns', tenses: false },
+			{ id: 2, words: 'verbs', tenses: false },
+			{ id: 3, words: 'statements', tenses: true },
 		],
 	],
 };
