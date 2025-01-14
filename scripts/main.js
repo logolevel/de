@@ -35,7 +35,7 @@
 			{ id: 2, task: 'слышать', answer: 'hören', variants: verbsArray },
 		],
 		"statements": [
-			{ id: 1, task: 'я делаю', answer: 'ich mathe', variants: machenArray, pronouns: pronounsArray },
+			{ id: 1, task: 'я делаю', answer: 'ich mache', variants: machenArray, pronouns: pronounsArray },
 			{ id: 2, task: 'ты делаешь', answer: 'du machst', variants: machenArray, pronouns: pronounsArray },
 			{ id: 3, task: 'он делает', answer: 'er macht', variants: machenArray, pronouns: pronounsArray },
 			{ id: 4, task: 'она делает', answer: 'sie macht', variants: machenArray, pronouns: pronounsArray },
