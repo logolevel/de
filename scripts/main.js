@@ -1,63 +1,8 @@
-(function () {
-	// Words
+import { data } from './data.js';
+
+export function runMain() {
 	const currentWords = document.querySelector('.box').dataset.words;
-
-	//TODO: Move data to another js file
-	const pronounsArray = ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'Sie'];
-	const verbsArray = ['sagen', 'fragen', 'lieben', 'lachen', 'wohnen', 'singen', 'tanzen', 'spielen', 'machen', 'arbeiten', 'antworten', 'hören'];
-	const machenArray = ['mache', 'machst', 'macht', 'machen'];
-	const sagenArray = ['sage', 'sagst', 'sagt', 'sagen'];
-
-	//TODO: Add other sentenses to the statement key
-	const sentenses = {
-		"pronouns": [
-			{ id: 1, task: 'я', answer: 'ich', pronouns: pronounsArray },
-			{ id: 2, task: 'ты', answer: 'du', pronouns: pronounsArray },
-			{ id: 3, task: 'он', answer: 'er', pronouns: pronounsArray },
-			{ id: 4, task: 'она / они', answer: 'sie', pronouns: pronounsArray },
-			{ id: 5, task: 'оно', answer: 'es', pronouns: pronounsArray },
-			{ id: 6, task: 'мы', answer: 'wir', pronouns: pronounsArray },
-			{ id: 7, task: 'вы', answer: 'ihr', pronouns: pronounsArray },
-			{ id: 8, task: 'Вы', answer: 'Sie', pronouns: pronounsArray },
-		],
-		"verbs": [
-			{ id: 1, task: 'говорить', answer: 'sagen', variants: verbsArray },
-			{ id: 2, task: 'спрашивать', answer: 'fragen', variants: verbsArray },
-			{ id: 2, task: 'любить', answer: 'lieben', variants: verbsArray },
-			{ id: 2, task: 'смеяться', answer: 'lachen', variants: verbsArray },
-			{ id: 2, task: 'жить, проживать', answer: 'wohnen', variants: verbsArray },
-			{ id: 2, task: 'петь', answer: 'singen', variants: verbsArray },
-			{ id: 2, task: 'танцевать', answer: 'tanzen', variants: verbsArray },
-			{ id: 2, task: 'играть', answer: 'spielen', variants: verbsArray },
-			{ id: 2, task: 'делать', answer: 'machen', variants: verbsArray },
-			{ id: 2, task: 'работать', answer: 'arbeiten', variants: verbsArray },
-			{ id: 2, task: 'отвечать', answer: 'antworten', variants: verbsArray },
-			{ id: 2, task: 'слышать', answer: 'hören', variants: verbsArray },
-		],
-		"statements": [
-			{ id: 1, task: 'я делаю', answer: 'ich mache', variants: machenArray, pronouns: pronounsArray },
-			{ id: 2, task: 'ты делаешь', answer: 'du machst', variants: machenArray, pronouns: pronounsArray },
-			{ id: 3, task: 'он делает', answer: 'er macht', variants: machenArray, pronouns: pronounsArray },
-			{ id: 4, task: 'она делает', answer: 'sie macht', variants: machenArray, pronouns: pronounsArray },
-			{ id: 5, task: 'оно делает', answer: 'es macht', variants: machenArray, pronouns: pronounsArray },
-			{ id: 6, task: 'мы делаем', answer: 'wir machen', variants: machenArray, pronouns: pronounsArray },
-			{ id: 7, task: 'вы делаете', answer: 'ihr macht', variants: machenArray, pronouns: pronounsArray },
-			{ id: 8, task: 'они делают', answer: 'sie machen', variants: machenArray, pronouns: pronounsArray },
-			{ id: 9, task: 'Вы делаете', answer: 'Sie machen', variants: machenArray, pronouns: pronounsArray },
-
-			{ id: 10, task: 'я говорю', answer: 'ich sage', variants: sagenArray, pronouns: pronounsArray },
-			{ id: 11, task: 'ты говоришь', answer: 'du sagst', variants: sagenArray, pronouns: pronounsArray },
-			{ id: 12, task: 'он говорит', answer: 'er sagt', variants: sagenArray, pronouns: pronounsArray },
-			{ id: 13, task: 'она говорит', answer: 'sie sagt', variants: sagenArray, pronouns: pronounsArray },
-			{ id: 14, task: 'оно говорит', answer: 'es sagt', variants: sagenArray, pronouns: pronounsArray },
-			{ id: 15, task: 'мы говорим', answer: 'wir sagen', variants: sagenArray, pronouns: pronounsArray },
-			{ id: 16, task: 'вы говорите', answer: 'ihr sagt', variants: sagenArray, pronouns: pronounsArray },
-			{ id: 17, task: 'они говорят', answer: 'sie sagen', variants: sagenArray, pronouns: pronounsArray },
-			{ id: 18, task: 'Вы говорите', answer: 'Sie sagen', variants: sagenArray, pronouns: pronounsArray },
-		]
-	}
-
-	const words = sentenses[currentWords];
+	const words = data[currentWords];
 
 	let counter = 0;
 	let progress = 0;
@@ -65,6 +10,7 @@
 	let currentInput = '';
 
 	const timeout = 1000;
+	const questions = 12;
 
 	const taskField = document.querySelector('.box-task--js');
 	const variantsBox = document.querySelector('.box-variants--js');
@@ -91,14 +37,12 @@
 		current = getRandomObject(words);
 	}
 
-	function disableBlock(element) {
-		//TODO: create universal function to adding class
-		element.classList.add('block-disabled');
+	function addClass(element, value) {
+		element.classList.add(value);
 	}
 
-	function enableBlock(element) {
-		//TODO: create universal function to removing class
-		element.classList.remove('block-disabled');
+	function removeClass(element, value) {
+		element.classList.remove(value);
 	}
 
 	function setTaskValue(value) {
@@ -110,24 +54,29 @@
 	}
 
 	function setFinishMsg() {
+		// TODO: Create argument and variable to keep translations
 		taskField.innerHTML = '<div class="final-msg"><div>Ура! 🏆</div><div>Задание пройдено! 👍</div><div/>';
 	}
 
 	function showRefreshBtn() {
 		boxInput.remove();
-		refreshBtnContainer.classList.remove('hidden');
+		removeClass(refreshBtnContainer, 'hidden')
 	}
 
 	function clearVariantValue() {
 		inputVariant.textContent = '';
 	}
 
+	function clearElement(element) {
+		element.innerHTML = ''
+	}
+
 	function showCorrectMsg() {
-		correctVariant.classList.remove('hidden');
+		removeClass(correctVariant, 'hidden');
 	}
 
 	function hideCorrectMsg() {
-		correctVariant.classList.add('hidden');
+		addClass(correctVariant, 'hidden')
 	}
 
 	function hideIntensiveMsg() {
@@ -204,35 +153,32 @@
 		if(isEqualCountOfWords) {
 
 			if (inputVariant.textContent === current.answer) {
-				//TODO: to function
-				inputVariant.classList.remove('error-color');
-				inputVariant.classList.add('success-color');
-
-				disableBlock(variantsBox);
+				removeClass(inputVariant, 'error-color')
+				addClass(inputVariant, 'success-color')
+				addClass(variantsBox, 'block-disabled');
 
 				setTimeout(() => {
-					inputVariant.classList.remove('success-color');
-					clearVariantValue();
+					removeClass(inputVariant, 'success-color');
+					clearElement(inputVariant);
 					updateCurrent();
 					modifyCounter('increment');
 					updateProgress(counter);
-					//TODO: to function
-					variantsBox.innerHTML = '';
+					clearElement(variantsBox);
 					generateRandomWords(current);
 
 					if (progress >= 100) {
-						disableBlock(variantsBox);
+						addClass(variantsBox, 'block-disabled');
 						setFinishMsg();
 						showRefreshBtn();
 					} else {
 						setTaskValue(current.task);
 						setCorrectValue(current.answer);
-						enableBlock(variantsBox);
+						removeClass(variantsBox, 'block-disabled');
 					}
 				}, timeout);
 			} else {
-				inputVariant.classList.add('error-color');
-				disableBlock(variantsBox);
+				addClass(inputVariant, 'error-color');
+				addClass(variantsBox, 'block-disabled');
 
 				setTimeout(() => {
 					showCorrectMsg();
@@ -257,12 +203,12 @@
 	}
 
 	function updateProgress(value) {
-		const fullValue = 12;
-		const progressNumber = ((value * 100) / fullValue).toFixed();
+		const progressNumber = ((value * 100) / questions).toFixed();
 
 		progress = progressNumber;
 
 		if (progress >= 100) {
+			//TODO: Create argument and variable for translation
 			progressContent.textContent = 'Завершено';
 		} else {
 			progressValue.textContent = progressNumber;
@@ -281,7 +227,7 @@
 		if (e.target.classList.contains('variant-btn')) {
 			currentInput = e.target.textContent;
 
-			//TODO: to function ??
+			//Join string in case sentence contain more than one word
 			if (inputVariant.textContent.length === 0) {
 				inputVariant.textContent = `${currentInput}`;
 			} else {
@@ -296,12 +242,10 @@
 	correctVariant.addEventListener('click', function() {
 		hideCorrectMsg();
 		clearVariantValue();
-		enableBlock(variantsBox);
-		//TODO: to function
-		variantsBox.innerHTML = '';
+		removeClass(variantsBox, 'block-disabled');
+		clearElement(variantsBox);
 		generateRandomWords(current);
-		//TODO: to function
-		inputVariant.classList.remove('error-color');
+		removeClass(inputVariant, 'error-color')
 	});
 
-})();
+};

@@ -1,4 +1,6 @@
-// Initial setup
+import { data } from './configurationData.js'
+import { runMain } from './main.js';
+
 const app = document.getElementById('app');
 
 // Templates
@@ -10,7 +12,7 @@ const templates = {
 		<main>
 			<ul class="menu">
 			${tasks.map((task, index) => `<li class="menu-item">
-					<button class="menu-btn" onclick="renderSubMenu(${index})">
+					<button class="menu-btn main-menu-btn--js" data-task-index="${index}">
 						<div class="menu-item-title">${task.name}</div>
 						<p class="menu-item-description">${task.description}</p>
 					</button>
@@ -26,13 +28,13 @@ const templates = {
 
 	subMenu: (taskIndex, submenus) => `
 		<header>
-			<button class="back-link" onclick="clearAndRender(renderMainMenu)">⬅️ Назад</button>
+			<button class="back-link back-to-main-menu--js">⬅️ Назад</button>
 			<h1>Урок ${taskIndex + 1}</h1>
 		</header>
 		<main>
 			<ul>
 				${submenus.map((submenu, index) => `<li class="menu-item">
-					<button class="menu-btn" onclick="clearAndRender(() => renderContent(${taskIndex}, ${index}))">
+					<button class="menu-btn sub-menu-btn--js" data-index="${index}">
 						<div class="menu-item-title">${submenu.name}</div>
 						<p class="menu-item-description">${submenu.details}</p>
 					</button>
@@ -48,7 +50,7 @@ const templates = {
 
 	content: (taskIndex, submenuIndex, content) => `
 		<header>
-			<button class="back-link" onclick="clearAndRender(() => renderSubMenu(${taskIndex}))">⬅️ Назад</button>
+			<button class="back-link back-to-sub-menu--js">⬅️ Назад</button>
 			<h1>Урок ${taskIndex + 1}.${submenuIndex + 1}</h1>
 		</header>
 		<main>
@@ -64,7 +66,7 @@ const templates = {
 						</div>
 					</div>
 				</div>
-				<div class="refresh-btn-container refresh-btn-container--js hidden"><button class="btn" type="button" onClick="clearAndRender(() => renderContent(${taskIndex}, ${submenuIndex}))">Пройти ещё раз 🤓</button></div>
+				<div class="refresh-btn-container refresh-btn-container--js hidden"><button class="btn" type="button">Пройти ещё раз 🤓</button></div>
 				<div class="box__variants box-variants--js">
 					<div class="incentive-msg incentive-msg--js">
 						<div class="incentive-msg-text">
@@ -87,57 +89,29 @@ const templates = {
 	`,
 };
 
-// Data
-const data = {
-	tasks: [
-		{ id: 1, name: 'Урок 1', description: 'Местоимения и глаголы. Утверждения, отрицания, вопросы.' },
-	],
-	submenus: [
-		[
-			{ id: 1, name: 'Словарь урока', details: 'Местоимения' },
-			{ id: 2, name: 'Словарь урока', details: 'Глоголы' },
-			{ id: 2, name: 'Утверждения', details: 'Настоящее время' },
-		],
-		[
-			{ id: 1, name: 'Submenu 3-1', details: 'Details for Submenu 3-1' },
-		],
-	],
-	content: [
-		[
-			{ id: 1, words: 'pronouns', tenses: false },
-			{ id: 2, words: 'verbs', tenses: false },
-			{ id: 3, words: 'statements', tenses: true },
-		],
-	],
-};
-
-// Utility function to clear variables and listeners
-function clearState() {
-	const scripts = document.querySelectorAll('script[data-dynamic]');
-	scripts.forEach((script) => script.remove());
-}
-
-function clearAndRender(renderFunction) {
-	clearState();
-	renderFunction();
-}
-
-function loadScript(src) {
-	const script = document.createElement('script');
-	script.src = src;
-	script.type = 'text/javascript';
-	script.defer = true;
-	script.dataset.dynamic = 'true';
-	document.body.appendChild(script);
-}
 
 // Render functions
 function renderMainMenu() {
 	app.innerHTML = templates.mainMenu(data.tasks);
+
+	const buttons = app.querySelectorAll('.main-menu-btn--js');
+	buttons.forEach((button) => {
+		const taskIndex = Number(button.dataset.taskIndex);
+		button.addEventListener('click', () => renderSubMenu(taskIndex));
+	});
 }
 
 function renderSubMenu(taskIndex) {
 	app.innerHTML = templates.subMenu(taskIndex, data.submenus[taskIndex]);
+
+	const backButton = app.querySelector('.back-to-main-menu--js');
+	backButton.addEventListener('click', () => renderMainMenu());
+
+	const buttons = app.querySelectorAll('.sub-menu-btn--js');
+	buttons.forEach((button) => {
+		const index = Number(button.dataset.index);
+		button.addEventListener('click', () => renderContent(taskIndex, index));
+	});
 }
 
 function renderContent(taskIndex, submenuIndex) {
@@ -146,7 +120,14 @@ function renderContent(taskIndex, submenuIndex) {
 		submenuIndex,
 		data.content[taskIndex][submenuIndex]
 	);
-	loadScript('scripts/main.js');
+
+	runMain();
+
+	const backButton = app.querySelector('.back-to-sub-menu--js');
+	backButton.addEventListener('click', () => renderSubMenu(taskIndex));
+
+	const refreshButton = app.querySelector('.refresh-btn-container--js');
+	refreshButton.addEventListener('click', () => renderContent(taskIndex, submenuIndex));
 }
 
 // Initial render
