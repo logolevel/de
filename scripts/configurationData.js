@@ -14,9 +14,9 @@ export const data = {
 	],
 	content: [
 		[
-			{ id: 1, words: 'pronouns', tenses: false },
-			{ id: 2, words: 'verbs', tenses: false },
-			{ id: 3, words: 'statements', tenses: true },
+			{ id: 1, words: 'pronouns', tenses: false, rules: false },
+			{ id: 2, words: 'verbs', tenses: false , rules: false},
+			{ id: 3, words: 'statements', tenses: true, rules: true },
 		],
 	],
 };

@@ -1,17 +1,9 @@
 import { data } from './data.js';
 
 export function runMain() {
-	const currentWords = document.querySelector('.box').dataset.words;
-	const words = data[currentWords];
-
-	let counter = 0;
-	let progress = 0;
-	let current = getRandomObject(words);
-	let currentInput = '';
-
-	const timeout = 1000;
-	const questions = 12;
-
+	const box = document.querySelector('.box--js');
+	const backToSubMenuBtn = document.querySelector('.back-to-sub-menu--js');
+	const backToContentBtn = document.querySelector('.back-to-content--js');
 	const taskField = document.querySelector('.box-task--js');
 	const variantsBox = document.querySelector('.box-variants--js');
 	const inputVariant = document.querySelector('.box-input-text--js');
@@ -23,8 +15,31 @@ export function runMain() {
 	const intensiveMsg = document.querySelector('.incentive-msg--js');
 	const boxInput = document.querySelector('.box-input--js');
 	const refreshBtnContainer = document.querySelector('.refresh-btn-container--js');
+	const theoryBlock = document.querySelector('.theory--js');
+	const theoryBtn = document.querySelector('.theory-btn--js');
+	const theoryWords = document.querySelector('.theory-words--js');
+	const theoryRules = document.querySelector('.theory-rules--js');
+	
+	// Templates
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
 	const variantButtonsFragment = document.createDocumentFragment();
+	const theoryTemplate = document.querySelector('#theory-template');
+	const theoryTemplateFragment = document.createDocumentFragment();
+
+	// Constants
+	const timeout = 1000;
+	const questions = 12;
+
+	// Get current object
+	const currentWords = box.dataset.words;
+	const words = data[currentWords];
+
+	const isRules = theoryBtn.dataset.rules === 'true';
+
+	let counter = 0;
+	let progress = 0;
+	let current = getRandomObject(words);
+	let currentInput = '';
 
 	function getRandomObject(array) {
 		if (array.length === 0) return null;
@@ -141,6 +156,25 @@ export function runMain() {
 		variantsBox.append(variantButtonsFragment);
 	}
 
+	function generateTheory() {
+		if (isRules) {
+			clearElement(theoryRules);
+			theoryRules.textContent = 'Правила для этого раздела в разработке...'
+		} else {
+			clearElement(theoryWords);
+
+			for (const key of words) {
+				const item = theoryTemplate.content.cloneNode(true);
+			
+				item.querySelector('.theory-words-task--js').textContent = `${key.task}`;
+				item.querySelector('.theory-words-answer--js').textContent = `${key.answer}`;
+				theoryTemplateFragment.append(item);
+			}
+	
+			theoryWords.append(theoryTemplateFragment);
+		}
+	}
+
 	function countWords(inputString) {
 		const words = inputString.trim().split(/\s+/);
 
@@ -246,6 +280,23 @@ export function runMain() {
 		clearElement(variantsBox);
 		generateRandomWords(current);
 		removeClass(inputVariant, 'error-color')
+	});
+
+	theoryBtn.addEventListener('click', function() {
+		generateTheory();
+		addClass(box, 'hidden');
+		removeClass(theoryBlock, 'hidden');
+		addClass(theoryBtn, 'hidden-disabled');
+		addClass(backToSubMenuBtn, 'hidden');
+		removeClass(backToContentBtn, 'hidden');
+	});
+
+	backToContentBtn.addEventListener('click', function() {
+		addClass(theoryBlock, 'hidden');
+		removeClass(box, 'hidden');
+		removeClass(theoryBtn, 'hidden-disabled');
+		removeClass(backToSubMenuBtn, 'hidden');
+		addClass(backToContentBtn, 'hidden');
 	});
 
 };

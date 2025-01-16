@@ -7,7 +7,9 @@ const app = document.getElementById('app');
 const templates = {
 	mainMenu: (tasks) => `
 		<header>
+			<div class="header-link">&nbsp;</div>
 			<h1>Полиглот | Немецкий</h1>
+			<div class="header-link">&nbsp;</div>
 		</header>
 		<main>
 			<ul class="menu">
@@ -28,8 +30,9 @@ const templates = {
 
 	subMenu: (taskIndex, submenus) => `
 		<header>
-			<button class="back-link back-to-main-menu--js">⬅️ Назад</button>
+			<button class="back-link header-link back-to-main-menu--js">⬅️ Назад</button>
 			<h1>Урок ${taskIndex + 1}</h1>
+			<div class="header-link">&nbsp;</div>
 		</header>
 		<main>
 			<ul>
@@ -50,11 +53,13 @@ const templates = {
 
 	content: (taskIndex, submenuIndex, content) => `
 		<header>
-			<button class="back-link back-to-sub-menu--js">⬅️ Назад</button>
-			<h1>Урок ${taskIndex + 1}.${submenuIndex + 1}</h1>
+			<button class="back-link header-link back-to-sub-menu--js">⬅️ Назад</button>
+			<button class="back-link header-link back-to-content--js hidden">⬅️ Назад</button>
+			<h1 class="header-title--js">Урок ${taskIndex + 1}.${submenuIndex + 1}</h1>
+			<button class="theory-btn header-link theory-btn--js" data-rules="${content.rules}">Подсказка ℹ️</>
 		</header>
 		<main>
-			<div class="box" data-words="${content.words}" data-tenses="${content.tenses}">
+			<div class="box box--js" data-words="${content.words}" data-tenses="${content.tenses}">
 				<div class="box__task box-task--js">она / они</div>
 				<div class="box-input box-input--js">
 					<div class="box-input__text box-input-text--js"></div>
@@ -79,6 +84,16 @@ const templates = {
 					<button class="variant-btn"></button>
 				</template>
 			</div>
+			<div class="theory theory--js hidden">
+				<div class="theory-rules theory-rules--js"></div>
+				<ul class="theory-words theory-words--js"></ul>
+			</div>
+			<template id="theory-template">
+				<li class="theory-words-item">
+					<div class="theory-words-task theory-words-task--js"></div>
+					<div class="theory-words-answer theory-words-answer--js"></div>
+				</li>
+			</template>
 		</main>
 		<footer>
 			<div class="progress progress--js">

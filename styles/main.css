@@ -2,6 +2,7 @@
 	--primary-color: #54294d;
 	--primary-active-color: #8e2b7e;
 	--secondary-color: #e6dce8;
+	--primary-light-color: #faf8fb;
 	--text-color: #242424;
 	--opposite-color: #fff;
 	--success-color: #90b038;
@@ -53,6 +54,7 @@ a {
 	to { transform: scale(1.08); }
 }
 
+/* header */
 header {
 	position: sticky;
 	top: 0;
@@ -60,8 +62,15 @@ header {
 	background: var(--primary-color);
 	color: var(--opposite-color);
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
+}
+
+.header-link {
+	padding: 10px;
+	color: var(--secondary-color);
+	font-size: 0.86rem;
+	min-width: 80px;
 }
 
 main {
@@ -120,19 +129,14 @@ footer {
 	align-items: center;
 }
 
-.back-link {
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
-	padding: 10px;
-	color: var(--secondary-color);
-	font-size: 0.86rem;
-}
-
 .block-disabled {
 	pointer-events: none;
 	opacity: 0.3;
+}
+
+.hidden-disabled {
+	pointer-events: none;
+	opacity: 0;
 }
 
 .success-color {
@@ -273,6 +277,25 @@ button {
 
 .incentive-msg-text {
 	overflow: hidden;
+}
+
+.theory {
+	padding: 20px 0;
+}
+
+.theory-rules {
+	padding: 0 20px;
+}
+
+.theory-words-item {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	padding: 15px 20px;
+}
+
+.theory-words-item:nth-child(odd) {
+	background: var(--primary-light-color);
 }
 
 /* utility classes */
