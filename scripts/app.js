@@ -56,7 +56,7 @@ const templates = {
 			<button class="back-link header-link back-to-sub-menu--js">⬅️ Назад</button>
 			<button class="back-link header-link back-to-content--js hidden">⬅️ Назад</button>
 			<h1 class="header-title--js">Урок ${taskIndex + 1}.${submenuIndex + 1}</h1>
-			<button class="theory-btn header-link theory-btn--js" data-rules="${content.rules}">Подсказка ℹ️</>
+			<button class="theory-btn header-link theory-btn--js" data-rule="${content.rule}">Подсказка ℹ️</>
 		</header>
 		<main>
 			<div class="box box--js" data-words="${content.words}" data-tenses="${content.tenses}">

@@ -8,14 +8,16 @@
 	--success-color: #90b038;
 	--error-color: #ff6361;
 	--font-regular: 400;
-	--font-bold: 400;
+	--font-medium: 500;
+	--font-black: 900;
 	--border: 2px solid #e6dce8;
 	--header-height: 50px;
 	--footer-height: 40px;
 }
 
 body {
-	font-family: "Roboto", serif;
+	font-family: "Roboto Slab", serif;
+	font-optical-sizing: auto;
 	font-weight: var(--font-regular);
 	font-style: normal;
 	color: var(--text-color);
@@ -28,7 +30,7 @@ body {
 }
 
 b {
-	font-weight: bold;
+	font-weight: var(--font-black);
 }
 
 a {
@@ -112,6 +114,7 @@ menu {
 
 .menu-item-title {
 	font-size: 1.2rem;
+	text-align-last: left;
 }
 
 .menu-item-description {
@@ -185,7 +188,7 @@ button {
 /* box */
 .box {
 	padding: 10px;
-	font-size: 3rem;
+	font-size: 2.5rem;
 	display: grid;
 	grid-template-rows: repeat(3, 1fr);
 	height: calc(100dvh - (var(--header-height) + var(--footer-height)));
@@ -311,11 +314,6 @@ button {
 	grid-template-rows: auto auto auto;
 	width: 100%;
 	line-height: 1.8rem;
-
-	font-family: "Roboto Slab", serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
 }
 
 .grid-cell {
@@ -328,8 +326,7 @@ button {
 	background-color: var(--primary-light-color);
 }
 
-.grid-cell span {
-	font-weight: 800;
+.grid-cell b {
 	text-decoration: underline;
 }
 

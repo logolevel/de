@@ -1,4 +1,5 @@
 import { data } from './data.js';
+import { rules } from './rules.js';
 
 export function runMain() {
 	const box = document.querySelector('.box--js');
@@ -34,7 +35,7 @@ export function runMain() {
 	const currentWords = box.dataset.words;
 	const words = data[currentWords];
 
-	const isRules = theoryBtn.dataset.rules === 'true';
+	const rule = theoryBtn.dataset.rule;
 
 	let counter = 0;
 	let progress = 0;
@@ -157,80 +158,7 @@ export function runMain() {
 	}
 
 	function generateTheory() {
-		if (isRules) {
-			clearElement(theoryRules);
-			theoryRules.innerHTML = `
-				<h2 class="theory-title">Простая форма глагола <b>machen</b></h2>
-				<div class="grid-table">
-					<!-- Titles -->
-					<div class="grid-cell grid-title">Вопрос</div>
-					<div class="grid-cell grid-title">Утверждение</div>
-					<div class="grid-cell grid-title">Отрицание</div>
-					
-					<!-- Content -->
-					<div class="grid-cell">
-						<div>mach<span>e</span> ich?</div>
-					</div>
-					<div class="grid-cell">
-						<div>ich mach<span>e</span></div>
-					</div>
-					<div class="grid-cell third-column">+ nicht</div>
-
-					<div class="grid-cell">
-						<div>mach<span>st</span> du?</div>
-					</div>
-					<div class="grid-cell">
-						<div>du mach<span>st</span></div>
-					</div>
-
-					<div class="grid-cell">
-						<div>mach<span>t</span></div>
-						<div class="surround sys m-left">
-							<div>er?</div>
-							<div>sie?</div>
-							<div>es?</div>
-						</div>
-					</div>
-					<div class="grid-cell">
-						<div class="surround sys m-right">
-							<div>er</div>
-							<div>sie</div>
-							<div>es</div>
-						</div>
-						<div>mach<span>t</span></div>
-					</div>
-
-					<div class="grid-cell">
-						<div>mach<span>en</span> wir?</div>
-					</div>
-					<div class="grid-cell">
-						<div>wir mach<span>en</span></div>
-					</div>
-
-					<div class="grid-cell">
-						<div>mach<span>t</span> ihr?</div>
-					</div>
-					<div class="grid-cell">
-						<div>ihr mach<span>t</span></div>
-					</div>
-
-					<div class="grid-cell">
-						<div>mach<span>en</span></div>
-						<div class="surround sys m-left">
-							<div>sie?</div>
-							<div>Sie?</div>
-						</div>
-					</div>
-					<div class="grid-cell">
-						<div class="surround sys m-right">
-							<div>sie</div>
-							<div>Sie</div>
-						</div>
-						<div>mach<span>en</span></div>
-					</div>
-				</div>
-			`
-		} else {
+		if (rule === 'words') {
 			clearElement(theoryWords);
 
 			for (const key of words) {
@@ -242,6 +170,9 @@ export function runMain() {
 			}
 	
 			theoryWords.append(theoryTemplateFragment);
+		} else {
+			clearElement(theoryRules);
+			theoryRules.innerHTML = rules[rule][0].content;
 		}
 	}
 
