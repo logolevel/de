@@ -1,5 +1,6 @@
 ## TODO
-[ ] Add write mode. Switch between modes
+[ ] Refactor write and default mode functions
+[ ] Refactor templates in app.js to avoid duplicate part of templates
 [ ] Ask about rules: t, d, z + e
 [ ] Add other sentences + nicht + question.
 [ ] Create rule for other(неправильные) verbs

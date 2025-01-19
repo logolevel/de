@@ -5,6 +5,7 @@ export function runMain() {
 	const box = document.querySelector('.box--js');
 	const backToSubMenuBtn = document.querySelector('.back-to-sub-menu--js');
 	const backToContentBtn = document.querySelector('.back-to-content--js');
+	const mainBlock = document.querySelector('.main--js');
 	const taskField = document.querySelector('.box-task--js');
 	const variantsBox = document.querySelector('.box-variants--js');
 	const inputVariant = document.querySelector('.box-input-text--js');
@@ -20,6 +21,7 @@ export function runMain() {
 	const theoryBtn = document.querySelector('.theory-btn--js');
 	const theoryWords = document.querySelector('.theory-words--js');
 	const theoryRules = document.querySelector('.theory-rules--js');
+	const manualInputBtn = document.querySelector('.manual-input-btn--js');
 	
 	// Templates
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
@@ -30,6 +32,9 @@ export function runMain() {
 	// Constants
 	const timeout = 1000;
 	const questions = 12;
+
+	// Current mode
+	const isWriteMode = mainBlock.dataset.writeMode;
 
 	// Get current object
 	const currentWords = box.dataset.words;
@@ -69,6 +74,14 @@ export function runMain() {
 		correctVariantText.textContent = key;
 	}
 
+	function disableInput(element) {
+		element.setAttribute('disabled', 'disabled');
+	}
+
+	function enableInput(element) {
+		element.removeAttribute('disabled');
+	}
+
 	function setFinishMsg() {
 		// TODO: Create argument and variable to keep translations
 		taskField.innerHTML = '<div class="final-msg"><div>Ура! 🏆</div><div>Задание пройдено! 👍</div><div/>';
@@ -79,8 +92,8 @@ export function runMain() {
 		removeClass(refreshBtnContainer, 'hidden')
 	}
 
-	function clearVariantValue() {
-		inputVariant.textContent = '';
+	function clearInput(element) {
+		element.value = '';
 	}
 
 	function clearElement(element) {
@@ -182,45 +195,67 @@ export function runMain() {
 		return words.length;
 	}
 
-	function checkVariantInput() {
-		const isEqualCountOfWords = countWords(inputVariant.textContent) === countWords(current.answer);
+	function verifyAnswer() {
+		if (inputVariant.value === '') {
+			return false;
+		}
 
-		if(isEqualCountOfWords) {
-
-			if (inputVariant.textContent === current.answer) {
-				removeClass(inputVariant, 'error-color')
-				addClass(inputVariant, 'success-color')
+		if (inputVariant.value === current.answer) {
+			removeClass(inputVariant, 'error-color');
+			addClass(inputVariant, 'success-color');
+			if (isWriteMode !== 'true') {
 				addClass(variantsBox, 'block-disabled');
+			}
 
-				setTimeout(() => {
-					removeClass(inputVariant, 'success-color');
-					clearElement(inputVariant);
-					updateCurrent();
-					modifyCounter('increment');
-					updateProgress(counter);
+			setTimeout(() => {
+				removeClass(inputVariant, 'success-color');
+				clearInput(inputVariant);
+				updateCurrent();
+				modifyCounter('increment');
+				updateProgress(counter);
+				if (isWriteMode !== 'true') {
 					clearElement(variantsBox);
 					generateRandomWords(current);
+				}
 
-					if (progress >= 100) {
+				if (progress >= 100) {
+					if (isWriteMode !== 'true') {
 						addClass(variantsBox, 'block-disabled');
-						setFinishMsg();
-						showRefreshBtn();
-					} else {
-						setTaskValue(current.task);
-						setCorrectValue(current.answer);
+					}
+					setFinishMsg();
+					showRefreshBtn();
+				} else {
+					setTaskValue(current.task);
+					setCorrectValue(current.answer);
+					if (isWriteMode !== 'true') {
 						removeClass(variantsBox, 'block-disabled');
 					}
-				}, timeout);
-			} else {
-				addClass(inputVariant, 'error-color');
-				addClass(variantsBox, 'block-disabled');
+				}
+			}, timeout);
+		} else {
+			addClass(inputVariant, 'error-color');
+			disableInput(inputVariant);
 
-				setTimeout(() => {
-					showCorrectMsg();
-					modifyCounter('decrement');
-					updateProgress(counter);
-				}, timeout);
+			if (isWriteMode !== 'true') {
+				addClass(variantsBox, 'block-disabled');
 			}
+			if (isWriteMode === 'true') {
+				addClass(manualInputBtn, 'hidden');
+			}
+
+			setTimeout(() => {
+				showCorrectMsg();
+				modifyCounter('decrement');
+				updateProgress(counter);
+			}, timeout);
+		}
+	}
+
+	function checkSelection() {
+		const isEqualCountOfWords = countWords(inputVariant.value) === countWords(current.answer);
+
+		if(isEqualCountOfWords) {
+			verifyAnswer();
 		}
 	}
 
@@ -255,31 +290,56 @@ export function runMain() {
 	/* RUN */
 	setTaskValue(current.task);
 	setCorrectValue(current.answer);
-	generateRandomWords(current);
+
+	if (isWriteMode === 'true') {
+		inputVariant.focus();
+		setWriteModeListener();
+	} else {
+		generateRandomWords(current);
+		setDefaultModeListeners();
+	}
 
 	/* Listeners */
-	variantsBox.addEventListener('click', function(e) {
-		if (e.target.classList.contains('variant-btn')) {
-			currentInput = e.target.textContent;
+	function setDefaultModeListeners() {
+		variantsBox.addEventListener('click', function(e) {
+			if (e.target.classList.contains('variant-btn')) {
+				currentInput = e.target.textContent;
 
-			//Join string in case sentence contain more than one word
-			if (inputVariant.textContent.length === 0) {
-				inputVariant.textContent = `${currentInput}`;
-			} else {
-				inputVariant.textContent = `${inputVariant.textContent} ${currentInput}`;
+				//Join string in case sentence contain more than one word
+				if (inputVariant.value === '') {
+					inputVariant.value = `${currentInput}`;
+				} else {
+					inputVariant.value = `${inputVariant.value} ${currentInput}`;
+				}
+
+				checkSelection();
+				hideIntensiveMsg();
 			}
+		});
+	}
 
-			checkVariantInput();
-			hideIntensiveMsg();
-		}
-	});
+	function setWriteModeListener() {
+		manualInputBtn.addEventListener('click', function() {
+			verifyAnswer();
+		});
+	}
 
 	correctVariant.addEventListener('click', function() {
 		hideCorrectMsg();
-		clearVariantValue();
-		removeClass(variantsBox, 'block-disabled');
-		clearElement(variantsBox);
-		generateRandomWords(current);
+		clearInput(inputVariant);
+		enableInput(inputVariant);
+		inputVariant.focus();
+
+		if (isWriteMode !== 'true') {
+			removeClass(variantsBox, 'block-disabled');
+			clearElement(variantsBox);
+			generateRandomWords(current);
+		}
+
+		if (isWriteMode === 'true') {
+			removeClass(manualInputBtn, 'hidden');
+		}
+
 		removeClass(inputVariant, 'error-color')
 	});
 
