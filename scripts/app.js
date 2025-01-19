@@ -146,7 +146,7 @@ const templates = {
 			<button class="theory-btn header-link theory-btn--js" data-rule="${content.rule}">Подсказка ℹ️</>
 		</header>
 		<main class="main main--js" data-write-mode="${state.writeMode}">
-			<div class="box box--js" data-words="${content.words}" data-tenses="${content.tenses}">
+			<div class="box m-write box--js" data-words="${content.words}" data-tenses="${content.tenses}">
 				<div class="box__task box-task--js">она / они</div>
 				<div class="box-input box-input--js">
 					<div class="manual-input manual-input--js">
