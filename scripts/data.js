@@ -150,7 +150,7 @@ export const data = {
         { id: 91, task: 'Вы отвечаете', answer: 'Sie antworten', variants: antwortenArray, pronouns: pronounsArray },
 
         { id: 92, task: 'я слышу', answer: 'ich höre', variants: horenArray, pronouns: pronounsArray },
-        { id: 93, task: 'ты слышешь', answer: 'du hörst', variants: horenArray, pronouns: pronounsArray },
+        { id: 93, task: 'ты слышишь', answer: 'du hörst', variants: horenArray, pronouns: pronounsArray },
         { id: 94, task: 'он слышет', answer: 'er hört', variants: horenArray, pronouns: pronounsArray },
         { id: 95, task: 'она слышет', answer: 'sie hört', variants: horenArray, pronouns: pronounsArray },
         { id: 96, task: 'оно слышет', answer: 'es hört', variants: horenArray, pronouns: pronounsArray },
