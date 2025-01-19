@@ -320,6 +320,10 @@ button {
 	justify-content: space-around;
 }
 
+.box.m-write .box-input {
+	justify-content: flex-start;
+}
+
 /* manual-input */
 .manual-input {
 	text-align: center;
