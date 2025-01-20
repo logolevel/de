@@ -34,7 +34,14 @@ export function runMain() {
 	const questions = 12;
 
 	// Current mode
-	const isWriteMode = mainBlock.dataset.writeMode;
+	const writeModeString = mainBlock.dataset.writeMode;
+	let isDefaultMode = true;
+	let isWriteMode = false;
+
+	if (writeModeString === 'true') {
+		isWriteMode = true;
+		isDefaultMode = false;
+	}
 
 	// Get current object
 	const currentWords = box.dataset.words;
@@ -203,7 +210,8 @@ export function runMain() {
 		if (inputVariant.value === current.answer) {
 			removeClass(inputVariant, 'error-color');
 			addClass(inputVariant, 'success-color');
-			if (isWriteMode !== 'true') {
+
+			if (isDefaultMode) {
 				addClass(variantsBox, 'block-disabled');
 			}
 
@@ -213,34 +221,38 @@ export function runMain() {
 				updateCurrent();
 				modifyCounter('increment');
 				updateProgress(counter);
-				if (isWriteMode !== 'true') {
+
+				if (isDefaultMode) {
 					clearElement(variantsBox);
 					generateRandomWords(current);
 				}
 
 				if (progress >= 100) {
-					if (isWriteMode !== 'true') {
+					if (isDefaultMode) {
 						addClass(variantsBox, 'block-disabled');
 					}
+
 					setFinishMsg();
 					showRefreshBtn();
 				} else {
 					setTaskValue(current.task);
 					setCorrectValue(current.answer);
-					if (isWriteMode !== 'true') {
+
+					if (isDefaultMode) {
 						removeClass(variantsBox, 'block-disabled');
 					}
 				}
 			}, timeout);
 		} else {
 			addClass(inputVariant, 'error-color');
-			disableInput(inputVariant);
-
-			if (isWriteMode !== 'true') {
-				addClass(variantsBox, 'block-disabled');
-			}
-			if (isWriteMode === 'true') {
+			
+			if (isWriteMode) {
+				disableInput(inputVariant);
 				addClass(manualInputBtn, 'hidden');
+			}
+
+			if (isDefaultMode) {
+				addClass(variantsBox, 'block-disabled');
 			}
 
 			setTimeout(() => {
@@ -291,10 +303,12 @@ export function runMain() {
 	setTaskValue(current.task);
 	setCorrectValue(current.answer);
 
-	if (isWriteMode === 'true') {
+	if (isWriteMode) {
 		inputVariant.focus();
 		setWriteModeListener();
-	} else {
+	}
+
+	if (isDefaultMode) {
 		generateRandomWords(current);
 		setDefaultModeListeners();
 	}
@@ -327,17 +341,17 @@ export function runMain() {
 	correctVariant.addEventListener('click', function() {
 		hideCorrectMsg();
 		clearInput(inputVariant);
-		enableInput(inputVariant);
-		inputVariant.focus();
+		
+		if (isWriteMode) {
+			enableInput(inputVariant);
+			inputVariant.focus();
+			removeClass(manualInputBtn, 'hidden');
+		}
 
-		if (isWriteMode !== 'true') {
+		if (isDefaultMode) {
 			removeClass(variantsBox, 'block-disabled');
 			clearElement(variantsBox);
 			generateRandomWords(current);
-		}
-
-		if (isWriteMode === 'true') {
-			removeClass(manualInputBtn, 'hidden');
 		}
 
 		removeClass(inputVariant, 'error-color')
