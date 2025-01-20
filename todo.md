@@ -1,6 +1,5 @@
 ## TODO
-[ ] Refactor templates in app.js to avoid duplicate part of templates
-[ ] Check de pattern to write mode input
+[ ] Refactor pattern validation
 [ ] Ask about rules: t, d, z + e
 [ ] Add other sentences + nicht + question.
 [ ] Create rule for other(неправильные) verbs

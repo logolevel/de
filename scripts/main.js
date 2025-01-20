@@ -22,6 +22,7 @@ export function runMain() {
 	const theoryWords = document.querySelector('.theory-words--js');
 	const theoryRules = document.querySelector('.theory-rules--js');
 	const manualInputBtn = document.querySelector('.manual-input-btn--js');
+	const errorMessage = document.getElementById('errorMessage');
 	
 	// Templates
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
@@ -333,7 +334,23 @@ export function runMain() {
 	}
 
 	function setWriteModeListener() {
+		inputVariant.addEventListener('input', function() {
+			if (!inputVariant.checkValidity()) {
+				addClass(manualInputBtn, 'block-disabled');
+				removeClass(errorMessage, 'hidden');
+			} else {
+				removeClass(manualInputBtn, 'block-disabled');
+				addClass(errorMessage, 'hidden');
+			}
+		});
+
 		manualInputBtn.addEventListener('click', function() {
+			if (!inputVariant.checkValidity()) {
+				addClass(manualInputBtn, 'block-disabled');
+				removeClass(errorMessage, 'hidden');
+				return false;
+			}
+
 			verifyAnswer();
 		});
 	}

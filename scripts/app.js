@@ -120,8 +120,17 @@ const templates = {
 				<div class="box__task box-task--js">она / они</div>
 				<div class="box-input box-input--js">
 					<div class="manual-input manual-input--js">
-						<input type="text" class="box-input-text--js m-write" name="manual" placeholder="пишите тут" autocomplete="off" autocapitalize="none">
-						<button class="btn manual-input-btn--js">Проверить ответ</button>
+						<input
+							type="text"
+							class="box-input-text--js m-write"
+							name="manual"
+							placeholder="пишите тут"
+							autocomplete="off"
+							autocapitalize="none"
+							pattern="[A-Za-zÄÖÜäöüß\\s?!.,]+"
+						>
+						<p id="errorMessage" class="error-msg hidden">Введён некорректный символ. Вероятно вы ввели НЕ латинский/немецкий символ либо число</p>
+						<button class="btn manual-input-btn--js" name="manual" type="button">Проверить ответ</button>
 					</div>
 					${getAnswerField()}
 				</div>
