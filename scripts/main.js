@@ -208,7 +208,7 @@ export function runMain() {
 			return false;
 		}
 
-		if (inputVariant.value === current.answer) {
+		if (inputVariant.value.trim() === current.answer) {
 			removeClass(inputVariant, 'error-color');
 			addClass(inputVariant, 'success-color');
 
