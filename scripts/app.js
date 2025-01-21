@@ -17,7 +17,7 @@ function handleCheckboxChange(isChecked) {
 const templates = {
 	mainMenu: (tasks) => `
 		<header>
-			<div class="header-link">&nbsp;</div>
+			<div class="header-link hidden-disabled">&nbsp;</div>
 			<h1>Полиглот | Немецкий</h1>
 			<div class="header-link m-big btn-settings--js">⚙️</div>
 		</header>
@@ -40,7 +40,7 @@ const templates = {
 		<header>
 			<button class="header-link back-to-main-menu--js">⬅️ Главная</button>
 			<h1>Настройки</h1>
-			<div class="header-link">&nbsp;</div>
+			<div class="header-link hidden-disabled">&nbsp;</div>
 		</header>
 		<main class="main">
 			<div class="mode mode--js">
@@ -65,7 +65,7 @@ const templates = {
 		<header>
 			<button class="header-link back-to-main-menu--js">⬅️ Главная</button>
 			<h1>Урок ${taskIndex + 1}</h1>
-			<div class="header-link">&nbsp;</div>
+			<div class="header-link hidden-disabled">&nbsp;</div>
 		</header>
 		<main class="main--js">
 			<ul>

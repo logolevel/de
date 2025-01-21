@@ -1,5 +1,6 @@
 ## TODO
 [ ] Refactor pattern validation
+[ ] Sound for words, investigate to better pronunciation
 [ ] Ask about rules: t, d, z + e
 [ ] Add other sentences + nicht + question.
 [ ] Create rule for other(неправильные) verbs
