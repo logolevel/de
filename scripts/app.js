@@ -38,7 +38,7 @@ const templates = {
 
 	settings: () => `
 		<header>
-			<button class="header-link back-to-main-menu--js">⬅️ Назад</button>
+			<button class="header-link back-to-main-menu--js">⬅️ Главная</button>
 			<h1>Настройки</h1>
 			<div class="header-link">&nbsp;</div>
 		</header>
@@ -63,7 +63,7 @@ const templates = {
 
 	subMenu: (taskIndex, submenus) => `
 		<header>
-			<button class="header-link back-to-main-menu--js">⬅️ Назад</button>
+			<button class="header-link back-to-main-menu--js">⬅️ Главная</button>
 			<h1>Урок ${taskIndex + 1}</h1>
 			<div class="header-link">&nbsp;</div>
 		</header>

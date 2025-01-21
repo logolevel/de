@@ -8,6 +8,7 @@
 ## Improvements
 [ ] Investigate Out of network approach
 [ ] Save data to localStorage
+[ ] Create 3 star level approach. 1st star is 12 correct answer, 2nd star 24 correct answer, 3rd star 48 correct answer without any fails
 [ ] Add multi language support functionality, and move text resources from the template
 
 ## TEMP
