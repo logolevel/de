@@ -88,6 +88,7 @@ const templates = {
 		${getHeader(taskIndex, submenuIndex, content)}
 		<main class="main main--js" data-write-mode="${state.writeMode}">
 			<div class="box box--js" data-words="${content.words}" data-tenses="${content.tenses}">
+				${getSpeechButton()}
 				<div class="box__task box-task--js">она / они</div>
 				<div class="box-input box-input--js">
 					<div class="box-input__text">
@@ -117,6 +118,7 @@ const templates = {
 		${getHeader(taskIndex, submenuIndex, content)}
 		<main class="main main--js" data-write-mode="${state.writeMode}">
 			<div class="box m-write box--js" data-words="${content.words}" data-tenses="${content.tenses}">
+				${getSpeechButton()}
 				<div class="box__task box-task--js">она / они</div>
 				<div class="box-input box-input--js">
 					<div class="manual-input manual-input--js">
@@ -201,6 +203,16 @@ function getAnswerField() {
 function getRefreshButton() {
 	return `
 		<div class="refresh-btn-container refresh-btn-container--js hidden"><button class="btn" type="button">Пройти ещё раз 🤓</button></div>
+	`
+}
+
+function getSpeechButton() {
+	return `
+		<div class="speech-btn-container"><button class="btn m-transparent speech-btn speech-btn--js" type="button">
+			Озвучка:
+			<span class="speech-enabled">🔈</span>
+			<span class="speech-disabled">🔇</span>
+		</button></div>
 	`
 }
 

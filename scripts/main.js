@@ -23,6 +23,8 @@ export function runMain() {
 	const theoryRules = document.querySelector('.theory-rules--js');
 	const manualInputBtn = document.querySelector('.manual-input-btn--js');
 	const errorMessage = document.getElementById('errorMessage');
+	const speechBtn = document.querySelector('.speech-btn--js');
+	const synth = window.speechSynthesis;
 	
 	// Templates
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
@@ -31,7 +33,7 @@ export function runMain() {
 	const theoryTemplateFragment = document.createDocumentFragment();
 
 	// Constants
-	const timeout = 1000;
+	const timeout = 1500;
 	const questions = 12;
 
 	// Current mode
@@ -43,6 +45,10 @@ export function runMain() {
 		isWriteMode = true;
 		isDefaultMode = false;
 	}
+
+	// TODO: add isSpeechMode to the global state
+	// Speech Mode
+	let isSpeechMode = false;
 
 	// Get current object
 	const currentWords = box.dataset.words;
@@ -216,7 +222,15 @@ export function runMain() {
 				addClass(variantsBox, 'block-disabled');
 			}
 
-			setTimeout(() => {
+			const utterance = new SpeechSynthesisUtterance(inputVariant.value.trim());
+			utterance.lang = "de-DE";
+			utterance.rate = '0.2';
+
+			if (!isSpeechMode) {
+				utterance.volume = '0';
+			}
+
+			utterance.addEventListener("end", () => {
 				removeClass(inputVariant, 'success-color');
 				clearInput(inputVariant);
 				updateCurrent();
@@ -243,7 +257,10 @@ export function runMain() {
 						removeClass(variantsBox, 'block-disabled');
 					}
 				}
-			}, timeout);
+			});
+
+			synth.speak(utterance);
+
 		} else {
 			addClass(inputVariant, 'error-color');
 			
@@ -298,6 +315,19 @@ export function runMain() {
 		}
 
 		progressBar.style.width = `${progressNumber}%`;
+	}
+
+	function toggleVariable(variable) {
+		variable = !variable;
+		return variable;
+	}
+
+	function toggleClass(element, className) {
+		if (element.classList.contains(className)) {
+			element.classList.remove(className);
+		} else {
+			element.classList.add(className);
+		}
 	}
 
 	/* RUN */
@@ -389,6 +419,11 @@ export function runMain() {
 		removeClass(theoryBtn, 'hidden-disabled');
 		removeClass(backToSubMenuBtn, 'hidden');
 		addClass(backToContentBtn, 'hidden');
+	});
+
+	speechBtn.addEventListener('click', function() {
+		isSpeechMode = toggleVariable(isSpeechMode);
+		toggleClass(speechBtn, 'm-on')
 	});
 
 };

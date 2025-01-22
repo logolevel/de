@@ -252,24 +252,6 @@ footer {
 	align-items: center;
 }
 
-.block-disabled {
-	pointer-events: none;
-	opacity: 0.3;
-}
-
-.hidden-disabled {
-	pointer-events: none;
-	opacity: 0;
-}
-
-.success-color {
-	color: var(--success-color);
-}
-
-.error-color {
-	color: var(--error-color);
-}
-
 button {
 	border: none;
     margin: 0;
@@ -295,10 +277,20 @@ button {
 	padding: 10px 20px;
 	border-radius: 4px;
 	font-size: 1rem;
+	display: block;
 }
 
 .btn:active {
 	background: var(--primary-active-color);
+}
+
+.m-transparent {
+	background: transparent;
+	border-radius: 0;
+}
+
+.m-transparent:active {
+	background: var(--secondary-color);
 }
 
 /* box */
@@ -309,6 +301,7 @@ button {
 	grid-template-rows: repeat(3, 1fr);
 	height: calc(100dvh - (var(--header-height) + var(--footer-height)));
 	row-gap: 10px;
+	position: relative;
 }
 
 .box.m-write {
@@ -332,6 +325,39 @@ button {
 
 .box.m-write .box-input {
 	justify-content: flex-start;
+}
+
+/* speech-btn-container */
+.speech-btn-container {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.speech-btn {
+	color: var(--text-color);
+	height: 50px;
+	white-space: nowrap;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.speech-btn.m-on {
+	color: var(--success-color);
+}
+
+.speech-btn span {
+	font-size: 1.5rem;
+}
+
+.speech-enabled,
+.m-on .speech-disabled {
+	display: none;
+}
+
+.m-on .speech-enabled {
+	display: inline;
 }
 
 /* manual-input */
@@ -549,11 +575,25 @@ input[type="text"]:focus {
 
 
 
-
-
-
-
 /* utility classes */
+.block-disabled {
+	pointer-events: none;
+	opacity: 0.3;
+}
+
+.hidden-disabled {
+	pointer-events: none;
+	opacity: 0;
+}
+
+.success-color {
+	color: var(--success-color);
+}
+
+.error-color {
+	color: var(--error-color);
+}
+
 .hidden {
 	display: none !important;
 }
