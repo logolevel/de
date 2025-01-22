@@ -224,7 +224,7 @@ export function runMain() {
 
 			const utterance = new SpeechSynthesisUtterance(inputVariant.value.trim());
 			utterance.lang = "de-DE";
-			utterance.rate = '0.2';
+			utterance.rate = '0.6';
 
 			if (!isSpeechMode) {
 				utterance.volume = '0';
