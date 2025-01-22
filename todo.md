@@ -1,6 +1,8 @@
 ## TODO
 [ ] Add Speech mode for the failed case
 [ ] Add Speech mode in global state
+
+
 [ ] Ask about rules: t, d, z + e
 [ ] Add other sentences + nicht + question.
 [ ] Create rule for other(неправильные) verbs
