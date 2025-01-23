@@ -21,10 +21,10 @@ export function runMain() {
 	const theoryBtn = document.querySelector('.theory-btn--js');
 	const theoryWords = document.querySelector('.theory-words--js');
 	const theoryRules = document.querySelector('.theory-rules--js');
+	const manualInputBtnWrapper = document.querySelector('.manual-input-btn-wrapper--js');
 	const manualInputBtn = document.querySelector('.manual-input-btn--js');
 	const errorMessage = document.getElementById('errorMessage');
 	const speechBtn = document.querySelector('.speech-btn--js');
-	const synth = window.speechSynthesis;
 	
 	// Templates
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
@@ -278,6 +278,12 @@ export function runMain() {
 					if (isDefaultMode) {
 						removeClass(variantsBox, 'block-disabled');
 					}
+
+					if (isWriteMode) {
+						setTimeout(()=> {
+							inputVariant.focus();
+						}, 0);
+					}
 				}
 			});
 
@@ -288,7 +294,7 @@ export function runMain() {
 			
 			if (isWriteMode) {
 				disableInput(inputVariant);
-				addClass(manualInputBtn, 'hidden');
+				addClass(manualInputBtnWrapper, 'hidden');
 			}
 
 			if (isDefaultMode) {
@@ -413,8 +419,10 @@ export function runMain() {
 		
 		if (isWriteMode) {
 			enableInput(inputVariant);
-			inputVariant.focus();
-			removeClass(manualInputBtn, 'hidden');
+			removeClass(manualInputBtnWrapper, 'hidden');
+			setTimeout(()=> {
+				inputVariant.focus();
+			}, 0);
 		}
 
 		if (isDefaultMode) {

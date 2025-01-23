@@ -72,6 +72,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	z-index: 1;
 }
 
 .header-link {
@@ -204,12 +205,23 @@ menu {
 	text-align: center;
 }
 
+.menu.m-main {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 10px;
+	padding: 10px;
+}
+
 .menu-btn {
 	text-align-last: left;
 	width: 100%;
 	line-height: 1.8rem;
 	padding: 10px 40px 10px 20px;
 	position: relative;
+}
+
+.m-main .menu-btn {
+	padding: 10px;
 }
 
 .menu-btn:after {
@@ -220,12 +232,20 @@ menu {
 	transform: translateY(-50%);
 }
 
+.m-main .menu-btn:after {
+	content: '';
+}
+
 .menu-btn:active {
 	background: var(--secondary-color);
 }
 
 .menu-item {
 	border-bottom: var(--border);
+}
+
+.m-main .menu-item {
+	border: var(--border);
 }
 
 .menu-item-title {
@@ -272,6 +292,7 @@ button {
 }
 
 .btn {
+	display: block;
 	background: var(--primary-color);
 	color: var(--opposite-color);
 	padding: 10px 20px;
@@ -374,11 +395,15 @@ input[type="text"] {
 	width: 100%;
 	height: 60px;
 	font-size: 2.5rem;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	text-align: center;
 	display: block;
 	border: 0;
 	background: transparent;
+}
+
+input::placeholder {
+	opacity: 0.1;
 }
 
 input[type="text"].m-write {
@@ -572,11 +597,15 @@ input[type="text"]:focus {
 
 .error-msg {
 	color: red;
-	font-size: 1rem;
-	line-height: 1.2rem;
+	font-size: 0.75rem;
+	line-height: 1rem;
+	margin-bottom: 20px;
 }
 
-
+.manual-input-btn-wrapper {
+	display: flex;
+	justify-content: center;
+}
 
 
 /* utility classes */

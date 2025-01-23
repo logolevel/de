@@ -1,4 +1,6 @@
 ## TODO
+[ ] Refactor setTimeout for focus input
+[ ] Add percentage when input is focused on mobile
 [ ] Add Speech mode in global state
 
 [ ] Ask about rules: t, d, z + e

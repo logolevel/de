@@ -22,7 +22,7 @@ const templates = {
 			<div class="header-link m-big btn-settings--js">⚙️</div>
 		</header>
 		<main>
-			<ul class="menu">
+			<ul class="menu m-main">
 			${tasks.map((task, index) => `<li class="menu-item">
 					<button class="menu-btn main-menu-btn--js" data-task-index="${index}">
 						<div class="menu-item-title">${task.name}</div>
@@ -131,8 +131,10 @@ const templates = {
 							autocapitalize="none"
 							pattern="[A-Za-zÄÖÜäöüß\\s?!.,]+"
 						>
-						<p id="errorMessage" class="error-msg hidden">Введён некорректный символ. Вероятно вы ввели НЕ латинский/немецкий символ либо число</p>
-						<button class="btn manual-input-btn--js" name="manual" type="button">Проверить ответ</button>
+						<p id="errorMessage" class="error-msg hidden">Вероятно, вы ввели НЕ латинский символ либо число</p>
+						<div class="manual-input-btn-wrapper manual-input-btn-wrapper--js">
+							<button class="btn manual-input-btn--js" name="manual" type="button">Проверить ответ</button>
+						</div>
 					</div>
 					${getAnswerField()}
 				</div>
@@ -210,7 +212,7 @@ function getSpeechButton() {
 	return `
 		<div class="speech-btn-container"><button class="btn m-transparent speech-btn speech-btn--js" type="button">
 			<span class="speech-btn-text speech-enabled">Озвучка включена <i>🔊</i></span>
-			<span class="speech-btn-text speech-disabled">Озвучка выключена <i>🔇</i></span>
+			<span class="speech-btn-text speech-disabled">Озвучка отключена <i>🔇</i></span>
 		</button></div>
 	`
 }
