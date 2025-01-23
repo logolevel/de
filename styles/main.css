@@ -312,7 +312,7 @@ button {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 40px 0 20px;
+	padding: 60px 0 20px;
 }
 
 .box-input {
@@ -335,18 +335,20 @@ button {
 
 .speech-btn {
 	color: var(--text-color);
-	height: 50px;
-	white-space: nowrap;
+	font-size: 0.75rem;
+}
+
+.speech-btn-text {
 	display: flex;
-	gap: 10px;
 	align-items: center;
+	gap: 12px;
 }
 
 .speech-btn.m-on {
 	color: var(--success-color);
 }
 
-.speech-btn span {
+.speech-btn i {
 	font-size: 1.5rem;
 }
 
@@ -356,7 +358,10 @@ button {
 }
 
 .m-on .speech-enabled {
-	display: inline;
+	display: flex;
+	white-space: nowrap;
+	gap: 10px;
+	align-items: center;
 }
 
 /* manual-input */

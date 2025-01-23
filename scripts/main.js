@@ -209,12 +209,38 @@ export function runMain() {
 		return words.length;
 	}
 
+	const speechHelper = {
+		utterance: new SpeechSynthesisUtterance(),
+	
+		init() {
+			this.utterance.lang = "de-DE";
+			this.utterance.rate = 0.7;
+		},
+	
+		speak(text) {
+			this.utterance.text = text;
+			window.speechSynthesis.speak(this.utterance);
+		},
+	
+		setVolume(volume) {
+			this.utterance.volume = volume;
+		},
+	
+		addEndListener(callback) {
+			this.utterance.addEventListener("end", callback);
+		}
+	};
+
 	function verifyAnswer() {
 		if (inputVariant.value === '') {
 			return false;
 		}
 
-		if (inputVariant.value.trim() === current.answer) {
+		const inputText = inputVariant.value.trim();
+
+		speechHelper.init();
+
+		if (inputText === current.answer) {
 			removeClass(inputVariant, 'error-color');
 			addClass(inputVariant, 'success-color');
 
@@ -222,15 +248,11 @@ export function runMain() {
 				addClass(variantsBox, 'block-disabled');
 			}
 
-			const utterance = new SpeechSynthesisUtterance(inputVariant.value.trim());
-			utterance.lang = "de-DE";
-			utterance.rate = '0.7';
-
 			if (!isSpeechMode) {
-				utterance.volume = '0';
+				speechHelper.setVolume('0');
 			}
 
-			utterance.addEventListener("end", () => {
+			speechHelper.addEndListener(() => {
 				removeClass(inputVariant, 'success-color');
 				clearInput(inputVariant);
 				updateCurrent();
@@ -259,7 +281,7 @@ export function runMain() {
 				}
 			});
 
-			synth.speak(utterance);
+			speechHelper.speak(inputText);
 
 		} else {
 			addClass(inputVariant, 'error-color');

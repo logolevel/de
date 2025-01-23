@@ -209,9 +209,8 @@ function getRefreshButton() {
 function getSpeechButton() {
 	return `
 		<div class="speech-btn-container"><button class="btn m-transparent speech-btn speech-btn--js" type="button">
-			Озвучка:
-			<span class="speech-enabled">🔈</span>
-			<span class="speech-disabled">🔇</span>
+			<span class="speech-btn-text speech-enabled">Озвучка включена <i>🔊</i></span>
+			<span class="speech-btn-text speech-disabled">Озвучка выключена <i>🔇</i></span>
 		</button></div>
 	`
 }
