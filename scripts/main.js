@@ -228,14 +228,47 @@ export function runMain() {
 		}
 	};
 
+	function refreshTask() {
+		removeClass(inputVariant, 'success-color');
+		clearInput(inputVariant);
+		updateCurrent();
+		modifyCounter('increment');
+		updateProgress(counter);
+
+		if (isDefaultMode) {
+			clearElement(variantsBox);
+			generateRandomWords(current);
+		}
+
+		if (progress >= 100) {
+			if (isDefaultMode) {
+				addClass(variantsBox, 'hidden');
+			}
+
+			setFinishMsg();
+			showRefreshBtn();
+		} else {
+			setTaskValue(current.task);
+			setCorrectValue(current.answer);
+
+			if (isDefaultMode) {
+				removeClass(variantsBox, 'block-disabled');
+			}
+
+			if (isWriteMode) {
+				setTimeout(()=> {
+					inputVariant.focus();
+				}, 0);
+			}
+		}
+	}
+
 	function verifyAnswer() {
 		if (inputVariant.value === '') {
 			return false;
 		}
 
 		const inputText = inputVariant.value.trim();
-
-		speechHelper.init();
 
 		if (inputText === current.answer) {
 			removeClass(inputVariant, 'error-color');
@@ -248,41 +281,6 @@ export function runMain() {
 			if (!state.isSpeechMode) {
 				speechHelper.setVolume('0');
 			}
-
-			speechHelper.addEndListener(() => {
-				removeClass(inputVariant, 'success-color');
-				clearInput(inputVariant);
-				updateCurrent();
-				modifyCounter('increment');
-				updateProgress(counter);
-
-				if (isDefaultMode) {
-					clearElement(variantsBox);
-					generateRandomWords(current);
-				}
-
-				if (progress >= 100) {
-					if (isDefaultMode) {
-						addClass(variantsBox, 'hidden');
-					}
-
-					setFinishMsg();
-					showRefreshBtn();
-				} else {
-					setTaskValue(current.task);
-					setCorrectValue(current.answer);
-
-					if (isDefaultMode) {
-						removeClass(variantsBox, 'block-disabled');
-					}
-
-					if (isWriteMode) {
-						setTimeout(()=> {
-							inputVariant.focus();
-						}, 0);
-					}
-				}
-			});
 
 			speechHelper.speak(inputText);
 
@@ -358,6 +356,7 @@ export function runMain() {
 	/* RUN */
 	setTaskValue(current.task);
 	setCorrectValue(current.answer);
+	speechHelper.init();
 
 	if (isWriteMode) {
 		inputVariant.focus();
@@ -451,8 +450,10 @@ export function runMain() {
 	speechBtn.addEventListener('click', function() {
 		state.isSpeechMode = toggleVariable(state.isSpeechMode);
 		toggleClass(speechBtn, 'm-on')
+	});
 
-		console.log('main.js: state.isSpeechMode: ', state.isSpeechMode);
+	speechHelper.addEndListener(() => {
+		refreshTask();
 	});
 
 };
