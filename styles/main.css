@@ -474,7 +474,9 @@ input[type="text"]:focus {
 }
 
 .refresh-btn-container {
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* incentive-msg */

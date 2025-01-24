@@ -263,7 +263,7 @@ export function runMain() {
 
 				if (progress >= 100) {
 					if (isDefaultMode) {
-						addClass(variantsBox, 'block-disabled');
+						addClass(variantsBox, 'hidden');
 					}
 
 					setFinishMsg();

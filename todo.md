@@ -1,5 +1,4 @@
 ## TODO
-[ ] Align button in final screen and align by vertically center the final screen content
 [ ] Refactor setTimeout for focus input
 [ ] Add percentage when input is focused on mobile
 
