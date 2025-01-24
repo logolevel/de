@@ -4,8 +4,9 @@ import { runSettings } from './settings.js';
 
 const app = document.getElementById('app');
 
-let state = {
-	writeMode: 'false'
+export const state = {
+	writeMode: 'false',
+	isSpeechMode: false
 };
 
 // Settings
@@ -210,7 +211,7 @@ function getRefreshButton() {
 
 function getSpeechButton() {
 	return `
-		<div class="speech-btn-container"><button class="btn m-transparent speech-btn speech-btn--js" type="button">
+		<div class="speech-btn-container"><button class="btn m-transparent speech-btn speech-btn--js ${state.isSpeechMode ? 'm-on' : ''}" type="button">
 			<span class="speech-btn-text speech-enabled">Озвучка включена <i>🔊</i></span>
 			<span class="speech-btn-text speech-disabled">Озвучка отключена <i>🔇</i></span>
 		</button></div>

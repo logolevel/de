@@ -1,7 +1,7 @@
 ## TODO
+[ ] Align button in final screen and align by vertically center the final screen content
 [ ] Refactor setTimeout for focus input
 [ ] Add percentage when input is focused on mobile
-[ ] Add Speech mode in global state
 
 [ ] Ask about rules: t, d, z + e
 [ ] Add other sentences + nicht + question.

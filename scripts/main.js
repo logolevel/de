@@ -1,3 +1,4 @@
+import { state } from './app.js';
 import { data } from './data.js';
 import { rules } from './rules.js';
 
@@ -45,10 +46,6 @@ export function runMain() {
 		isWriteMode = true;
 		isDefaultMode = false;
 	}
-
-	// TODO: add isSpeechMode to the global state
-	// Speech Mode
-	let isSpeechMode = false;
 
 	// Get current object
 	const currentWords = box.dataset.words;
@@ -248,7 +245,7 @@ export function runMain() {
 				addClass(variantsBox, 'block-disabled');
 			}
 
-			if (!isSpeechMode) {
+			if (!state.isSpeechMode) {
 				speechHelper.setVolume('0');
 			}
 
@@ -452,8 +449,10 @@ export function runMain() {
 	});
 
 	speechBtn.addEventListener('click', function() {
-		isSpeechMode = toggleVariable(isSpeechMode);
+		state.isSpeechMode = toggleVariable(state.isSpeechMode);
 		toggleClass(speechBtn, 'm-on')
+
+		console.log('main.js: state.isSpeechMode: ', state.isSpeechMode);
 	});
 
 };
