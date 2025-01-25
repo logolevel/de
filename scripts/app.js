@@ -207,7 +207,7 @@ function getAnswerField() {
 
 function getRefreshButton() {
 	return `
-		<div class="refresh-btn-container refresh-btn-container--js hidden"><button class="btn" type="button">Пройти ещё раз 🤓</button></div>
+		<div class="refresh-btn-container refresh-btn-container--js hidden"><button class="btn refresh-btn--js" type="button">Пройти ещё раз 🤓</button></div>
 	`
 }
 
@@ -284,7 +284,7 @@ function renderDefaultMode(taskIndex, submenuIndex) {
 	const backButton = app.querySelector('.back-to-sub-menu--js');
 	backButton.addEventListener('click', () => renderSubMenu(taskIndex));
 
-	const refreshButton = app.querySelector('.refresh-btn-container--js');
+	const refreshButton = app.querySelector('.refresh-btn--js');
 	refreshButton.addEventListener('click', () => renderDefaultMode(taskIndex, submenuIndex));
 }
 
@@ -300,7 +300,7 @@ function renderWriteMode(taskIndex, submenuIndex) {
 	const backButton = app.querySelector('.back-to-sub-menu--js');
 	backButton.addEventListener('click', () => renderSubMenu(taskIndex));
 
-	const refreshButton = app.querySelector('.refresh-btn-container--js');
+	const refreshButton = app.querySelector('.refresh-btn--js');
 	refreshButton.addEventListener('click', () => renderWriteMode(taskIndex, submenuIndex));
 }
 

@@ -218,6 +218,10 @@ export function runMain() {
 			window.speechSynthesis.speak(this.utterance);
 		},
 
+		setVolume(volume) {
+			this.utterance.volume = volume;
+		},
+
 		toggleVolume(volume) {
 			this.utterance.volume = !volume;
 		},
@@ -367,6 +371,10 @@ export function runMain() {
 	if (isDefaultMode) {
 		generateRandomWords(current);
 		setDefaultModeListeners();
+	}
+
+	if (state.isSpeechMode) {
+		speechHelper.setVolume(1);
 	}
 
 	/* Listeners */
