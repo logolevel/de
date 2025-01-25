@@ -89,6 +89,7 @@ const templates = {
 		${getHeader(taskIndex, submenuIndex, content)}
 		<main class="main main--js" data-write-mode="${state.writeMode}">
 			<div class="box box--js" data-words="${content.words}" data-tenses="${content.tenses}">
+				${getCounter()}
 				${getSpeechButton()}
 				<div class="box__task box-task--js">она / они</div>
 				<div class="box-input box-input--js">
@@ -119,6 +120,7 @@ const templates = {
 		${getHeader(taskIndex, submenuIndex, content)}
 		<main class="main main--js" data-write-mode="${state.writeMode}">
 			<div class="box m-write box--js" data-words="${content.words}" data-tenses="${content.tenses}">
+				${getCounter()}
 				${getSpeechButton()}
 				<div class="box__task box-task--js">она / они</div>
 				<div class="box-input box-input--js">
@@ -215,6 +217,16 @@ function getSpeechButton() {
 			<span class="speech-btn-text speech-enabled">Озвучка включена <i>🔊</i></span>
 			<span class="speech-btn-text speech-disabled">Озвучка отключена <i>🔇</i></span>
 		</button></div>
+	`
+}
+
+function getCounter() {
+	return `
+		<div class="counter">
+			<span class="counter-value counter-current--js"></span>
+			<span>/</span>
+			<span class="counter-value counter-total--js"></span>
+		</div>
 	`
 }
 

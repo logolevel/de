@@ -26,6 +26,8 @@ export function runMain() {
 	const manualInputBtn = document.querySelector('.manual-input-btn--js');
 	const errorMessage = document.getElementById('errorMessage');
 	const speechBtn = document.querySelector('.speech-btn--js');
+	const currentCounter = document.querySelector('.counter-current--js');
+	const totalCounter = document.querySelector('.counter-total--js');
 	
 	// Templates
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
@@ -77,12 +79,8 @@ export function runMain() {
 		element.classList.remove(value);
 	}
 
-	function setTaskValue(value) {
-		taskField.textContent = value;
-	}
-
-	function setCorrectValue(key) {
-		correctVariantText.textContent = key;
+	function setElementValue(el, value) {
+		el.textContent = value;
 	}
 
 	function disableInput(element) {
@@ -212,15 +210,20 @@ export function runMain() {
 		init() {
 			this.utterance.lang = "de-DE";
 			this.utterance.rate = 0.7;
+			this.utterance.volume = 0;
 		},
 	
 		speak(text) {
 			this.utterance.text = text;
 			window.speechSynthesis.speak(this.utterance);
 		},
-	
-		setVolume(volume) {
-			this.utterance.volume = volume;
+
+		toggleVolume(volume) {
+			this.utterance.volume = !volume;
+		},
+
+		getVolume() {
+			return this.utterance.volume;
 		},
 	
 		addEndListener(callback) {
@@ -234,6 +237,7 @@ export function runMain() {
 		updateCurrent();
 		modifyCounter('increment');
 		updateProgress(counter);
+		setElementValue(currentCounter, counter);
 
 		if (isDefaultMode) {
 			clearElement(variantsBox);
@@ -248,8 +252,8 @@ export function runMain() {
 			setFinishMsg();
 			showRefreshBtn();
 		} else {
-			setTaskValue(current.task);
-			setCorrectValue(current.answer);
+			setElementValue(taskField, current.task);
+			setElementValue(correctVariantText, current.answer);
 
 			if (isDefaultMode) {
 				removeClass(variantsBox, 'block-disabled');
@@ -276,10 +280,6 @@ export function runMain() {
 				addClass(variantsBox, 'block-disabled');
 			}
 
-			if (!state.isSpeechMode) {
-				speechHelper.setVolume('0');
-			}
-
 			speechHelper.speak(inputText);
 
 		} else {
@@ -298,6 +298,7 @@ export function runMain() {
 				showCorrectMsg();
 				modifyCounter('decrement');
 				updateProgress(counter);
+				setElementValue(currentCounter, counter);
 			}, timeout);
 		}
 	}
@@ -352,8 +353,10 @@ export function runMain() {
 	}
 
 	/* RUN */
-	setTaskValue(current.task);
-	setCorrectValue(current.answer);
+	setElementValue(taskField, current.task)
+	setElementValue(correctVariantText, current.answer);
+	setElementValue(currentCounter, counter);
+	setElementValue(totalCounter, questions);
 	speechHelper.init();
 
 	if (isWriteMode) {
@@ -446,6 +449,7 @@ export function runMain() {
 	speechBtn.addEventListener('click', function() {
 		state.isSpeechMode = toggleVariable(state.isSpeechMode);
 		toggleClass(speechBtn, 'm-on')
+		speechHelper.toggleVolume(speechHelper.getVolume());
 	});
 
 	speechHelper.addEndListener(() => {

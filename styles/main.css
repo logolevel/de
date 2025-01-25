@@ -609,6 +609,24 @@ input[type="text"]:focus {
 	justify-content: center;
 }
 
+/* counter */
+.counter {
+	position: absolute;
+	left: 20px;
+	top: 19px;
+	font-size: 0.86rem;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* utility classes */
 .block-disabled {
