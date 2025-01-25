@@ -1,11 +1,11 @@
 ## TODO
-[ ] Add listening mode
-[ ] Ask about rules: t, d, z + e
-[ ] Add other sentences + nicht + question.
+[ ] Add other sentences + nicht
+[ ] Create logic to show tenses image, add additional key to data: past, present, future
 [ ] Create rule for other(неправильные) verbs
 [ ] Add other(неправильные) verbs
-[ ] Create logic to show tenses image, add additional key to data: past, present, future
+[ ] Ask about rules: t, d, z + e
 ## Improvements
+[ ] Add listening mode
 [ ] Investigate Out of network approach
 [ ] Save data to localStorage
 [ ] Create 3 star level approach. 1st star is 12 correct answer, 2nd star 24 correct answer, 3rd star 48 correct answer without any fails
