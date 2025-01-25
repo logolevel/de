@@ -256,9 +256,7 @@ export function runMain() {
 			}
 
 			if (isWriteMode) {
-				setTimeout(()=> {
-					inputVariant.focus();
-				}, 0);
+				inputVariant.focus();
 			}
 		}
 	}
@@ -416,9 +414,7 @@ export function runMain() {
 		if (isWriteMode) {
 			enableInput(inputVariant);
 			removeClass(manualInputBtnWrapper, 'hidden');
-			setTimeout(()=> {
-				inputVariant.focus();
-			}, 0);
+			inputVariant.focus();
 		}
 
 		if (isDefaultMode) {

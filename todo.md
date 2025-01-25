@@ -1,7 +1,7 @@
 ## TODO
 [ ] Refactor setTimeout for focus input
 [ ] Add percentage when input is focused on mobile
-
+[ ] Add listening mode
 [ ] Ask about rules: t, d, z + e
 [ ] Add other sentences + nicht + question.
 [ ] Create rule for other(неправильные) verbs
