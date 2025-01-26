@@ -127,8 +127,11 @@ export function runMain() {
 	function generateRandomWords(obj) {
 		const { answer, variants, pronouns } = obj;
 
-		// Split the answer into words
-		const answerWords = answer.split(" ");
+		// Check if '?' exists in the answer
+		const containsQuestionMark = answer.includes('?');
+
+		// Remove '?' from the answer string and split it into words
+		const answerWords = answer.replace(/\?/g, '').split(" ");
 	
 		// Combine `variants` and `pronouns` if they exist, or use an empty array
 		const combinedWords = [
@@ -146,7 +149,13 @@ export function runMain() {
 	
 		// Ensure `answerWords` are included in the final selection
 		const randomSelection = [...answerWords];
+
+		// Add '?' if it was originally in the answer
+		if (containsQuestionMark) {
+			randomSelection.push('?');
+		}
 	
+		// Fill up to 9 words
 		while (randomSelection.length < 9) {
 			const randomWord = uniqueWords[Math.floor(Math.random() * uniqueWords.length)];
 			randomSelection.push(randomWord); // Add words to fill up
@@ -199,9 +208,10 @@ export function runMain() {
 	}
 
 	function countWords(inputString) {
-		const words = inputString.trim().split(/\s+/);
+		const words = inputString.trim().split(/\s+|\?/).filter(Boolean);
+		const questionMarkCount = (inputString.match(/\?/g) || []).length;
 
-		return words.length;
+		return words.length + questionMarkCount;
 	}
 
 	const speechHelper = {
@@ -386,7 +396,11 @@ export function runMain() {
 				//Join string in case sentence contain more than one word
 				if (inputVariant.value === '') {
 					inputVariant.value = `${currentInput}`;
-				} else {
+				}
+				else if (currentInput === '?') {
+					inputVariant.value = `${inputVariant.value}${currentInput}`;
+				}
+				else {
 					inputVariant.value = `${inputVariant.value} ${currentInput}`;
 				}
 
