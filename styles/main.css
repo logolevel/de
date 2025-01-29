@@ -16,6 +16,11 @@
 	--footer-height: 50px;
 }
 
+html {
+	scroll-padding-top: var(--header-height);
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: var(--font-family);
 	font-optical-sizing: auto;
@@ -36,6 +41,11 @@ b {
 
 a {
 	text-decoration: none;
+}
+
+p {
+	line-height: 1.2rem;
+	margin-bottom: 10px;
 }
 
 /* animation */
@@ -316,7 +326,7 @@ button {
 /* box */
 .box {
 	padding: 5px;
-	font-size: 2.5rem;
+	font-size: 2rem;
 	display: grid;
 	grid-template-rows: repeat(3, 1fr);
 	height: calc(100dvh - (var(--header-height) + var(--footer-height)));
@@ -333,7 +343,7 @@ button {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 60px 0 20px;
+	padding: 45px 0 20px;
 }
 
 .box-input {
@@ -394,7 +404,7 @@ input[type="text"] {
 	font-family: var(--font-family);
 	width: 100%;
 	height: 60px;
-	font-size: 2.5rem;
+	font-size: 2rem;
 	margin-bottom: 20px;
 	text-align: center;
 	display: block;
@@ -402,7 +412,7 @@ input[type="text"] {
 	background: transparent;
 }
 
-input::placeholder {
+input[type="text"]::placeholder {
 	opacity: 0.1;
 }
 
@@ -416,7 +426,7 @@ input[type="text"]:focus {
 
 /* correct-variant */
 .correct-variant {
-	font-size: 1rem;
+	font-size: 0.75rem;
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
@@ -425,12 +435,13 @@ input[type="text"]:focus {
 }
 
 .correct-variant__text {
-	font-size: 3rem;
+	font-size: 2rem;
+	line-height: 2rem;
 }
 
 .correct-variant-msg {
-	line-height: 1.4rem;
-	font-size: 0.8rem;
+	line-height: 1rem;
+	font-size: 0.75rem;
 	overflow: hidden;
 }
 
@@ -493,6 +504,12 @@ input[type="text"]:focus {
 	overflow: hidden;
 }
 
+.container {
+	padding-inline: 10px;
+}
+
+/* theory */
+
 .theory {
 	padding: 20px 0;
 }
@@ -501,6 +518,14 @@ input[type="text"]:focus {
 	text-align: center;
 	margin-bottom: 20px;
 	font-size: 1.2rem;
+}
+
+.theory-sub-title {
+	text-align: center;
+	margin-bottom: 10px;
+	font-size: 1rem;
+	background: var(--primary-light-color);
+	padding-block: 10px;
 }
 
 .theory-words-item {
@@ -514,6 +539,16 @@ input[type="text"]:focus {
 	background: var(--primary-light-color);
 }
 
+.theory-menu {
+	margin-block: 20px;
+}
+
+.theory-menu-link {
+	text-decoration: underline;
+	display: block;
+	padding-block: 8px;
+}
+
 /* grid table */
 .grid-table {
 	display: grid;
@@ -521,6 +556,7 @@ input[type="text"]:focus {
 	grid-template-rows: auto auto auto;
 	width: 100%;
 	line-height: 1.8rem;
+	margin-bottom: 20px;
 }
 
 .grid-cell {

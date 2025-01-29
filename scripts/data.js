@@ -400,5 +400,16 @@ export const data = {
         { id: 98, task: 'вы слышите?', answer: 'hört ihr?', variants: horenArray, pronouns: pronounsArray },
         { id: 99, task: 'они слышут?', answer: 'hören sie?', variants: horenArray, pronouns: pronounsArray },
         { id: 100, task: 'Вы слышите?', answer: 'hören Sie?', variants: horenArray, pronouns: pronounsArray },
+    ],
+    "futures": [
+        { id: 1, task: 'я не работаю завтра', answer: 'ich arbeite nicht morgen', variants: arbeitenArray, pronouns: pronounsArray },
+        { id: 2, task: 'ты работаешь завтра', answer: 'du arbeitest morgen', variants: arbeitenArray, pronouns: pronounsArray },
+        { id: 3, task: 'он работает завтра?', answer: 'arbeitet er morgen?', variants: arbeitenArray, pronouns: pronounsArray },
+        { id: 4, task: 'она не работает завтра', answer: 'sie arbeitet nicht morgen', variants: arbeitenArray, pronouns: pronounsArray },
+        { id: 5, task: 'оно работает завтра', answer: 'es arbeitet morgen', variants: arbeitenArray, pronouns: pronounsArray },
+        { id: 6, task: 'мы работаем завтра', answer: 'wir arbeiten morgen', variants: arbeitenArray, pronouns: pronounsArray },
+        { id: 7, task: 'вы не работаете завтра', answer: 'ihr arbeitet nicht morgen', variants: arbeitenArray, pronouns: pronounsArray },
+        { id: 8, task: 'они работают завтра?', answer: 'arbeiten sie morgen?', variants: arbeitenArray, pronouns: pronounsArray },
+        { id: 9, task: 'Вы не работаете завтра', answer: 'Sie arbeiten nicht morgen', variants: arbeitenArray, pronouns: pronounsArray },
     ]
 }
