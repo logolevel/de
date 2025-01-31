@@ -53,7 +53,10 @@ export function runMain() {
 	const currentWords = box.dataset.words;
 	const words = data[currentWords];
 
-	const rule = theoryBtn.dataset.rule;
+	// Get current Rule
+	const rule = JSON.parse(theoryBtn.dataset.rule);
+	const ruleType = rule.type;
+	const ruleTitle = rule.title;
 
 	let counter = 0;
 	let progress = 0;
@@ -189,8 +192,16 @@ export function runMain() {
 	}
 
 	function generateTheory() {
-		if (rule === 'words') {
+		if (ruleType === 'words') {
 			clearElement(theoryWords);
+
+			if (ruleTitle) {
+				const h2 = document.createElement('h2');
+				h2.classList.add('theory-title');
+				h2.innerHTML = ruleTitle;
+				
+				theoryWords.append(h2);
+			}
 
 			for (const key of words) {
 				const item = theoryTemplate.content.cloneNode(true);
@@ -203,7 +214,7 @@ export function runMain() {
 			theoryWords.append(theoryTemplateFragment);
 		} else {
 			clearElement(theoryRules);
-			theoryRules.innerHTML = rules[rule][0].content;
+			theoryRules.innerHTML = rules[ruleType][0].content;
 		}
 	}
 

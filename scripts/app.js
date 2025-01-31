@@ -155,7 +155,7 @@ function getHeader(taskIndex, submenuIndex, content) {
 			<button class="header-link back-to-sub-menu--js">⬅️ Назад</button>
 			<button class="header-link back-to-content--js hidden">⬅️ Назад</button>
 			<h1 class="header-title--js">Урок ${taskIndex + 1}.${submenuIndex + 1}</h1>
-			<button class="theory-btn header-link theory-btn--js" data-rule="${content.rule}">Подсказка ℹ️</>
+			<button class="theory-btn header-link theory-btn--js" data-rule='${JSON.stringify(content.rule)}'>Подсказка ℹ️</>
 		</header>
 	`
 }

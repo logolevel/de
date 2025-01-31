@@ -1,6 +1,5 @@
 ## TODO
 [ ] Change input into textarea to extend the row vertically
-[ ] Add other sentences
 [ ] Create logic to show tenses image, add additional key to data: past, present, future
 [ ] Create rule for other(неправильные) verbs
 [ ] Add other(неправильные) verbs

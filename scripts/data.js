@@ -12,6 +12,8 @@ const spielenArray = ['spiele', 'spielst', 'spielt', 'spielen'];
 const arbeitenArray = ['arbeite', 'arbeitest', 'arbeitet', 'arbeiten'];
 const antwortenArray = ['antworte', 'antwortest', 'antwortet', 'antworten'];
 const horenArray = ['höre', 'hörst', 'hört', 'hören'];
+const seinArray = ['bin', 'bist', 'ist', 'sind', 'seid'];
+const habenArray = ['habe', 'hast', 'hat', 'haben', 'habt'];
 
 export const data = {
     "pronouns": [
@@ -27,16 +29,16 @@ export const data = {
     "verbs": [
         { id: 1, task: 'говорить', answer: 'sagen', variants: verbsArray },
         { id: 2, task: 'спрашивать', answer: 'fragen', variants: verbsArray },
-        { id: 2, task: 'любить', answer: 'lieben', variants: verbsArray },
-        { id: 2, task: 'смеяться', answer: 'lachen', variants: verbsArray },
-        { id: 2, task: 'жить, проживать', answer: 'wohnen', variants: verbsArray },
-        { id: 2, task: 'петь', answer: 'singen', variants: verbsArray },
-        { id: 2, task: 'танцевать', answer: 'tanzen', variants: verbsArray },
-        { id: 2, task: 'играть', answer: 'spielen', variants: verbsArray },
-        { id: 2, task: 'делать', answer: 'machen', variants: verbsArray },
-        { id: 2, task: 'работать', answer: 'arbeiten', variants: verbsArray },
-        { id: 2, task: 'отвечать', answer: 'antworten', variants: verbsArray },
-        { id: 2, task: 'слышать', answer: 'hören', variants: verbsArray },
+        { id: 3, task: 'любить', answer: 'lieben', variants: verbsArray },
+        { id: 4, task: 'смеяться', answer: 'lachen', variants: verbsArray },
+        { id: 5, task: 'жить, проживать', answer: 'wohnen', variants: verbsArray },
+        { id: 6, task: 'петь', answer: 'singen', variants: verbsArray },
+        { id: 7, task: 'танцевать', answer: 'tanzen', variants: verbsArray },
+        { id: 8, task: 'играть', answer: 'spielen', variants: verbsArray },
+        { id: 9, task: 'делать', answer: 'machen', variants: verbsArray },
+        { id: 10, task: 'работать', answer: 'arbeiten', variants: verbsArray },
+        { id: 11, task: 'отвечать', answer: 'antworten', variants: verbsArray },
+        { id: 12, task: 'слышать', answer: 'hören', variants: verbsArray },
     ],
     "statements": [
         { id: 1, task: 'я делаю', answer: 'ich mache', variants: machenArray, pronouns: pronounsArray },
@@ -411,5 +413,27 @@ export const data = {
         { id: 7, task: 'вы не работаете завтра', answer: 'ihr arbeitet nicht morgen', variants: arbeitenArray, pronouns: pronounsArray },
         { id: 8, task: 'они работают завтра?', answer: 'arbeiten sie morgen?', variants: arbeitenArray, pronouns: pronounsArray },
         { id: 9, task: 'Вы не работаете завтра', answer: 'Sie arbeiten nicht morgen', variants: arbeitenArray, pronouns: pronounsArray },
+    ],
+    "irregularVerbSein": [
+        { id: 1, task: 'я есть', answer: 'ich bin', variants: seinArray, pronouns: pronounsArray },
+        { id: 2, task: 'ты есть', answer: 'du bist', variants: seinArray, pronouns: pronounsArray },
+        { id: 3, task: 'он есть', answer: 'er ist', variants: seinArray, pronouns: pronounsArray },
+        { id: 4, task: 'она есть', answer: 'sie ist', variants: seinArray, pronouns: pronounsArray },
+        { id: 5, task: 'оно есть', answer: 'es ist', variants: seinArray, pronouns: pronounsArray },
+        { id: 6, task: 'мы есть', answer: 'wir sind', variants: seinArray, pronouns: pronounsArray },
+        { id: 7, task: 'вы есть', answer: 'ihr seid', variants: seinArray, pronouns: pronounsArray },
+        { id: 8, task: 'они есть', answer: 'sie sind', variants: seinArray, pronouns: pronounsArray },
+        { id: 9, task: 'Вы есть', answer: 'Sie sind', variants: seinArray, pronouns: pronounsArray },
+    ],
+    "irregularVerbHaben": [
+        { id: 1, task: 'я имею', answer: 'ich habe', variants: habenArray, pronouns: pronounsArray },
+        { id: 2, task: 'ты имеешь', answer: 'du hast', variants: habenArray, pronouns: pronounsArray },
+        { id: 3, task: 'он имеет', answer: 'er hat', variants: habenArray, pronouns: pronounsArray },
+        { id: 4, task: 'она имеет', answer: 'sie hat', variants: habenArray, pronouns: pronounsArray },
+        { id: 5, task: 'оно имеет', answer: 'es hat', variants: habenArray, pronouns: pronounsArray },
+        { id: 6, task: 'мы имеем', answer: 'wir haben', variants: habenArray, pronouns: pronounsArray },
+        { id: 7, task: 'вы имеете', answer: 'ihr habt', variants: habenArray, pronouns: pronounsArray },
+        { id: 8, task: 'они имеют', answer: 'sie haben', variants: habenArray, pronouns: pronounsArray },
+        { id: 9, task: 'Вы имеете', answer: 'Sie haben', variants: habenArray, pronouns: pronounsArray },
     ]
 }
