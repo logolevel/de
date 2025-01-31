@@ -11,7 +11,7 @@ export const data = {
 			{ id: 5, name: 'Отрицания', details: 'Настоящее время' },
 			{ id: 6, name: 'Будущее время', details: 'Утверждения, Вопросы, Отрицания. Используем слово "morgen" - "завтра"' },
 			{ id: 7, name: 'Неправильный глогол Sein', details: 'sein - быть' },
-			{ id: 8, name: 'Неправильный глогол Haben', details: 'haben - быть' },
+			{ id: 8, name: 'Неправильный глогол Haben', details: 'haben - иметь' },
 		],
 		[
 			{ id: 1, name: 'Submenu 3-1', details: 'Details for Submenu 3-1' },
