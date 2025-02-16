@@ -129,20 +129,20 @@ export function runMain() {
 
 	function generateRandomWords(obj) {
 		const { answer, variants, pronouns } = obj;
-
-		// Check if '?' or '!' exists in the answer
-		const containsQuestionMark = answer.includes('?');
-		const containsExclamationMark = answer.includes('!');
-		const containsComma = answer.includes(',');
-
-		// Remove '?', '!' and ',' from the answer string and split it into words
-		const answerWords = answer.replace(/[?!,]/g, '').split(" ");
+	
+		// Define special characters to check for
+		const specialChars = ['?', '!', ','];
+	
+		// Find which special characters exist in the answer
+		const presentSpecialChars = specialChars.filter(char => answer.includes(char));
+	
+		// If no special characters, use answer as is; otherwise, remove them
+		const answerWords = presentSpecialChars.length > 0
+			? answer.replace(new RegExp(`[${specialChars.join('')}]`, 'g'), '').split(" ")
+			: answer.split(" ");
 	
 		// Combine `variants` and `pronouns` if they exist, or use an empty array
-		const combinedWords = [
-			...(variants || []),
-			...(pronouns || [])
-		];
+		const combinedWords = [...(variants || []), ...(pronouns || [])];
 	
 		// If combinedWords is empty, throw an error
 		if (combinedWords.length === 0) {
@@ -150,24 +150,14 @@ export function runMain() {
 		}
 	
 		// Filter out duplicates and ensure the answerWords are included
-		const uniqueWords = Array.from(new Set(combinedWords.concat(answerWords)));
+		const uniqueWords = Array.from(new Set([...combinedWords, ...answerWords]));
 	
 		// Ensure `answerWords` are included in the final selection
 		const randomSelection = [...answerWords];
-
-		// Add '?' if it was originally in the answer
-		if (containsQuestionMark) {
-			randomSelection.push('?');
-		}
-
-		// Add '!' if it was originally in the answer
-		if (containsExclamationMark) {
-			randomSelection.push('!');
-		}
-
-		// Add ',' if it was originally in the answer
-		if (containsComma) {
-			randomSelection.push(',');
+	
+		// Add special characters only if they exist in the original sentence
+		if (presentSpecialChars.length > 0) {
+			randomSelection.push(...presentSpecialChars);
 		}
 	
 		// Fill up to 9 words
@@ -188,20 +178,18 @@ export function runMain() {
 			const j = Math.floor(Math.random() * (i + 1));
 			[randomSelection[i], randomSelection[j]] = [randomSelection[j], randomSelection[i]];
 		}
-
-		// append to Fragment
+	
+		// Append to Fragment
 		for (const key of randomSelection) {
 			const item = variantBtnTemplate.content.cloneNode(true);
-		
-			item.querySelector('button').textContent = `${key}`;
+			item.querySelector('button').textContent = key;
 			variantButtonsFragment.append(item);
 		}
-		
-		//TODO: Refactor HTML
-		// variantsBox.innerHTML = ''; back this variant and change HTML correctly
-		// append to the HTML
+	
+		// Append to the HTML
 		variantsBox.append(variantButtonsFragment);
 	}
+	
 
 	function generateTheory() {
 		if (ruleType === 'words') {
