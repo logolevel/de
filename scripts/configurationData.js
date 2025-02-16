@@ -16,21 +16,27 @@ export const data = {
 		],
 		[
 			{ id: 1, name: 'Этикет', details: 'Приветствие, благодарность, прощание' },
+			{ id: 2, name: 'Утверждения', details: 'Прошедшее время' },
+			{ id: 3, name: 'Отрицания', details: 'Прошедшее время' },
+			{ id: 4, name: 'Вопросы', details: 'Прошедшее время' },
 		],
 	],
 	content: [
 		[
 			{ id: 1, words: 'pronouns', tenses: false, rule: {type: 'words', title: 'Местоимения'} },
 			{ id: 2, words: 'verbs', tenses: false , rule: {type: 'words', title: 'Глоголы'} },
-			{ id: 3, words: 'statements', tenses: true, rule: {type: 'simple-verbs', title: ''} },
-			{ id: 4, words: 'questions', tenses: true, rule: {type: 'simple-verbs', title: ''} },
-			{ id: 5, words: 'negatives', tenses: true, rule: {type: 'simple-verbs', title: ''} },
-			{ id: 6, words: 'futures', tenses: true, rule: {type: 'simple-verbs', title: ''} },
+			{ id: 3, words: 'statements', tenses: true, rule: {type: 'simple', title: ''} },
+			{ id: 4, words: 'questions', tenses: true, rule: {type: 'simple', title: ''} },
+			{ id: 5, words: 'negatives', tenses: true, rule: {type: 'simple', title: ''} },
+			{ id: 6, words: 'futures', tenses: true, rule: {type: 'simple', title: ''} },
 			{ id: 7, words: 'irregularVerbSein', tenses: false , rule: {type: 'words', title: 'Неправильный глогол <b>Sein</b>'} },
-			{ id: 7, words: 'irregularVerbHaben', tenses: false , rule: {type: 'words', title: 'Неправильный глогол <b>Haben</b>'} },
+			{ id: 8, words: 'irregularVerbHaben', tenses: false , rule: {type: 'words', title: 'Неправильный глогол <b>Haben</b>'} },
 		],
 		[
 			{ id: 1, words: 'greetingPhrases', tenses: false, rule: {type: 'words', title: 'Этикет'} },
+			{ id: 2, words: 'pastStatements', tenses: false, rule: {type: 'past', title: 'Прошедшее время'} },
+			{ id: 3, words: 'pastNegativeStatements', tenses: false, rule: {type: 'past', title: 'Прошедшее время'} },
+			{ id: 4, words: 'pastQuestionStatements', tenses: false, rule: {type: 'past', title: 'Прошедшее время'} },
 		],
 	],
 };

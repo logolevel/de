@@ -587,6 +587,10 @@ input[type="text"]:focus {
 	grid-row: span 6;
 }
 
+.full-width {
+    grid-column: span 3;
+}
+
 .surround {
 	padding: 0 10px;
 	position: relative;

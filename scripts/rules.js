@@ -1,5 +1,5 @@
 export const rules = {
-	"simple-verbs": [
+	"simple": [
 		{
 			id: 1, content: `
 			<h2 class="theory-title">Простая форма глагола <b>machen</b></h2>
@@ -88,6 +88,92 @@ export const rules = {
 				<p>Mache ich <b>morgen</b>? - Я работаю завтра?</p>
 				<p>Ich mache <b>morgen</b> - Я работаю завтра</p>
 				<p>Ich mache nicht <b>morgen</b> - Я не работаю завтра</p>
+			</div>
+		` },
+	],
+	"past": [
+		{
+			id: 1, content: `
+			<h2 class="theory-title">Простая форма глагола <b>machen</b></h2>
+			<h3 class="theory-sub-title" id="present-tense">Прошедшее время</h3>
+			<div class="grid-table">
+				<!-- Titles -->
+				<div class="grid-cell grid-title">Вопрос</div>
+				<div class="grid-cell grid-title">Утверждение</div>
+				<div class="grid-cell grid-title">Отрицание</div>
+				
+				<!-- Content -->
+				<div class="grid-cell">
+					<div><b>habe</b> ich?</div>
+				</div>
+				<div class="grid-cell">
+					<div>ich <b>habe</b></div>
+				</div>
+				<div class="grid-cell third-column">+ nicht</div>
+
+				<div class="grid-cell">
+					<div><b>hast</b> du?</div>
+				</div>
+				<div class="grid-cell">
+					<div>du <b>hast</b></div>
+				</div>
+
+				<div class="grid-cell">
+					<div><b>hat</b></div>
+					<div class="surround sys m-left">
+						<div>er?</div>
+						<div>sie?</div>
+						<div>es?</div>
+					</div>
+				</div>
+				<div class="grid-cell">
+					<div class="surround sys m-right">
+						<div>er</div>
+						<div>sie</div>
+						<div>es</div>
+					</div>
+					<div><b>hat</b></div>
+				</div>
+
+				<div class="grid-cell">
+					<div><b>haben</b> wir?</div>
+				</div>
+				<div class="grid-cell">
+					<div>wir <b>haben</b></div>
+				</div>
+
+				<div class="grid-cell">
+					<div><b>habt</b> ihr?</div>
+				</div>
+				<div class="grid-cell">
+					<div>ihr <b>habt</b></div>
+				</div>
+
+				<div class="grid-cell">
+					<div><b>haben</b></div>
+					<div class="surround sys m-left">
+						<div>sie?</div>
+						<div>Sie?</div>
+					</div>
+				</div>
+				<div class="grid-cell">
+					<div class="surround sys m-right">
+						<div>sie</div>
+						<div>Sie</div>
+					</div>
+					<div><b>haben</b></div>
+				</div>
+
+				<!-- Last content row -->
+				<div class="grid-cell full-width">
+					<div>+ <b>ge</b>mach<b>t</b></div>
+				</div>
+			</div>
+			<div class="container">
+				<p>В конец предложения Настоящего времени нужно добавить конструкцию <b>ge</b> + <b>macht</b> + <b>t</b>. Например: <b>gemacht</b></p>
+				<p>Ich habe gemacht - Я сделал</p>
+				<p>Ich habe nicht gemacht - Я не сделал</p>
+				<p>Habe ich gemacht - Я сделал?</p>
 			</div>
 		` },
 	]
