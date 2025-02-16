@@ -1,8 +1,7 @@
 ## TODO
+[ ] LESSONS 2: Content
 [ ] Change input into textarea to extend the row vertically
 [ ] Create logic to show tenses image, add additional key to data: past, present, future
-[ ] Create rule for other(неправильные) verbs
-[ ] Add other(неправильные) verbs
 [ ] Ask about rules: t, d, z + e
 ## Improvements
 [ ] Add listening mode

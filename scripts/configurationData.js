@@ -1,6 +1,7 @@
 export const data = {
 	tasks: [
-		{ id: 1, name: 'Урок 1', description: 'Местоимения и глаголы. Утверждения, отрицания, вопросы.' },
+		{ id: 1, name: 'Урок 1', description: 'Местоимения и глаголы. Настоящее время: утверждения, отрицания, вопросы.' },
+		{ id: 2, name: 'Урок 2', description: 'Этикет. Прошедшее время: утверждения, отрицания, вопросы.' },
 	],
 	submenus: [
 		[
@@ -14,7 +15,7 @@ export const data = {
 			{ id: 8, name: 'Неправильный глогол Haben', details: 'haben - иметь' },
 		],
 		[
-			{ id: 1, name: 'Submenu 3-1', details: 'Details for Submenu 3-1' },
+			{ id: 1, name: 'Этикет', details: 'Приветствие, благодарность, прощание' },
 		],
 	],
 	content: [
@@ -27,6 +28,9 @@ export const data = {
 			{ id: 6, words: 'futures', tenses: true, rule: {type: 'simple-verbs', title: ''} },
 			{ id: 7, words: 'irregularVerbSein', tenses: false , rule: {type: 'words', title: 'Неправильный глогол <b>Sein</b>'} },
 			{ id: 7, words: 'irregularVerbHaben', tenses: false , rule: {type: 'words', title: 'Неправильный глогол <b>Haben</b>'} },
+		],
+		[
+			{ id: 1, words: 'greetingPhrases', tenses: false, rule: {type: 'words', title: 'Этикет'} },
 		],
 	],
 };

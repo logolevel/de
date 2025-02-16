@@ -130,11 +130,13 @@ export function runMain() {
 	function generateRandomWords(obj) {
 		const { answer, variants, pronouns } = obj;
 
-		// Check if '?' exists in the answer
+		// Check if '?' or '!' exists in the answer
 		const containsQuestionMark = answer.includes('?');
+		const containsExclamationMark = answer.includes('!');
+		const containsComma = answer.includes(',');
 
-		// Remove '?' from the answer string and split it into words
-		const answerWords = answer.replace(/\?/g, '').split(" ");
+		// Remove '?', '!' and ',' from the answer string and split it into words
+		const answerWords = answer.replace(/[?!,]/g, '').split(" ");
 	
 		// Combine `variants` and `pronouns` if they exist, or use an empty array
 		const combinedWords = [
@@ -156,6 +158,16 @@ export function runMain() {
 		// Add '?' if it was originally in the answer
 		if (containsQuestionMark) {
 			randomSelection.push('?');
+		}
+
+		// Add '!' if it was originally in the answer
+		if (containsExclamationMark) {
+			randomSelection.push('!');
+		}
+
+		// Add ',' if it was originally in the answer
+		if (containsComma) {
+			randomSelection.push(',');
 		}
 	
 		// Fill up to 9 words
@@ -219,10 +231,10 @@ export function runMain() {
 	}
 
 	function countWords(inputString) {
-		const words = inputString.trim().split(/\s+|\?/).filter(Boolean);
-		const questionMarkCount = (inputString.match(/\?/g) || []).length;
+		const words = inputString.trim().split(/\s+|[?!,]/).filter(Boolean);
+		const specialCharCount = (inputString.match(/[?!,]/g) || []).length;
 
-		return words.length + questionMarkCount;
+		return words.length + specialCharCount;
 	}
 
 	const speechHelper = {
@@ -408,7 +420,7 @@ export function runMain() {
 				if (inputVariant.value === '') {
 					inputVariant.value = `${currentInput}`;
 				}
-				else if (currentInput === '?') {
+				else if (currentInput === '?' || currentInput === '!' || currentInput === ',') {
 					inputVariant.value = `${inputVariant.value}${currentInput}`;
 				}
 				else {

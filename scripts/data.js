@@ -14,6 +14,7 @@ const antwortenArray = ['antworte', 'antwortest', 'antwortet', 'antworten'];
 const horenArray = ['höre', 'hörst', 'hört', 'hören'];
 const seinArray = ['bin', 'bist', 'ist', 'sind', 'seid'];
 const habenArray = ['habe', 'hast', 'hat', 'haben', 'habt'];
+const greetingWords = ['Guten', 'Morgen', 'Tag', 'Abend', 'Gute', 'Nacht', 'Auf', 'Wiedersein', 'Danke', 'schön', 'Bitte', 'Hallo', 'Tschüs', 'Wie', 'bitte'];
 
 export const data = {
     "pronouns": [
@@ -435,5 +436,18 @@ export const data = {
         { id: 7, task: 'вы имеете', answer: 'ihr habt', variants: habenArray, pronouns: pronounsArray },
         { id: 8, task: 'они имеют', answer: 'sie haben', variants: habenArray, pronouns: pronounsArray },
         { id: 9, task: 'Вы имеете', answer: 'Sie haben', variants: habenArray, pronouns: pronounsArray },
+    ],
+    "greetingPhrases": [
+        { id: 1, task: 'Доброе утро!', answer: 'Guten Morgen!', variants: greetingWords },
+        { id: 2, task: 'Добрый день!', answer: 'Guten Tag!', variants: greetingWords },
+        { id: 3, task: 'Добрый вечер!', answer: 'Guten Abend!', variants: greetingWords },
+        { id: 4, task: 'Спокойной ночи!', answer: 'Gute Nacht!', variants: greetingWords },
+        { id: 5, task: 'До свидания!', answer: 'Auf Wiedersein!', variants: greetingWords },
+        { id: 6, task: 'Спасибо', answer: 'Danke', variants: greetingWords },
+        { id: 7, task: 'Большое спасибо', answer: 'Danke schön', variants: greetingWords },
+        { id: 8, task: 'Пожалуйста', answer: 'Bitte', variants: greetingWords },
+        { id: 9, task: 'Привет!', answer: 'Hallo!', variants: greetingWords },
+        { id: 10, task: 'Пока!', answer: 'Tschüs!', variants: greetingWords },
+        { id: 11, task: 'Что-что?', answer: 'Wie, bitte?', variants: greetingWords },
     ]
 }
