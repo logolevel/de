@@ -15,10 +15,11 @@ export const data = {
 			{ id: 8, name: 'Неправильный глогол Haben', details: 'haben - иметь' },
 		],
 		[
-			{ id: 1, name: 'Этикет', details: 'Приветствие, благодарность, прощание' },
+			{ id: 1, name: 'Словарь урока', details: 'Этикет: приветствие, благодарность, прощание' },
 			{ id: 2, name: 'Утверждения', details: 'Прошедшее время' },
 			{ id: 3, name: 'Отрицания', details: 'Прошедшее время' },
 			{ id: 4, name: 'Вопросы', details: 'Прошедшее время' },
+			{ id: 5, name: 'Словарь урока', details: 'Вопросительные слова' },
 		],
 	],
 	content: [
@@ -33,10 +34,11 @@ export const data = {
 			{ id: 8, words: 'irregularVerbHaben', tenses: false , rule: {type: 'words', title: 'Неправильный глогол <b>Haben</b>'} },
 		],
 		[
-			{ id: 1, words: 'greetingPhrases', tenses: false, rule: {type: 'words', title: 'Этикет'} },
+			{ id: 1, words: 'greetingPhrases', tenses: false, rule: {type: 'words', title: 'Словарь урока'} },
 			{ id: 2, words: 'pastStatements', tenses: false, rule: {type: 'past', title: 'Прошедшее время'} },
 			{ id: 3, words: 'pastNegativeStatements', tenses: false, rule: {type: 'past', title: 'Прошедшее время'} },
 			{ id: 4, words: 'pastQuestionStatements', tenses: false, rule: {type: 'past', title: 'Прошедшее время'} },
+			{ id: 5, words: 'questionWords', tenses: false, rule: {type: 'words', title: 'Словарь урока'} },
 		],
 	],
 };

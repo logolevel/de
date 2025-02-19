@@ -15,6 +15,7 @@ const horenArray = ['höre', 'hörst', 'hört', 'hören'];
 const seinArray = ['bin', 'bist', 'ist', 'sind', 'seid'];
 const habenArray = ['habe', 'hast', 'hat', 'haben', 'habt'];
 const greetingWords = ['Guten', 'Morgen', 'Tag', 'Abend', 'Gute', 'Nacht', 'Auf', 'Wiedersein', 'Danke', 'schön', 'Bitte', 'Hallo', 'Tschüs', 'Wie', 'bitte'];
+const questionWords = ['Was', 'Wer', 'Wo', 'Wann', 'Warum', 'Wie', 'Wen'];
 
 export const data = {
     "pronouns": [
@@ -692,5 +693,14 @@ export const data = {
         { id: 68, task: 'вы ответили', answer: 'habt ihr geantwortet?', variants: habenArray, pronouns: pronounsArray },
         { id: 69, task: 'они ответили', answer: 'haben sie geantwortet?', variants: habenArray, pronouns: pronounsArray },
         { id: 70, task: 'Вы ответили', answer: 'haben Sie geantwortet?', variants: habenArray, pronouns: pronounsArray },
+    ],
+    "questionWords": [
+        { id: 1, task: 'Что?', answer: 'Was?', variants: questionWords },
+        { id: 2, task: 'Кто?', answer: 'Wer?', variants: questionWords },
+        { id: 3, task: 'Где?', answer: 'Wo?', variants: questionWords },
+        { id: 4, task: 'Когда?', answer: 'Wann?', variants: questionWords },
+        { id: 5, task: 'Почему?', answer: 'Warum?', variants: questionWords },
+        { id: 6, task: 'Как?', answer: 'Wie?', variants: questionWords },
+        { id: 7, task: 'Кого?', answer: 'Wen?', variants: questionWords },
     ],
 }
