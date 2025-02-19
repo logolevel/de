@@ -329,7 +329,7 @@ button {
 
 /* box */
 .box {
-	padding: 5px;
+	padding: 0 5px;
 	font-size: 2rem;
 	display: grid;
 	grid-template-rows: repeat(3, 1fr);
@@ -347,7 +347,7 @@ button {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 45px 0 20px;
+	padding: 100px 0 20px;
 }
 
 .box-input {
@@ -371,6 +371,7 @@ button {
 .speech-btn {
 	color: var(--text-color);
 	font-size: 0.75rem;
+	padding: 5px 10px;
 }
 
 .speech-btn-text {
@@ -397,6 +398,91 @@ button {
 	white-space: nowrap;
 	gap: 10px;
 	align-items: center;
+}
+
+/* timeline */
+.timeline {
+	display: none;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	top: 70px;
+	left: 0;
+	font-size: 0.75rem;
+	width: 100%;
+	padding: 5px 10px;
+}
+
+[data-timeline="true"] .timeline {
+	display: flex;
+}
+
+.timeline::before {
+	content: '';
+	position: absolute;
+	top: -6px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: var(--secondary-color);
+	z-index: -1;
+}
+
+.timeline-item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.timeline-item::before {
+	content: '';
+	position: absolute;
+	top: -17px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 2px solid var(--secondary-color);
+	z-index: 1;
+	background-color: var(--primary-light-color);
+}
+
+.timeline-item.m-active::before {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1rem;
+	color: var(--opposite-color);
+	width: 30px;
+	height: 30px;
+	top: -28px;
+	border-color: var(--primary-color);
+}
+
+.timeline-item.m-past.m-active::before {
+	content: '👈🏼';
+}
+
+.timeline-item.m-present.m-active::before {
+	content: '👋🏽';
+}
+
+.timeline-item.m-future.m-active::before {
+	content: '👉🏼';
+}
+
+.timeline-item-title {
+	margin-top: 10px;
+}
+
+.timeline-item-title {
+	color: var(--secondary-color);
+}
+
+.timeline-item.m-active .timeline-item-title {
+	color: var(--primary-color);
 }
 
 /* manual-input */
@@ -458,7 +544,7 @@ input[type="text"]:focus {
 }
 
 .variant-btn {
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	background: var(--opposite-color);
 }
 
@@ -657,21 +743,10 @@ input[type="text"]:focus {
 /* counter */
 .counter {
 	position: absolute;
-	left: 20px;
-	top: 19px;
+	left: 10px;
+	top: 15px;
 	font-size: 0.86rem;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /* utility classes */
 .block-disabled {

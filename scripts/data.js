@@ -1,5 +1,6 @@
 const pronounsArray = ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'Sie'];
 const verbsArray = ['sagen', 'fragen', 'lieben', 'lachen', 'wohnen', 'singen', 'tanzen', 'spielen', 'machen', 'arbeiten', 'antworten', 'hören'];
+const pastVerbsArray = ['gesagt', 'gefragt', 'geliebt', 'gelacht', 'gewohnt', 'gesingt', 'getanzt', 'gespielt', 'gemacht', 'gearbeitet', 'geantwortet', 'gehört'];
 const machenArray = ['mache', 'machst', 'macht', 'machen'];
 const sagenArray = ['sage', 'sagst', 'sagt', 'sagen'];
 const fragenArray = ['frage', 'fragst', 'fragt', 'fragen'];
@@ -702,5 +703,14 @@ export const data = {
         { id: 5, task: 'Почему?', answer: 'Warum?', variants: questionWords },
         { id: 6, task: 'Как?', answer: 'Wie?', variants: questionWords },
         { id: 7, task: 'Кого?', answer: 'Wen?', variants: questionWords },
+    ],
+    "questionWas": [
+        { id: 1, task: 'Что ты сказал?', answer: 'Was hast du gesagt?', tense: 'past', variants: pastVerbsArray },
+        { id: 2, task: 'Что он спросил?', answer: 'Was hat er gefragt?', tense: 'past', variants: pastVerbsArray },
+        { id: 3, task: 'Что ты поёшь?', answer: 'Was singst du?', tense: 'present', variants: pastVerbsArray },
+        { id: 4, task: 'Что ты завтра споёшь?', answer: 'Was singst du morgen?', tense: 'future', variants: pastVerbsArray },
+        { id: 5, task: 'Что она ответила?', answer: 'Was hat sie geantwortet?', tense: 'past', variants: pastVerbsArray },
+        { id: 6, task: 'Что ты слышал?', answer: 'Was hast du gehört?', tense: 'past', variants: pastVerbsArray },
+        { id: 7, task: 'Что Вы спрашиваете?', answer: 'Was fragen Sie?', tense: 'present', variants: pastVerbsArray },
     ],
 }

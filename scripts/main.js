@@ -28,6 +28,8 @@ export function runMain() {
 	const speechBtn = document.querySelector('.speech-btn--js');
 	const currentCounter = document.querySelector('.counter-current--js');
 	const totalCounter = document.querySelector('.counter-total--js');
+	const timeline = document.querySelector('.timeline--js');
+	const timelineItems = timeline.querySelectorAll('.timeline-item');
 	
 	// Templates
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
@@ -37,7 +39,7 @@ export function runMain() {
 
 	// Constants
 	const timeout = 1500;
-	const questions = 12;
+	const questions = 2;
 
 	// Current mode
 	const writeModeString = mainBlock.dataset.writeMode;
@@ -225,6 +227,27 @@ export function runMain() {
 		return words.length + specialCharCount;
 	}
 
+	function updateTimeline() {
+		const currentTense = current.tense;
+		timelineItems.forEach(item => removeClass(item, 'm-active'));
+	
+		const tenseClassMap = {
+			past: 'm-past',
+			present: 'm-present',
+			future: 'm-future'
+		};
+	
+		const activeClass = tenseClassMap[currentTense];
+
+		if (activeClass) {
+			document.querySelector(`.timeline-item.${activeClass}`).classList.add('m-active');
+		}
+	}
+
+	function hideTimeline() {
+		addClass(timeline ,'hidden');
+	}
+
 	const speechHelper = {
 		utterance: new SpeechSynthesisUtterance(),
 	
@@ -269,6 +292,8 @@ export function runMain() {
 			generateRandomWords(current);
 		}
 
+		updateTimeline();
+
 		if (progress >= 100) {
 			if (isDefaultMode) {
 				addClass(variantsBox, 'hidden');
@@ -276,6 +301,7 @@ export function runMain() {
 
 			setFinishMsg();
 			showRefreshBtn();
+			hideTimeline();
 		} else {
 			setElementValue(taskField, current.task);
 			setElementValue(correctVariantText, current.answer);
@@ -398,6 +424,8 @@ export function runMain() {
 		speechHelper.setVolume(1);
 	}
 
+	updateTimeline();
+
 	/* Listeners */
 	function setDefaultModeListeners() {
 		variantsBox.addEventListener('click', function(e) {
@@ -458,6 +486,8 @@ export function runMain() {
 			clearElement(variantsBox);
 			generateRandomWords(current);
 		}
+
+		updateTimeline();
 
 		removeClass(inputVariant, 'error-color')
 	});
