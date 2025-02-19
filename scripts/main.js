@@ -39,7 +39,7 @@ export function runMain() {
 
 	// Constants
 	const timeout = 1500;
-	const questions = 2;
+	const questions = 12;
 
 	// Current mode
 	const writeModeString = mainBlock.dataset.writeMode;
