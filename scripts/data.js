@@ -713,4 +713,13 @@ export const data = {
         { id: 6, task: 'Что ты слышал?', answer: 'Was hast du gehört?', tense: 'past', variants: pastVerbsArray },
         { id: 7, task: 'Что Вы спрашиваете?', answer: 'Was fragen Sie?', tense: 'present', variants: pastVerbsArray },
     ],
+    "questionWerWoWann": [
+        { id: 1, task: 'Кто сказал?', answer: 'Wer hat gesagt?', tense: 'past', variants: pastVerbsArray },
+        { id: 2, task: 'Где ты живёшь?', answer: 'Wo wohnst du?', tense: 'present', variants: pastVerbsArray },
+        { id: 3, task: 'Где ты работаешь?', answer: 'Wo arbeitest du?', tense: 'present', variants: pastVerbsArray },
+        { id: 4, task: 'Где ты работал?', answer: 'Wo hast du gearbeitet?', tense: 'past', variants: pastVerbsArray },
+        { id: 5, task: 'Где ты жил?', answer: 'Wo hast du gewohnt?', tense: 'past', variants: pastVerbsArray },
+        { id: 6, task: 'Когда ты будешь работать?', answer: 'Wann arbeitest du?', tense: 'future', variants: pastVerbsArray },
+        { id: 7, task: 'Когда ты работал?', answer: 'Wann hast du gearbeitet?', tense: 'past', variants: pastVerbsArray },
+    ],
 }

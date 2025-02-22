@@ -1,7 +1,7 @@
 export const data = {
 	tasks: [
 		{ id: 1, name: 'Урок 1', description: 'Местоимения и глаголы. Настоящее время: утверждения, отрицания, вопросы.' },
-		{ id: 2, name: 'Урок 2', description: 'Этикет. Прошедшее время: утверждения, отрицания, вопросы.' },
+		{ id: 2, name: 'Урок 2', description: 'Этикет. Прошедшее время: утверждения, отрицания, вопросы. Вопросительные слова: Was, Wer, Wo, Wann, Warum, Wie, Wen' },
 	],
 	submenus: [
 		[
@@ -20,7 +20,8 @@ export const data = {
 			{ id: 3, name: 'Отрицания', details: 'Прошедшее время' },
 			{ id: 4, name: 'Вопросы', details: 'Прошедшее время' },
 			{ id: 5, name: 'Словарь урока', details: 'Вопросительные слова: Was, Wer, Wo, Wann, Warum, Wie, Wen' },
-			{ id: 6, name: 'Вопросы со словом Was', details: 'Прошедшее и настоящее время' },
+			{ id: 6, name: 'Вопросы со словом Was', details: 'Прошедшее, настоящее и будущее время' },
+			{ id: 7, name: 'Вопросы со словами Wer, Wo, Wann', details: 'Прошедшее, настоящее и будущее время' },
 		],
 	],
 	content: [
@@ -40,7 +41,8 @@ export const data = {
 			{ id: 3, words: 'pastNegativeStatements', timeline: false, rule: {type: 'past', title: 'Прошедшее время'} },
 			{ id: 4, words: 'pastQuestionStatements', timeline: false, rule: {type: 'past', title: 'Прошедшее время'} },
 			{ id: 5, words: 'questionWords', timeline: false, rule: {type: 'words', title: 'Словарь урока'} },
-			{ id: 6, words: 'questionWas', timeline: true, rule: {type: 'past', title: 'Прошедшее и настоящее время'} },
+			{ id: 6, words: 'questionWas', timeline: true, rule: {type: 'past', title: 'Прошедшее, настоящее и будущее врем'} },
+			{ id: 7, words: 'questionWerWoWann', timeline: true, rule: {type: 'past', title: 'Прошедшее, настоящее и будущее врем'} },
 		],
 	],
 };
