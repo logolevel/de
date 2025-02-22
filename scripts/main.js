@@ -216,7 +216,15 @@ export function runMain() {
 			theoryWords.append(theoryTemplateFragment);
 		} else {
 			clearElement(theoryRules);
-			theoryRules.innerHTML = rules[ruleType][0].content;
+
+			const combinedContent = ruleType.reduce((acc, type) => {
+				if (rules[type]) {
+					acc += rules[type].map(rule => `${rule.content}`).join('');
+				}
+				return acc;
+			}, '');
+
+			theoryRules.innerHTML = combinedContent;
 		}
 	}
 
