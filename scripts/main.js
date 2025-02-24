@@ -130,7 +130,9 @@ export function runMain() {
 	}
 
 	function generateRandomWords(obj) {
-		const { answer, variants, pronouns } = obj;
+		const { answer, variants } = obj;
+
+		console.log('variants', variants);
 	
 		// Define special characters to check for
 		const specialChars = ['?', '!', ','];
@@ -143,12 +145,12 @@ export function runMain() {
 			? answer.replace(new RegExp(`[${specialChars.join('')}]`, 'g'), '').split(" ")
 			: answer.split(" ");
 	
-		// Combine `variants` and `pronouns` if they exist, or use an empty array
-		const combinedWords = [...(variants || []), ...(pronouns || [])];
+		// Combine all arrays inside `variants` into one array
+		const combinedWords = variants.flat();
 	
 		// If combinedWords is empty, throw an error
 		if (combinedWords.length === 0) {
-			throw new Error("No valid words in 'variants' or 'pronouns'.");
+			throw new Error("No valid words in 'variants'.");
 		}
 	
 		// Filter out duplicates and ensure the answerWords are included
@@ -168,10 +170,9 @@ export function runMain() {
 			randomSelection.push(randomWord); // Add words to fill up
 		}
 	
-		// If still less than 9 (unlikely but handle edge case), repeat variants or pronouns
+		// If still less than 9 (unlikely but handle edge case), repeat variants
 		while (randomSelection.length < 9) {
-			const fallbackSource = variants?.length ? variants : pronouns;
-			const fallbackWord = fallbackSource[Math.floor(Math.random() * fallbackSource.length)];
+			const fallbackWord = combinedWords[Math.floor(Math.random() * combinedWords.length)];
 			randomSelection.push(fallbackWord);
 		}
 	
@@ -432,7 +433,7 @@ export function runMain() {
 		speechHelper.setVolume(1);
 	}
 
-	updateTimeline();
+	updateTimeline(); // TODO
 
 	/* Listeners */
 	function setDefaultModeListeners() {
