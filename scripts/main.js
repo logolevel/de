@@ -131,8 +131,6 @@ export function runMain() {
 
 	function generateRandomWords(obj) {
 		const { answer, variants } = obj;
-
-		console.log('variants', variants);
 	
 		// Define special characters to check for
 		const specialChars = ['?', '!', ','];

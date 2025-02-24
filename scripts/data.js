@@ -16,8 +16,9 @@ const horenArray = ['höre', 'hörst', 'hört', 'hören'];
 const seinArray = ['bin', 'bist', 'ist', 'sind', 'seid'];
 const habenArray = ['habe', 'hast', 'hat', 'haben', 'habt'];
 const greetingWords = ['Guten', 'Morgen', 'Tag', 'Abend', 'Gute', 'Nacht', 'Auf', 'Wiedersein', 'Danke', 'schön', 'Bitte', 'Hallo', 'Tschüs', 'Wie', 'bitte'];
-const questionWords = ['Was', 'Wer', 'Wo', 'Wann', 'Warum', 'Wie', 'Wen'];
+const questionWords = ['Was', 'Wer', 'Wo', 'Wann', 'Warum', 'Wie', 'Wen', 'Warum', 'Wie', 'Wen'];
 const tensesAuxiliaryWords = ['gestern', 'neute', 'morgen', 'jetzt'];
+const genitiveCaseWords = ['mich', 'dich', 'ihn', 'sie', 'es', 'uns', 'euch', 'Sie'];
 
 export const data = {
     "pronouns": [
@@ -728,5 +729,20 @@ export const data = {
         { id: 2, task: 'сегодня', answer: 'neute', variants: [tensesAuxiliaryWords] },
         { id: 3, task: 'завтра', answer: 'morgen', variants: [tensesAuxiliaryWords] },
         { id: 4, task: 'сейчас', answer: 'jetzt', variants: [tensesAuxiliaryWords] },
+    ],
+    "questionWarumWie": [
+        { id: 1, task: 'Почему ты не работаешь?', answer: 'Warum arbeitest du nicht?', tense: 'present', variants: [pastVerbsArray, questionWords] },
+        { id: 2, task: 'Почему ты спрашиваешь?', answer: 'Warum fragst du?', tense: 'present', variants: [pastVerbsArray, questionWords] },
+        { id: 3, task: 'Как она танцует?', answer: 'Wie tanzt sie?', tense: 'present', variants: [pastVerbsArray, questionWords] },
+    ],
+    "genitiveCaseWords": [
+        { id: 1, task: 'меня', answer: 'mich', variants: [genitiveCaseWords] },
+        { id: 2, task: 'тебя', answer: 'dich', variants: [genitiveCaseWords] },
+        { id: 3, task: 'его', answer: 'ihn', variants: [genitiveCaseWords] },
+        { id: 4, task: 'её', answer: 'sie', variants: [genitiveCaseWords] },
+        { id: 5, task: 'это', answer: 'es', variants: [genitiveCaseWords] },
+        { id: 6, task: 'нас', answer: 'uns', variants: [genitiveCaseWords] },
+        { id: 7, task: 'вас', answer: 'euch', variants: [genitiveCaseWords] },
+        { id: 8, task: 'Вас', answer: 'Sie', variants: [genitiveCaseWords] },
     ]
 }
