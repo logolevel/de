@@ -20,8 +20,9 @@ export const data = {
 			{ id: 3, name: 'Отрицания', details: 'Прошедшее время' },
 			{ id: 4, name: 'Вопросы', details: 'Прошедшее время' },
 			{ id: 5, name: 'Словарь урока', details: 'Вопросительные слова: Was, Wer, Wo, Wann, Warum, Wie, Wen' },
-			{ id: 6, name: 'Вопросы со словом Was', details: 'Прошедшее, настоящее и будущее время' },
-			{ id: 7, name: 'Вопросы со словами Wer, Wo, Wann', details: 'Прошедшее, настоящее и будущее время' },
+			{ id: 6, name: 'Вопросы со словом: Что?', details: 'Прошедшее, настоящее и будущее время. Что?(Was?)' },
+			{ id: 7, name: 'Вопросы со словами: Кто?, Где?, Когда?', details: 'Прошедшее, настоящее и будущее время. Wer?(Кто?), Wo?(Где?), Wann?(Когда?)' },
+			{ id: 8, name: 'Словарь урока', details: 'Вчера, сегодня, завтра, сейчас' },
 		],
 	],
 	content: [
@@ -43,6 +44,7 @@ export const data = {
 			{ id: 5, words: 'questionWords', timeline: false, rule: {type: 'words', title: 'Словарь урока'} },
 			{ id: 6, words: 'questionWas', timeline: true, rule: {type: ['questionWordPresent', 'questionWordPast'], title: 'Прошедшее, настоящее и будущее врем'} },
 			{ id: 7, words: 'questionWerWoWann', timeline: true, rule: {type: ['questionWordPresent', 'questionWordPast'], title: 'Прошедшее, настоящее и будущее врем'} },
+			{ id: 8, words: 'tensesAuxiliaryWords', timeline: false, rule: {type: 'words', title: 'Словарь урока'} },
 		],
 	],
 };

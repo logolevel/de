@@ -17,6 +17,7 @@ const seinArray = ['bin', 'bist', 'ist', 'sind', 'seid'];
 const habenArray = ['habe', 'hast', 'hat', 'haben', 'habt'];
 const greetingWords = ['Guten', 'Morgen', 'Tag', 'Abend', 'Gute', 'Nacht', 'Auf', 'Wiedersein', 'Danke', 'schön', 'Bitte', 'Hallo', 'Tschüs', 'Wie', 'bitte'];
 const questionWords = ['Was', 'Wer', 'Wo', 'Wann', 'Warum', 'Wie', 'Wen'];
+const tensesAuxiliaryWords = ['gestern', 'neute', 'morgen', 'jetzt'];
 
 export const data = {
     "pronouns": [
@@ -722,4 +723,10 @@ export const data = {
         { id: 6, task: 'Когда ты будешь работать?', answer: 'Wann arbeitest du?', tense: 'future', variants: pastVerbsArray },
         { id: 7, task: 'Когда ты работал?', answer: 'Wann hast du gearbeitet?', tense: 'past', variants: pastVerbsArray },
     ],
+    "tensesAuxiliaryWords": [
+        { id: 1, task: 'вчера', answer: 'gestern', variants: tensesAuxiliaryWords },
+        { id: 2, task: 'сегодня', answer: 'neute', variants: tensesAuxiliaryWords },
+        { id: 3, task: 'завтра', answer: 'morgen', variants: tensesAuxiliaryWords },
+        { id: 4, task: 'сейчас', answer: 'jetzt', variants: tensesAuxiliaryWords },
+    ]
 }

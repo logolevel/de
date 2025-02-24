@@ -1,14 +1,13 @@
 ## TODO
-[ ] Добавить стили для правил
-[ ] Refactor updateTimeline()
 [ ] CONTENT: Добавить примеры предложений с вопросительными словами: Was? - Что? ...
 [ ] CONTENT: Добавить словарь местоимений в родительном и винительном падежах: Ich(я) - mich(меня) ...
+[ ] Refactor updateTimeline() function
 [ ] CONTENT: Добавить примеры с местоимениями
 [ ] CONTENT: Добавить примеры с местоимениями + Wen? - Кого?
 [ ] RULES: Оформить с помощью CSS, сделать акценты
+[ ] Add remove word functionality
 [ ] Change input into textarea to extend the row vertically
-[ ] Create logic to show tenses image, add additional key to data: past, present, future
-[ ] Ask about rules: t, d, z + e
+[ ] Change correct answer position instead of suggested words. For write mode close/open the keyboard
 ## Improvements
 [ ] Add listening mode
 [ ] Investigate Out of network approach
