@@ -753,5 +753,12 @@ export const data = {
         { id: 5, task: 'Он её любит, она его не любит', answer: 'Er liebt sie, sie liebt ihn nicht', variants: [genitiveCaseWords, pronounsArray, liebenArray] },
         { id: 6, task: 'Мы вас любим, а вы нас любите', answer: 'Wir lieben euch, ihr liebt uns', variants: [genitiveCaseWords, pronounsArray, liebenArray] },
         { id: 7, task: 'Я спрашиваю вас', answer: 'Ich frage sie', variants: [genitiveCaseWords, pronounsArray, fragenArray] },
+    ],
+    "questionWen": [
+        { id: 1, task: 'Кого ты любишь?', answer: 'Wen liebst du?', variants: [questionWords, pronounsArray, liebenArray] },
+        { id: 2, task: 'Кого она любит?', answer: 'Wen liebt sie?', variants: [questionWords, pronounsArray, liebenArray] },
+        { id: 3, task: 'Кого ты спрашиваешь?', answer: 'Wen fragst du?', variants: [questionWords, pronounsArray, fragenArray] },
+        { id: 4, task: 'Кого он спрашивает?', answer: 'Wen fragt er?', variants: [questionWords, pronounsArray, fragenArray] },
+        { id: 5, task: 'Кого ты слышишь?', answer: 'Wen hörst du?', variants: [questionWords, pronounsArray, horenArray] },
     ]
 }

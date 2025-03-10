@@ -26,6 +26,7 @@ export const data = {
 			{ id: 9, name: 'Вопросы со словами: Почему?, Как?', details: 'Настоящее время. Warum?(Почему?), Wie?(Как?)' },
 			{ id: 10, name: 'Словарь урока', details: 'Местоимения в родительном и винительном: меня, тебя, его, её, это, нас, вас, Вас' },
 			{ id: 11, name: 'Предложения с местоимениями', details: 'Местоимения в родительном и винительном на практике' },
+			{ id: 12, name: 'Вопросы со словами: Кого?', details: 'Настоящее время. Wen?(Кого?)' },
 		],
 	],
 	content: [
@@ -51,6 +52,7 @@ export const data = {
 			{ id: 9, words: 'questionWarumWie', timeline: true, rule: {type: ['questionWordPresent'], title: 'Настоящее время'} },
 			{ id: 10, words: 'genitiveCaseWords', timeline: false, rule: {type: 'words', additionalWords: 'pronouns', title: 'Словарь урока'} },
 			{ id: 11, words: 'genitiveCaseSentences', timeline: false, rule: {type: ['present'], title: 'Настоящее время'} },
+			{ id: 12, words: 'questionWen', timeline: false, rule: {type: ['questionWordPresent'], title: 'Настоящее время'} },
 		],
 	],
 };
