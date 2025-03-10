@@ -744,5 +744,14 @@ export const data = {
         { id: 6, task: 'нас', answer: 'uns', variants: [genitiveCaseWords] },
         { id: 7, task: 'вас', answer: 'euch', variants: [genitiveCaseWords] },
         { id: 8, task: 'Вас', answer: 'Sie', variants: [genitiveCaseWords] },
+    ],
+    "genitiveCaseSentences": [
+        { id: 1, task: 'Я люблю тебя', answer: 'Ich liebe dich', variants: [genitiveCaseWords, pronounsArray, liebenArray] },
+        { id: 2, task: 'Ты любишь меня', answer: 'Du liebst mich', variants: [genitiveCaseWords, pronounsArray, liebenArray] },
+        { id: 3, task: 'Ты меня любишь?', answer: 'Liebst du mich?', variants: [genitiveCaseWords, pronounsArray, liebenArray] },
+        { id: 4, task: 'Ты меня любишь не любишь', answer: 'Du liebst mich nicht', variants: [genitiveCaseWords, pronounsArray, liebenArray] },
+        { id: 5, task: 'Он её любит, она его не любит', answer: 'Er liebt sie, sie liebt ihn nicht', variants: [genitiveCaseWords, pronounsArray, liebenArray] },
+        { id: 6, task: 'Мы вас любим, а вы нас любите', answer: 'Wir lieben euch, ihr liebt uns', variants: [genitiveCaseWords, pronounsArray, liebenArray] },
+        { id: 7, task: 'Я спрашиваю вас', answer: 'Ich frage sie', variants: [genitiveCaseWords, pronounsArray, fragenArray] },
     ]
 }

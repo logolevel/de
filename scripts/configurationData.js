@@ -25,6 +25,7 @@ export const data = {
 			{ id: 8, name: 'Словарь урока', details: 'Вчера, сегодня, завтра, сейчас' },
 			{ id: 9, name: 'Вопросы со словами: Почему?, Как?', details: 'Настоящее время. Warum?(Почему?), Wie?(Как?)' },
 			{ id: 10, name: 'Словарь урока', details: 'Местоимения в родительном и винительном: меня, тебя, его, её, это, нас, вас, Вас' },
+			{ id: 11, name: 'Предложения с местоимениями', details: 'Местоимения в родительном и винительном на практике' },
 		],
 	],
 	content: [
@@ -47,8 +48,9 @@ export const data = {
 			{ id: 6, words: 'questionWas', timeline: true, rule: {type: ['questionWordPresent', 'questionWordPast'], title: 'Прошедшее, настоящее и будущее врем'} },
 			{ id: 7, words: 'questionWerWoWann', timeline: true, rule: {type: ['questionWordPresent', 'questionWordPast'], title: 'Прошедшее, настоящее и будущее врем'} },
 			{ id: 8, words: 'tensesAuxiliaryWords', timeline: false, rule: {type: 'words', title: 'Словарь урока'} },
-			{ id: 9, words: 'questionWarumWie', timeline: true, rule: {type: ['questionWordPresent'], title: 'Настоящее врем'} },
+			{ id: 9, words: 'questionWarumWie', timeline: true, rule: {type: ['questionWordPresent'], title: 'Настоящее время'} },
 			{ id: 10, words: 'genitiveCaseWords', timeline: false, rule: {type: 'words', additionalWords: 'pronouns', title: 'Словарь урока'} },
+			{ id: 11, words: 'genitiveCaseSentences', timeline: false, rule: {type: ['present'], title: 'Настоящее время'} },
 		],
 	],
 };
