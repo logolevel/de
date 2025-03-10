@@ -35,6 +35,7 @@ export function runMain() {
 	const variantBtnTemplate = document.querySelector('#variant-btn-template');
 	const variantButtonsFragment = document.createDocumentFragment();
 	const theoryTemplate = document.querySelector('#theory-template');
+	const theoryExtendedTemplate = document.querySelector('#theory-template-extended');
 	const theoryTemplateFragment = document.createDocumentFragment();
 
 	// Constants
@@ -59,6 +60,7 @@ export function runMain() {
 	const rule = JSON.parse(theoryBtn.dataset.rule);
 	const ruleType = rule.type;
 	const ruleTitle = rule.title;
+	const ruleAdditionalWords = rule.additionalWords ? rule.additionalWords : null;
 
 	let counter = 0;
 	let progress = 0;
@@ -204,15 +206,38 @@ export function runMain() {
 				theoryWords.append(h2);
 			}
 
-			for (const key of words) {
-				const item = theoryTemplate.content.cloneNode(true);
-			
-				item.querySelector('.theory-words-task--js').textContent = `${key.task}`;
-				item.querySelector('.theory-words-answer--js').textContent = `${key.answer}`;
-				theoryTemplateFragment.append(item);
+			if (!ruleAdditionalWords) {
+				for (const key of words) {
+					const item = theoryTemplate.content.cloneNode(true);
+				
+					item.querySelector('.theory-words-task--js').textContent = `${key.task}`;
+					item.querySelector('.theory-words-answer--js').textContent = `${key.answer}`;
+					theoryTemplateFragment.append(item);
+				}
+				theoryWords.append(theoryTemplateFragment);
+			} else {
+				const additionalWords = data[ruleAdditionalWords];
+				const combinedLength = Math.max(additionalWords.length, words.length);
+				
+				for (let i = 0; i < combinedLength; i++) {
+					const item = theoryExtendedTemplate.content.cloneNode(true);
+				
+					if (i < additionalWords.length) {
+						item.querySelector('.theory-words-extended-task--js').textContent = `${additionalWords[i].task}`;
+						item.querySelector('.theory-words-extended-answer--js').textContent = `(${additionalWords[i].answer})`;
+					}
+				
+					if (i < words.length) {
+						item.querySelector('.theory-words-default-task--js').textContent = `${words[i].task}`;
+						item.querySelector('.theory-words-default-answer--js').textContent = `(${words[i].answer})`;
+					}
+				
+					theoryTemplateFragment.append(item);
+				}
+				
+				theoryWords.append(theoryTemplateFragment);
 			}
 	
-			theoryWords.append(theoryTemplateFragment);
 		} else {
 			clearElement(theoryRules);
 

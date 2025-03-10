@@ -1,5 +1,5 @@
 ## TODO
-[ ] CONTENT: Добавить словарь местоимений в родительном и винительном падежах: Ich(я) - mich(меня) ...
+[ ] Add second template to rule 'words'. ich(я) - mich(меня)
 [ ] Refactor updateTimeline() function
 [ ] Change correct answer position instead of suggested words. For write mode close/open the keyboard
 [ ] Refactor final screen.

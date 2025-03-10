@@ -48,7 +48,7 @@ export const data = {
 			{ id: 7, words: 'questionWerWoWann', timeline: true, rule: {type: ['questionWordPresent', 'questionWordPast'], title: 'Прошедшее, настоящее и будущее врем'} },
 			{ id: 8, words: 'tensesAuxiliaryWords', timeline: false, rule: {type: 'words', title: 'Словарь урока'} },
 			{ id: 9, words: 'questionWarumWie', timeline: true, rule: {type: ['questionWordPresent'], title: 'Настоящее врем'} },
-			{ id: 10, words: 'genitiveCaseWords', timeline: false, rule: {type: 'words', title: 'Словарь урока'} },
+			{ id: 10, words: 'genitiveCaseWords', timeline: false, rule: {type: 'words', additionalWords: 'pronouns', title: 'Словарь урока'} },
 		],
 	],
 };

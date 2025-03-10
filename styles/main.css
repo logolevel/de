@@ -630,6 +630,11 @@ input[type="text"]:focus {
 	background: var(--primary-light-color);
 }
 
+.theory-words-sub-item {
+	display: flex;
+	gap: 4px;
+}
+
 .theory-menu {
 	margin-block: 20px;
 }
