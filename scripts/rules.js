@@ -141,16 +141,6 @@ export const rules = {
 		{
 			id: 1, content: `
 			<h2 class="theory-title">Простая форма глагола <b>machen</b></h2>
-			<div class="container">
-				<ol class="theory-menu">
-					<li>
-						<a class="theory-menu-link" href="#present-tense"> - Настоящее время</a>
-					</li>
-					<li>
-						<a class="theory-menu-link" href="#future-tense"> - Будущее время</a>
-					</li>
-				</ol>
-			</div>
 			<h3 class="theory-sub-title" id="present-tense">Настоящее время</h3>
 			<div class="grid-table">
 				${presentCells}

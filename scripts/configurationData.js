@@ -2,17 +2,18 @@ export const data = {
 	tasks: [
 		{ id: 1, name: 'Урок 1', description: 'Местоимения и глаголы. Настоящее время: утверждения, отрицания, вопросы.' },
 		{ id: 2, name: 'Урок 2', description: 'Этикет. Прошедшее время: утверждения, отрицания, вопросы. Вопросительные слова: Was, Wer, Wo, Wann, Warum, Wie, Wen' },
+		{ id: 3, name: 'Урок 3', description: 'Повторение: утверждения, отрицания, вопросы. Вопросительные слова: Wohin, Woher. Союзы: und, oder, aber, sonden, ja, nein' },
 	],
 	submenus: [
 		[
 			{ id: 1, name: 'Словарь урока', details: 'Местоимения' },
-			{ id: 2, name: 'Словарь урока', details: 'Глоголы' },
+			{ id: 2, name: 'Словарь урока', details: 'Глаголы' },
 			{ id: 3, name: 'Утверждения', details: 'Настоящее время' },
 			{ id: 4, name: 'Вопросы', details: 'Настоящее время' },
 			{ id: 5, name: 'Отрицания', details: 'Настоящее время' },
 			{ id: 6, name: 'Будущее время', details: 'Утверждения, Вопросы, Отрицания. Используем слово "morgen" - "завтра"' },
-			{ id: 7, name: 'Неправильный глогол Sein', details: 'sein - быть' },
-			{ id: 8, name: 'Неправильный глогол Haben', details: 'haben - иметь' },
+			{ id: 7, name: 'Неправильный глагол Sein', details: 'sein - быть' },
+			{ id: 8, name: 'Неправильный глагол Haben', details: 'haben - иметь' },
 		],
 		[
 			{ id: 1, name: 'Словарь урока', details: 'Этикет: приветствие, благодарность, прощание' },
@@ -28,17 +29,21 @@ export const data = {
 			{ id: 11, name: 'Предложения с местоимениями', details: 'Местоимения в родительном и винительном на практике' },
 			{ id: 12, name: 'Вопросы со словами: Кого?', details: 'Настоящее время. Wen?(Кого?)' },
 		],
+		[
+			{ id: 1, name: 'Словарь урока', details: 'Повторение старых и два новых глагола: zeigen, suchen' },
+			{ id: 2, name: 'Утверждения', details: 'Настоящее и прошедшее время с новыми глаголами: zeigen, suchen' },
+		],
 	],
 	content: [
 		[
 			{ id: 1, words: 'pronouns', timeline: false, rule: {type: 'words', title: 'Местоимения'} },
-			{ id: 2, words: 'verbs', timeline: false , rule: {type: 'words', title: 'Глоголы'} },
+			{ id: 2, words: 'verbs', timeline: false , rule: {type: 'words', title: 'глаголы'} },
 			{ id: 3, words: 'statements', timeline: false, rule: {type: ['present'], title: ''} },
 			{ id: 4, words: 'questions', timeline: false, rule: {type: ['present'], title: ''} },
 			{ id: 5, words: 'negatives', timeline: false, rule: {type: ['present'], title: ''} },
 			{ id: 6, words: 'futures', timeline: false, rule: {type: ['present'], title: ''} },
-			{ id: 7, words: 'irregularVerbSein', timeline: false , rule: {type: 'words', title: 'Неправильный глогол <b>Sein</b>'} },
-			{ id: 8, words: 'irregularVerbHaben', timeline: false , rule: {type: 'words', title: 'Неправильный глогол <b>Haben</b>'} },
+			{ id: 7, words: 'irregularVerbSein', timeline: false , rule: {type: 'words', title: 'Неправильный глагол <b>Sein</b>'} },
+			{ id: 8, words: 'irregularVerbHaben', timeline: false , rule: {type: 'words', title: 'Неправильный глагол <b>Haben</b>'} },
 		],
 		[
 			{ id: 1, words: 'greetingPhrases', timeline: false, rule: {type: 'words', title: 'Словарь урока'} },
@@ -53,6 +58,10 @@ export const data = {
 			{ id: 10, words: 'genitiveCaseWords', timeline: false, rule: {type: 'words', additionalWords: 'pronouns', title: 'Словарь урока'} },
 			{ id: 11, words: 'genitiveCaseSentences', timeline: false, rule: {type: ['present'], title: 'Настоящее время'} },
 			{ id: 12, words: 'questionWen', timeline: false, rule: {type: ['questionWordPresent'], title: 'Настоящее время'} },
+		],
+		[
+			{ id: 1, words: {list: ['verbs2', 'verbs']}, timeline: false , rule: {type: 'words', title: 'глаголы'} },
+			{ id: 2, words: 'statements2', timeline: true, rule: {type: ['present', 'past'], title: ''} },
 		],
 	],
 };

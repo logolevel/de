@@ -635,16 +635,6 @@ input[type="text"]:focus {
 	gap: 4px;
 }
 
-.theory-menu {
-	margin-block: 20px;
-}
-
-.theory-menu-link {
-	text-decoration: underline;
-	display: block;
-	padding-block: 8px;
-}
-
 /* grid table */
 .grid-table {
 	display: grid;

@@ -52,9 +52,17 @@ export function runMain() {
 		isDefaultMode = false;
 	}
 
-	// Get current object
-	const currentWords = box.dataset.words;
-	const words = data[currentWords];
+	// Get current words object(s)
+	const currentWords = JSON.parse(box.dataset.words);
+	let words = [];
+
+	if (currentWords.list) {
+		currentWords.list.forEach(key => {
+			words = words.concat(data[key]);
+		});
+	} else {
+		words = data[currentWords];
+	}
 
 	// Get current Rule
 	const rule = JSON.parse(theoryBtn.dataset.rule);
@@ -99,7 +107,6 @@ export function runMain() {
 	}
 
 	function setFinishMsg() {
-		// TODO: Create argument and variable to keep translations
 		taskField.innerHTML = '<div class="final-msg"><div>Ура! 🏆</div><div>Задание пройдено! 👍</div><div/>';
 	}
 
