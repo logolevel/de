@@ -32,7 +32,7 @@ export const data = {
 		[
 			{ id: 1, name: 'Словарь урока', details: 'Повторение старых и два новых глагола: zeigen, suchen' },
 			{ id: 2, name: 'Утверждения', details: 'Настоящее и прошедшее время с новыми глаголами: zeigen, suchen' },
-			{ id: 3, name: 'Вопросы', details: 'Настоящее время' },
+			// { id: 3, name: 'Вопросы', details: 'Настоящее время' },
 		],
 	],
 	content: [
