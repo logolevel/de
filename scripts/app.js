@@ -120,7 +120,7 @@ const templates = {
 	writeMode: (taskIndex, submenuIndex, content) => `
 		${getHeader(taskIndex, submenuIndex, content)}
 		<main class="main main--js" data-write-mode="${state.writeMode}">
-			<div class="box m-write box--js" data-words="${content.words}" data-timeline="${content.timeline}">
+			<div class="box m-write box--js" data-words='${JSON.stringify(content.words)}' data-timeline="${content.timeline}">
 				${getCounter()}
 				${getSpeechButton()}
 				${getTimeline()}

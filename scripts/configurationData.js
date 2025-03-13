@@ -32,6 +32,7 @@ export const data = {
 		[
 			{ id: 1, name: 'Словарь урока', details: 'Повторение старых и два новых глагола: zeigen, suchen' },
 			{ id: 2, name: 'Утверждения', details: 'Настоящее и прошедшее время с новыми глаголами: zeigen, suchen' },
+			{ id: 3, name: 'Вопросы', details: 'Настоящее время' },
 		],
 	],
 	content: [
@@ -62,6 +63,7 @@ export const data = {
 		[
 			{ id: 1, words: {list: ['verbs2', 'verbs']}, timeline: false , rule: {type: 'words', title: 'глаголы'} },
 			{ id: 2, words: 'statements2', timeline: true, rule: {type: ['present', 'past'], title: ''} },
+			{ id: 2, words: 'questions2', timeline: false, rule: {type: ['questionWordPresent'], title: ''} },
 		],
 	],
 };
