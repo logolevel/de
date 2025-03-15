@@ -241,11 +241,11 @@ menu {
 .m-main .menu-btn:before {
 	content: attr(data-task-index-from-1);
 	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 15rem;
+	right: 4px;
+	top: 4px;
+	font-size: 3rem;
 	opacity: 0.04;
+	line-height: 0.7;
 }
 
 .menu-btn:after {
