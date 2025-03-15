@@ -32,7 +32,8 @@ export const data = {
 		[
 			{ id: 1, name: 'Словарь урока', details: 'Повторение старых и два новых глагола: zeigen, suchen' },
 			{ id: 2, name: 'Утверждения', details: 'Настоящее и прошедшее время с новыми глаголами: zeigen, suchen' },
-			// { id: 3, name: 'Вопросы', details: 'Настоящее время' },
+			{ id: 3, name: 'Словарь урока', details: 'Местоимения в дательном падеже' },
+			// { id: 3, name: 'Словарь', details: 'Фразы' },
 		],
 	],
 	content: [
@@ -56,14 +57,15 @@ export const data = {
 			{ id: 7, words: 'questionWerWoWann', timeline: true, rule: {type: ['questionWordPresent', 'questionWordPast'], title: 'Прошедшее, настоящее и будущее врем'} },
 			{ id: 8, words: 'tensesAuxiliaryWords', timeline: false, rule: {type: 'words', title: 'Словарь урока'} },
 			{ id: 9, words: 'questionWarumWie', timeline: true, rule: {type: ['questionWordPresent'], title: 'Настоящее время'} },
-			{ id: 10, words: 'genitiveCaseWords', timeline: false, rule: {type: 'words', additionalWords: 'pronouns', title: 'Словарь урока'} },
+			{ id: 10, words: 'genitiveCaseWords', timeline: false, rule: {type: 'words', additionalWords: ['pronouns', 'genitiveCaseWords'], title: 'Словарь урока'} },
 			{ id: 11, words: 'genitiveCaseSentences', timeline: false, rule: {type: ['present'], title: 'Настоящее время'} },
 			{ id: 12, words: 'questionWen', timeline: false, rule: {type: ['questionWordPresent'], title: 'Настоящее время'} },
 		],
 		[
 			{ id: 1, words: {list: ['verbs2', 'verbs']}, timeline: false , rule: {type: 'words', title: 'глаголы'} },
 			{ id: 2, words: 'statements2', timeline: true, rule: {type: ['present', 'past'], title: ''} },
-			{ id: 2, words: 'questions2', timeline: false, rule: {type: ['questionWordPresent'], title: ''} },
+			{ id: 3, words: 'dativeСasePronouns', timeline: false, rule: {type: 'words', additionalWords: ['pronouns', 'genitiveCaseWords', 'dativeСasePronouns'], title: 'Местоимения'} },
+			// { id: 3, words: 'phrases', timeline: false, rule: {type: ['present'], title: ''} },
 		],
 	],
 };

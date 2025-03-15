@@ -186,16 +186,14 @@ function getTheory() {
 			</li>
 		</template>
 		<template id="theory-template-extended">
-			<li class="theory-words-item m-extended">
-				<div class="theory-words-sub-item">
-					<div class="theory-words-task theory-words-extended-task--js"></div>
-					<div class="theory-words-answer theory-words-extended-answer--js"></div>
-				</div>
-				<div class="theory-words-sub-item">
-					<div class="theory-words-task theory-words-default-task--js"></div>
-					<div class="theory-words-answer theory-words-default-answer--js"></div>
-				</div>
+			<li class="theory-words-item m-extended theory-words-item--js">
 			</li>
+		</template>
+		<template id="theory-template-sub-item">
+			<div class="theory-words-sub-item">
+				<div class="theory-words-task theory-words-task--js"></div>
+				<div class="theory-words-answer theory-words-answer--js"></div>
+			</div>
 		</template>
 	`
 }

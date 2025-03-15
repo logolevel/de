@@ -36,6 +36,7 @@ export function runMain() {
 	const variantButtonsFragment = document.createDocumentFragment();
 	const theoryTemplate = document.querySelector('#theory-template');
 	const theoryExtendedTemplate = document.querySelector('#theory-template-extended');
+	const theorySubItemTemplate = document.querySelector('#theory-template-sub-item');
 	const theoryTemplateFragment = document.createDocumentFragment();
 
 	// Constants
@@ -223,26 +224,27 @@ export function runMain() {
 				}
 				theoryWords.append(theoryTemplateFragment);
 			} else {
-				const additionalWords = data[ruleAdditionalWords];
-				const combinedLength = Math.max(additionalWords.length, words.length);
-				
-				for (let i = 0; i < combinedLength; i++) {
-					const item = theoryExtendedTemplate.content.cloneNode(true);
-				
-					if (i < additionalWords.length) {
-						item.querySelector('.theory-words-extended-task--js').textContent = `${additionalWords[i].task}`;
-						item.querySelector('.theory-words-extended-answer--js').textContent = `(${additionalWords[i].answer})`;
+				const listLength = data[ruleAdditionalWords[0]].length;
+				const itemLength = ruleAdditionalWords.length;
+
+				for (let i = 0; i < listLength; i++) {
+					const templateItem = theoryExtendedTemplate.content.cloneNode(true);
+
+					for (let j = 0; j < itemLength; j++) {
+						const templateSubItem = theorySubItemTemplate.content.cloneNode(true);
+						const item = data[ruleAdditionalWords[j]][i];
+
+						templateSubItem.querySelector('.theory-words-task--js').textContent = `${item.task}`;
+						templateSubItem.querySelector('.theory-words-answer--js').textContent = `(${item.answer})`;
+
+						templateItem.querySelector('.theory-words-item--js').append(templateSubItem);
 					}
-				
-					if (i < words.length) {
-						item.querySelector('.theory-words-default-task--js').textContent = `${words[i].task}`;
-						item.querySelector('.theory-words-default-answer--js').textContent = `(${words[i].answer})`;
-					}
-				
-					theoryTemplateFragment.append(item);
+
+					theoryTemplateFragment.append(templateItem);
 				}
-				
+
 				theoryWords.append(theoryTemplateFragment);
+				document.documentElement.style.setProperty('--theory-words-items', `repeat(${itemLength}, 1fr)`);
 			}
 	
 		} else {

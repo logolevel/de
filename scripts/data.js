@@ -1,4 +1,6 @@
-const pronounsArray = ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'Sie'];
+const pronounsArray =      ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'sie', 'Sie'];
+const genitiveCaseWords =  ['mich', 'dich', 'ihn', 'sie', 'es', 'uns', 'euch', 'sie', 'Sie'];
+const dativeСasePronouns = ['mir', 'dir', 'ihm', 'ihr', 'ihm', 'uns', 'euch', 'ihnen', 'Ihnen'];
 const verbsArray = ['sagen', 'fragen', 'lieben', 'lachen', 'wohnen', 'singen', 'tanzen', 'spielen', 'machen', 'arbeiten', 'antworten', 'hören'];
 const verbsArray2 = ['zeigen', 'suchen'];
 const pastVerbsArray = ['gesagt', 'gefragt', 'geliebt', 'gelacht', 'gewohnt', 'gesingt', 'getanzt', 'gespielt', 'gemacht', 'gearbeitet', 'geantwortet', 'gehört'];
@@ -19,7 +21,6 @@ const habenArray = ['habe', 'hast', 'hat', 'haben', 'habt'];
 const greetingWords = ['Guten', 'Morgen', 'Tag', 'Abend', 'Gute', 'Nacht', 'Auf', 'Wiedersein', 'Danke', 'schön', 'Bitte', 'Hallo', 'Tschüs', 'Wie', 'bitte'];
 const questionWords = ['Was', 'Wer', 'Wo', 'Wann', 'Warum', 'Wie', 'Wen', 'Warum', 'Wie', 'Wen'];
 const tensesAuxiliaryWords = ['gestern', 'neute', 'morgen', 'jetzt'];
-const genitiveCaseWords = ['mich', 'dich', 'ihn', 'sie', 'es', 'uns', 'euch', 'Sie'];
 const zeigenArray = ['zeige', 'zeigst', 'zeigt', 'zeigen'];
 const suchenArray = ['suche', 'suchst', 'sucht', 'suchen'];
 
@@ -28,11 +29,12 @@ export const data = {
         { id: 1, task: 'я', answer: 'ich', variants: [pronounsArray] },
         { id: 2, task: 'ты', answer: 'du', variants: [pronounsArray] },
         { id: 3, task: 'он', answer: 'er', variants: [pronounsArray] },
-        { id: 4, task: 'она / они', answer: 'sie', variants: [pronounsArray] },
+        { id: 4, task: 'она', answer: 'sie', variants: [pronounsArray] },
         { id: 5, task: 'оно', answer: 'es', variants: [pronounsArray] },
         { id: 6, task: 'мы', answer: 'wir', variants: [pronounsArray] },
         { id: 7, task: 'вы', answer: 'ihr', variants: [pronounsArray] },
-        { id: 8, task: 'Вы', answer: 'Sie', variants: [pronounsArray] },
+        { id: 8, task: 'они', answer: 'ihr', variants: [pronounsArray] },
+        { id: 9, task: 'Вы', answer: 'Sie', variants: [pronounsArray] },
     ],
     "verbs": [
         { id: 1, task: 'говорить', answer: 'sagen', variants: [verbsArray] },
@@ -791,6 +793,7 @@ export const data = {
         { id: 5, task: 'это', answer: 'es', variants: [genitiveCaseWords] },
         { id: 6, task: 'нас', answer: 'uns', variants: [genitiveCaseWords] },
         { id: 7, task: 'вас', answer: 'euch', variants: [genitiveCaseWords] },
+        { id: 7, task: 'их', answer: 'sie', variants: [genitiveCaseWords] },
         { id: 8, task: 'Вас', answer: 'Sie', variants: [genitiveCaseWords] },
     ],
     "genitiveCaseSentences": [
@@ -808,5 +811,21 @@ export const data = {
         { id: 3, task: 'Кого ты спрашиваешь?', answer: 'Wen fragst du?', variants: [questionWords, pronounsArray, fragenArray] },
         { id: 4, task: 'Кого он спрашивает?', answer: 'Wen fragt er?', variants: [questionWords, pronounsArray, fragenArray] },
         { id: 5, task: 'Кого ты слышишь?', answer: 'Wen hörst du?', variants: [questionWords, pronounsArray, horenArray] },
-    ]
+    ],
+    "dativeСasePronouns": [
+        { id: 1, task: 'мне', answer: 'mir', variants: [dativeСasePronouns] },
+        { id: 2, task: 'тебе', answer: 'dir', variants: [dativeСasePronouns] },
+        { id: 3, task: 'ему', answer: 'ihm', variants: [dativeСasePronouns] },
+        { id: 4, task: 'ей', answer: 'ihr', variants: [dativeСasePronouns] },
+        { id: 5, task: 'ему', answer: 'ihm', variants: [dativeСasePronouns] },
+        { id: 6, task: 'нам', answer: 'uns', variants: [dativeСasePronouns] },
+        { id: 7, task: 'вам', answer: 'euch', variants: [dativeСasePronouns] },
+        { id: 8, task: 'им', answer: 'ihnen', variants: [dativeСasePronouns] },
+        { id: 9, task: 'Вам', answer: 'Ihnen', variants: [dativeСasePronouns] },
+    ],
+    "phrases": [
+        { id: 1, task: 'Как дeла?', answer: "Wie geht's?", variants: [genitiveCaseWords] },
+        { id: 2, task: 'Как у тебя дела?', answer: "Wie geht es dir?", variants: [genitiveCaseWords] },
+        { id: 3, task: 'Как у Вас дела?', answer: "Wie geht es Ihnen?", variants: [genitiveCaseWords] },
+    ],
 }
