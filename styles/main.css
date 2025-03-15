@@ -238,6 +238,16 @@ menu {
 	padding: 10px;
 }
 
+.m-main .menu-btn:before {
+	content: attr(data-task-index-from-1);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 15rem;
+	opacity: 0.04;
+}
+
 .menu-btn:after {
 	content: '➡️';
 	position: absolute;

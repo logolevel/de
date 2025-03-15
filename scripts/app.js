@@ -25,7 +25,7 @@ const templates = {
 		<main>
 			<ul class="menu m-main">
 			${tasks.map((task, index) => `<li class="menu-item">
-					<button class="menu-btn main-menu-btn--js" data-task-index="${index}">
+					<button class="menu-btn main-menu-btn--js" data-task-index="${index}" data-task-index-from-1="${index + 1}">
 						<div class="menu-item-title">${task.name}</div>
 						<p class="menu-item-description">${task.description}</p>
 					</button>
