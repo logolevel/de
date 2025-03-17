@@ -33,7 +33,7 @@ export const data = {
         { id: 5, task: 'оно', answer: 'es', variants: [pronounsArray] },
         { id: 6, task: 'мы', answer: 'wir', variants: [pronounsArray] },
         { id: 7, task: 'вы', answer: 'ihr', variants: [pronounsArray] },
-        { id: 8, task: 'они', answer: 'ihr', variants: [pronounsArray] },
+        { id: 8, task: 'они', answer: 'sie', variants: [pronounsArray] },
         { id: 9, task: 'Вы', answer: 'Sie', variants: [pronounsArray] },
     ],
     "verbs": [
